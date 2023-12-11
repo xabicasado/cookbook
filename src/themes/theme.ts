@@ -10,14 +10,6 @@ const quicksand = Quicksand({
 
 const dancingScript = Dancing_Script({ subsets: ['latin'], display: 'swap' })
 
-const generateFontStyle = () => {
-  return css`
-    font-family: ${quicksand.style.fontFamily};
-  `
-  /* font-weight: ${font.style.fontWeight}; */
-  /* ${!!value.uppercase && `text-transform: uppercase`}; */
-}
-
 const theme = {
   colors: {
     text: '#000000',
