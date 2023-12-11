@@ -1,5 +1,4 @@
 'use client'
-import { css } from 'styled-components'
 
 import { Quicksand, Dancing_Script } from 'next/font/google'
 
