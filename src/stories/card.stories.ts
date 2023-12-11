@@ -18,5 +18,6 @@ export const Generic: Story = {
   args: {
     title: 'Batido de aguacate y plátano con almendras',
     href: 'card-slug',
+    ingredients: ['🥑', '🍌', '🍏', '🥛'],
   },
 }
