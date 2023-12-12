@@ -1,79 +1,6 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-type ingredientsType = {
-  emoji: string
-  quantity?: string
-  measurement?: string
-  name: string
-  alternative?: string
-  details?: string
-}
+import { type RecipeType } from '@/types/recipe.types'
 
-type stepsType = {
-  description: string
-  duration?: number
-}
-
-type recipeType = {
-  id: number
-  title: string
-  slug: string
-  duration?: number
-  level?: number
-  ingredients: ingredientsType[]
-  steps: stepsType[]
-  tips?: string[]
-}
-
-const recipesMock: recipeType[] = [
-  {
-    id: 1,
-    title: 'Batido de aguacate y plátano',
-    slug: 'batido-de-aguacate-y-platano',
-    // duration: 120,
-    // level: 1,
-    ingredients: [
-      {
-        emoji: '🥑',
-        quantity: '1/2',
-        name: 'aguacate',
-      },
-      {
-        emoji: '🍌',
-        quantity: '1',
-        name: 'plátano',
-        details: 'pequeño',
-      },
-      {
-        emoji: '🍏',
-        quantity: '1/4',
-        name: 'manzana',
-      },
-      {
-        emoji: '🥛',
-        quantity: '3/4',
-        measurement: 'taza',
-        name: 'bebida de almendra',
-        alternative: 'bebida de avena',
-      },
-    ],
-    steps: [
-      {
-        description: 'Corta el aguacate y extrae la carne.',
-      },
-      {
-        description: 'Pela el plátano y la manzana.',
-      },
-      {
-        description:
-          'En el vaso de la batidora agrega la leche y vierte todos los ingredientes que acabas de cortar. Tritura muy bien y sirve en vaso.',
-        duration: 120,
-      },
-    ],
-    tips: [
-      'Si eres un poco goloso puedes añadir una cucharadita de miel al batido. Añádela junto con el resto de ingredientes antes de batir los ingredientes.',
-      'Puedes añadir un par de hielos si quieres que te salga el batido fresquito.',
-    ],
-  },
+const recipesMock: RecipeType[] = [
   {
     id: 1,
     title: 'Almejas a la marinera',
@@ -163,6 +90,55 @@ const recipesMock: recipeType[] = [
         description:
           'Espera a que la salsa empiece a burbujear. En ese momento pon la tapa a la sartén y cocina 4 o 5 minutos más. Deberían estar perfectamente abiertas y listas para servir.',
       },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Batido de aguacate y plátano',
+    slug: 'batido-de-aguacate-y-platano',
+    // duration: 120,
+    // level: 1,
+    ingredients: [
+      {
+        emoji: '🥑',
+        quantity: '1/2',
+        name: 'aguacate',
+      },
+      {
+        emoji: '🍌',
+        quantity: '1',
+        name: 'plátano',
+        details: 'pequeño',
+      },
+      {
+        emoji: '🍏',
+        quantity: '1/4',
+        name: 'manzana',
+      },
+      {
+        emoji: '🥛',
+        quantity: '3/4',
+        measurement: 'taza',
+        name: 'bebida de almendra',
+        alternative: 'bebida de avena',
+      },
+    ],
+    steps: [
+      {
+        description: 'Corta el aguacate y extrae la carne.',
+      },
+      {
+        description: 'Pela el plátano y la manzana.',
+      },
+      {
+        description:
+          'En el vaso de la batidora agrega la leche y vierte todos los ingredientes que acabas de cortar. Tritura muy bien y sirve en vaso.',
+        duration: 120,
+      },
+    ],
+    tips: [
+      'Si eres un poco goloso puedes añadir una cucharadita de miel al batido. Añádela junto con el resto de ingredientes antes de batir los ingredientes.',
+      'Puedes añadir un par de hielos si quieres que te salga el batido fresquito.',
     ],
   },
 ]

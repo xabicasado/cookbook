@@ -1,4 +1,5 @@
 'use client'
+// import { css } from 'styled-components'
 
 import { Quicksand, Dancing_Script } from 'next/font/google'
 
@@ -9,7 +10,21 @@ const quicksand = Quicksand({
 
 const dancingScript = Dancing_Script({ subsets: ['latin'], display: 'swap' })
 
+// const generateFontStyle = () => {
+//   return css`
+//     font-family: ${quicksand.style.fontFamily};
+//   `
+//   /* font-weight: ${font.style.fontWeight}; */
+//   /* ${!!value.uppercase && `text-transform: uppercase`}; */
+// }
+
 const theme = {
+  borderRadius: {
+    none: '0px',
+    m: '0.25rem',
+    full: '3rem',
+    /* rounded: '9999px', */
+  },
   colors: {
     text: '#000000',
     invertedText: '#ffffff',
@@ -22,6 +37,17 @@ const theme = {
   fonts: {
     quicksand: quicksand.style.fontFamily,
     dancingScript: dancingScript.style.fontFamily,
+  },
+
+  fontSize: {
+    main: '3.5rem',
+    h1: '1.5rem',
+    h2: '1.25rem',
+    // main: '3rem',
+    // h1: '1.5rem'
+    // h2: '1.25rem'
+    // h3: '1.1rem',
+    p: '1rem',
   },
 
   fontWeight: {

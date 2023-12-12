@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import GlobalStyles from '@/themes/global-styles'
 import ThemeProvider from '@/themes/theme-provider'
 import { ContainerStyled, MainTitle } from './layout.styled'
@@ -6,6 +6,12 @@ import { ContainerStyled, MainTitle } from './layout.styled'
 export const metadata: Metadata = {
   title: 'Cookbook',
   description: 'Save your recipes',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default function RootLayout({

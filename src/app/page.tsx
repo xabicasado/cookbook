@@ -1,7 +1,7 @@
 import recipesMock from '@/mocks/recipes.mock'
 import { Card } from '@/components/card'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       {recipesMock.map((recipe) => (

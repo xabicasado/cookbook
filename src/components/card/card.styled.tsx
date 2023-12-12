@@ -5,17 +5,20 @@ import styled from 'styled-components'
 export const CardContainer = styled.div`
   padding: 20px 30px;
   background-color: ${({ theme }) => theme?.colors?.first};
-
+  border-radius: ${({ theme }) => theme?.borderRadius?.m};
   margin-bottom: 20px;
-  /* &:not(:first-child) {
-    margin-top: 20px;
+
+  /* div {
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
   } */
 `
 CardContainer.displayName = 'CardContainer'
 
 export const CardTitle = styled.h2`
-  font-size: 1.25rem;
+  font-size: ${({ theme }) => theme?.fontSize?.h1};
   color: ${({ theme }) => theme?.colors?.invertedText};
-  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
 `
 CardTitle.displayName = 'CardTitle'
