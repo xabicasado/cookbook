@@ -34,7 +34,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <ButtonStyled type="button" primary={primary} {...props}>
+    <ButtonStyled type="button" {...props}>
       {label}
     </ButtonStyled>
   )

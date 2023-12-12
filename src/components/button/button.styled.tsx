@@ -11,10 +11,8 @@ export const ButtonStyled = styled.button`
   font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
   /* font-size: ${({ theme }) => theme?.fontSize?.p}; */
   padding: 12px 24px;
-  background-color: ${({ theme, primary }) =>
-    primary === true ? theme?.colors?.first : theme?.colors?.second};
 
-  color: ${({ theme, primary }) =>
-    primary === true ? theme?.colors?.invertedText : theme?.colors?.text};
+  background-color: ${({ theme }) => theme?.colors?.first};
+  color: ${({ theme }) => theme?.colors?.invertedText};
 `
 ButtonStyled.displayName = 'ButtonStyled'
