@@ -7,11 +7,9 @@ import {
 
 const generateIngredientsText = (ingredients: IngredientType[]) => {
   const ingredientsText = ingredients.map(
-    (ingredient) => `${ingredient?.emoji}{' '}${
-      ingredient?.quantity ?? ''
-    }{' '}${ingredient?.measurement ?? ''}{' '}${ingredient?.name}{' '}${
-      ingredient?.details ?? ''
-    }
+    (ingredient) => `${ingredient?.emoji} ${ingredient?.quantity ?? ''} ${
+      ingredient?.measurement ?? ''
+    } ${ingredient?.name} ${ingredient?.details ?? ''}
 `
   )
 
