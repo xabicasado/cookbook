@@ -37,14 +37,14 @@ export const Secondary: Story = {
 
 export const Large: Story = {
   args: {
-    size: 'large',
+    // size: 'large',
     label: 'Button',
   },
 }
 
 export const Small: Story = {
   args: {
-    size: 'small',
+    // size: 'small',
     label: 'Button',
   },
 }
