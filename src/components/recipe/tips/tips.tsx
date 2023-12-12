@@ -3,7 +3,7 @@ import { type TipType } from '@/types/recipe.types'
 
 type TipsProps = {
   title?: string
-  tips: TipType[]
+  tips?: TipType[]
 }
 
 export function Tips(props: TipsProps) {
