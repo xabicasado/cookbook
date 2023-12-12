@@ -33,7 +33,7 @@ export function Recipe(props: RecipeType) {
       <Steps steps={steps} />
       <br />
 
-      <Tips tips={tips} />
+      {!(tips == null) && <Tips tips={tips} />}
     </>
   )
 }

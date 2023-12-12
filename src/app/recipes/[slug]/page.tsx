@@ -21,7 +21,7 @@ export default function RecipePage({ params }: PropsType) {
 
   return (
     <>
-      <Recipe {...recipe} />
+      {recipe != null && <Recipe {...recipe} />}
 
       <br />
       <Link href={'/'}>
