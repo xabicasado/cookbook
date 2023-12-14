@@ -3,11 +3,6 @@
 import styled, { css } from 'styled-components'
 
 const defaultStyles = css`
-  ${({ theme }) => `background-color:${theme?.colors?.secondary};`}
-  ${({ theme }) => `color:${theme?.colors?.text};`}
-`
-
-const primaryStyles = css`
   ${({ theme }) => `background-color:${theme?.colors?.primary};`}
   ${({ theme }) => `color:${theme?.colors?.invertedText};`}
 `
@@ -23,6 +18,5 @@ export const ButtonStyled = styled.button`
   padding: 12px 24px;
 
   ${defaultStyles}
-  ${({ primary }) => primary && primaryStyles}
 `
 ButtonStyled.displayName = 'ButtonStyled'
