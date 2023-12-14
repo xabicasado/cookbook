@@ -25,5 +25,5 @@ export type RecipeType = {
   level?: number
   ingredients: IngredientType[]
   steps: StepType[]
-  tips?: TipType[] | null
+  tips?: TipType[]
 }

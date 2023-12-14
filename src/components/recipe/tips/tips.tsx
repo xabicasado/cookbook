@@ -1,5 +1,8 @@
-import { RecipeSubtitle } from '../recipe.styled'
 import { type TipType } from '@/types/recipe.types'
+import {
+  RecipeSectionStyled,
+  RecipeSectionContentStyled,
+} from '../recipe.styled'
 
 type TipsProps = {
   title?: string
@@ -9,17 +12,19 @@ type TipsProps = {
 export function Tips(props: TipsProps) {
   const { tips } = props
   return (
-    <>
+    <RecipeSectionStyled>
       {tips != null && (
         <>
-          <RecipeSubtitle>Tips</RecipeSubtitle>
-          <ul>
-            {tips.map((tip, index) => (
-              <li key={index}>💡 {tip}</li>
-            ))}
-          </ul>
+          <h3>Tips</h3>
+          <RecipeSectionContentStyled>
+            <ul>
+              {tips.map((tip, index) => (
+                <li key={index}>💡 {tip}</li>
+              ))}
+            </ul>
+          </RecipeSectionContentStyled>
         </>
       )}
-    </>
+    </RecipeSectionStyled>
   )
 }

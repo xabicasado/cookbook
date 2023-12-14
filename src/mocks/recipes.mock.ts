@@ -76,7 +76,7 @@ const recipesMock: RecipeType[] = [
       },
       {
         description:
-          'Añade el vasito de vino blanco y remueve para que se mezcle, dando vueltas a la sartén agarrandl por el mango.',
+          'Añade el vasito de vino blanco y remueve para que se mezcle, dando vueltas a la sartén agarrando por el mango.',
       },
       {
         description:

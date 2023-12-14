@@ -18,6 +18,10 @@ type ButtonProps = {
    */
   label: string
   /**
+   * Is the button disabled?
+   */
+  disabled?: boolean
+  /**
    * Optional click handler
    */
   onClick?: () => void
@@ -26,13 +30,9 @@ type ButtonProps = {
 /**
  * Primary UI component for user interaction
  */
-export function Button({
-  primary = false,
-  // size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const { label } = props
+
   return (
     <ButtonStyled type="button" {...props}>
       {label}

@@ -21,17 +21,47 @@ const dancingScript = Dancing_Script({ subsets: ['latin'], display: 'swap' })
 const theme = {
   borderRadius: {
     none: '0px',
+    s: '0.125rem',
     m: '0.25rem',
-    full: '3rem',
-    /* rounded: '9999px', */
+    l: '0.5rem',
+    full: '9999px',
   },
+
   colors: {
     text: '#000000',
     invertedText: '#ffffff',
-    first: '#f95959',
-    second: '#e3e3e3',
+
+    primary: '#f95959',
+    // primaryA: '#f95959',
+    // primaryB: '#fa6e6e',
+    // primaryC: '#fb8383',
+    // primaryD: '#fb9797',
+    // primaryE: '#fcacac',
+    // primaryF: '#fdc1c1',
+    // primaryG: '#fdd6d6',
+    // primaryH: '#feeaea',
+
+    secondary: '#e3e3e3',
+
     third: '#233142',
+    // thirdA: '#233142',
+    // thirdB: '#3f4b5a',
+    // thirdC: '#5a6571',
+    // thirdD: '#767e89',
+    // thirdE: '#9198a1',
+    // thirdF: '#adb2b8',
+    // thirdG: '#c8cbd0',
+    // thirdH: '#e4e5e7',
+
     fourth: '#455d7a',
+    // fourthA: '#455d7a',
+    // fourthB: '#5c718b',
+    // fourthC: '#74859b',
+    // fourthD: '#8b9aac',
+    // fourthE: '#a2aebd',
+    // fourthF: '#b9c2cd',
+    // fourthG: '#d1d6de',
+    // fourthH: '#e8ebee',
   },
 
   fonts: {
@@ -40,14 +70,12 @@ const theme = {
   },
 
   fontSize: {
-    main: '3.5rem',
-    h1: '1.5rem',
-    h2: '1.25rem',
-    // main: '3rem',
-    // h1: '1.5rem'
-    // h2: '1.25rem'
-    // h3: '1.1rem',
-    p: '1rem',
+    h1: '3.5rem',
+    h2: '1.5rem',
+    h3: '1.25rem',
+    l: '1.1rem',
+    m: '1rem',
+    s: '0.9rem',
   },
 
   fontWeight: {

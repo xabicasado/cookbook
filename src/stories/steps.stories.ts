@@ -6,9 +6,6 @@ import recipesMock from '@/mocks/recipes.mock'
 const meta = {
   title: 'Recipe/Steps',
   component: Steps,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
 } satisfies Meta<typeof Steps>
 

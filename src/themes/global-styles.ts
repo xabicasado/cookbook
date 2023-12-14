@@ -109,9 +109,9 @@ const GlobalStyles = styled.createGlobalStyle`
   section {
     display: block;
   }
-  /* body {
-    line-height: 1;
-  } */
+  body {
+    line-height: 1.25;
+  }
   ol,
   ul {
     list-style: none;
@@ -141,8 +141,29 @@ const GlobalStyles = styled.createGlobalStyle`
   html,
   body {
     color: ${({ theme }) => theme?.colors?.text};
-    font-size: 100%;
     font-family: ${({ theme }) => theme?.fonts?.quicksand};
+    font-size: 100%;
+  }
+  h1 {
+    color: ${({ theme }) => theme?.colors?.primary};
+    font-family: ${({ theme }) => theme?.fonts?.dancingScript};
+    font-weight: ${({ theme }) => theme?.fontWeight?.bold};
+    font-size: ${({ theme }) => theme?.fontSize?.h1};
+    line-height: 2;
+  }
+  h2 {
+    font-size: ${({ theme }) => theme?.fontSize?.h2};
+    font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
+
+    /* Underlined titles */
+    /* text-decoration: underline;
+    text-decoration-color: ${({ theme }) => theme?.colors?.primary};
+    text-decoration-thickness: 0.25em;
+    text-underline-offset: 0.17em; */
+  }
+  h3 {
+    font-size: ${({ theme }) => theme?.fontSize?.h3};
+    font-weight: ${({ theme }) => theme?.fontWeight?.medium};
   }
   a {
     color: inherit;

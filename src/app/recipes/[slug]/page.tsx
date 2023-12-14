@@ -3,7 +3,7 @@ import { Button } from '@/components/button'
 import recipesMock from '@/mocks/recipes.mock'
 import Link from 'next/link'
 
-type PropsType = {
+type RecipePagePropsType = {
   params: { slug: string }
 }
 
@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function RecipePage({ params }: PropsType) {
+export default function RecipePage({ params }: RecipePagePropsType) {
   const { slug } = params
   const recipe = recipesMock.find((r) => r.slug === slug)
 
@@ -23,9 +23,8 @@ export default function RecipePage({ params }: PropsType) {
     <>
       {recipe != null && <Recipe {...recipe} />}
 
-      <br />
       <Link href={'/'}>
-        <Button primary={true} label={'Volver al menú'}></Button>
+        <Button primary label={'Volver al menú'}></Button>
       </Link>
     </>
   )

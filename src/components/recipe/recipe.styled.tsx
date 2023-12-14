@@ -2,16 +2,12 @@
 
 import styled from 'styled-components'
 
-export const RecipeTitle = styled.h2`
-  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
-  font-size: ${({ theme }) => theme?.fontSize?.h1};
-  /* line-height: 2; */
+export const RecipeSectionStyled = styled.div`
+  padding: 0.5em 0;
 `
-RecipeTitle.displayName = 'RecipeTitle'
+RecipeSectionStyled.displayName = 'RecipeSectionStyled'
 
-export const RecipeSubtitle = styled.h2`
-  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
-  font-size: ${({ theme }) => theme?.fontSize?.h2};
-  line-height: 2;
+export const RecipeSectionContentStyled = styled.div`
+  padding: 0.5em 0;
 `
-RecipeSubtitle.displayName = 'RecipeSubtitle'
+RecipeSectionContentStyled.displayName = 'RecipeSectionContentStyled'

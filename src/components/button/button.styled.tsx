@@ -1,6 +1,16 @@
 'use client'
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+const defaultStyles = css`
+  ${({ theme }) => `background-color:${theme?.colors?.secondary};`}
+  ${({ theme }) => `color:${theme?.colors?.text};`}
+`
+
+const primaryStyles = css`
+  ${({ theme }) => `background-color:${theme?.colors?.primary};`}
+  ${({ theme }) => `color:${theme?.colors?.invertedText};`}
+`
 
 export const ButtonStyled = styled.button`
   border: 0;
@@ -8,11 +18,11 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   display: inline-block;
   font-family: ${({ theme }) => theme?.fonts?.quicksand};
-  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
-  /* font-size: ${({ theme }) => theme?.fontSize?.p}; */
+  font-weight: ${({ theme }) => theme?.fontWeight?.bold};
+  font-size: ${({ theme }) => theme?.fontSize?.s};
   padding: 12px 24px;
 
-  background-color: ${({ theme }) => theme?.colors?.first};
-  color: ${({ theme }) => theme?.colors?.invertedText};
+  ${defaultStyles}
+  ${({ primary }) => primary && primaryStyles}
 `
 ButtonStyled.displayName = 'ButtonStyled'

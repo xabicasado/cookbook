@@ -2,17 +2,13 @@
 
 import styled from 'styled-components'
 
-export const ContainerStyled = styled.div`
+export const MainContainerStyled = styled.div`
   padding: 20px 60px;
   margin: auto;
 `
-ContainerStyled.displayName = 'ContainerStyled'
+MainContainerStyled.displayName = 'MainContainerStyled'
 
-export const MainTitle = styled.h1`
-  font-family: ${({ theme }) => theme?.fonts?.dancingScript};
-  color: ${({ theme }) => theme?.colors?.first};
-  font-weight: ${({ theme }) => theme?.fontWeight?.bold};
-  font-size: ${({ theme }) => theme?.fontSize?.main};
-  line-height: 2;
+export const PageContentStyled = styled.div`
+  padding: 0.5em 0;
 `
-MainTitle.displayName = 'MainTitle'
+PageContentStyled.displayName = 'PageContentStyled'
