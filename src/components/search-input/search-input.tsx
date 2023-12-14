@@ -1,7 +1,8 @@
 import { SearchInputStyled } from './search-input.styled'
+import { type ChangeEvent } from 'react'
 
 type SearchInputProps = {
-  onChange?: () => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export function SearchInput(props: SearchInputProps) {

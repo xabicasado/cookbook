@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, type ChangeEvent } from 'react'
 import { Card } from '@/components/card'
 import { SearchInput } from '@/components/search-input'
 import { PageContentStyled } from './layout.styled'
@@ -10,25 +10,25 @@ import recipesMock from '@/mocks/recipes.mock'
 export default function HomePage() {
   const { recipeContext, setRecipeContext } = useRecipeContext()
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value !== '') {
-      setRecipeContext(
-        recipesMock.filter((r) =>
-          r.title
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .includes(
-              event.target.value
-                .toLowerCase()
-                .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '')
-            )
-        )
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputRecipe = event.target.value
+
+    if (inputRecipe === '') setRecipeContext(recipesMock)
+
+    setRecipeContext(
+      recipesMock.filter((r) =>
+        r.title
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .includes(
+            inputRecipe
+              .toLowerCase()
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+          )
       )
-    } else {
-      setRecipeContext(recipesMock)
-    }
+    )
   }
 
   useEffect(() => {
@@ -37,11 +37,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* <h2>¿Qué te apetece comer hoy?</h2>
-      <PageContentStyled>
-        <SearchInput onChange={handleChange} />
-      </PageContentStyled> */}
-
       <h2>Inventario de recetas</h2>
       <PageContentStyled>
         <SearchInput onChange={handleChange} />
