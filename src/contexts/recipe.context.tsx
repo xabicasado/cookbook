@@ -8,7 +8,7 @@ const anonymousFunction = () => ({})
 
 export type RecipeContextType = {
   recipeContext: RecipeType[]
-  setRecipeContext: () => void
+  setRecipeContext: (r: RecipeType[]) => void
 }
 
 export const RecipeContext = createContext<RecipeContextType>({
