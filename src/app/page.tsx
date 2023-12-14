@@ -10,8 +10,8 @@ import recipesMock from '@/mocks/recipes.mock'
 export default function HomePage() {
   const { recipeContext, setRecipeContext } = useRecipeContext()
 
-  const handleChange = (e) => {
-    if (e.target.value !== '') {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value !== '') {
       setRecipeContext(
         recipesMock.filter((r) =>
           r.title
@@ -19,7 +19,7 @@ export default function HomePage() {
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '')
             .includes(
-              e.target.value
+              event.target.value
                 .toLowerCase()
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')
