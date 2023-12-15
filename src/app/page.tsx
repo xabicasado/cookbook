@@ -6,6 +6,7 @@ import { SearchInput } from '@/components/search-input'
 import { PageContentStyled } from './layout.styled'
 import { useRecipeContext } from '@/contexts/recipe.context'
 import recipesMock from '@/mocks/recipes.mock'
+import { cleanSearchString } from '@/utils/commons'
 
 export default function HomePage() {
   const { recipeContext, setRecipeContext } = useRecipeContext()
@@ -17,16 +18,7 @@ export default function HomePage() {
 
     setRecipeContext(
       recipesMock.filter((r) =>
-        r.title
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .includes(
-            inputRecipe
-              .toLowerCase()
-              .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '')
-          )
+        cleanSearchString(r.title).includes(cleanSearchString(inputRecipe))
       )
     )
   }
@@ -37,6 +29,11 @@ export default function HomePage() {
 
   return (
     <>
+      {/* <h2>¿Qué te apetece comer hoy?</h2>
+      <PageContentStyled>
+        <SearchInput onChange={handleChange} />
+      </PageContentStyled> */}
+
       <h2>Inventario de recetas</h2>
       <PageContentStyled>
         <SearchInput onChange={handleChange} />

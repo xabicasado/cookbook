@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import Link from 'next/link'
 import GlobalStyles from '@/themes/global-styles'
 import ThemeProvider from '@/themes/theme-provider'
 import { MainContainerStyled } from './layout.styled'
@@ -27,7 +28,9 @@ export default function RootLayout({
         <ThemeProvider>
           <GlobalStyles />
           <MainContainerStyled>
-            <h1>Cookbook</h1>
+            <Link href={'/'}>
+              <h1>Cookbook</h1>
+            </Link>
             <RecipeProvider value={recipesMock}>{children}</RecipeProvider>
           </MainContainerStyled>
         </ThemeProvider>
