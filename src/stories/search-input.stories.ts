@@ -5,9 +5,6 @@ import { SearchInput } from '../components/search-input'
 const meta = {
   title: 'Components/SearchInput',
   component: SearchInput,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
 } satisfies Meta<typeof SearchInput>
 

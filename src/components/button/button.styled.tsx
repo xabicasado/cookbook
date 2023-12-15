@@ -13,7 +13,7 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   display: inline-block;
   font-family: ${({ theme }) => theme?.fonts?.quicksand};
-  font-weight: ${({ theme }) => theme?.fontWeight?.bold};
+  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
   font-size: ${({ theme }) => theme?.fontSize?.s};
   padding: 12px 24px;
 

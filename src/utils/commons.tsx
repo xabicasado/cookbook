@@ -4,3 +4,5 @@ export const cleanSearchString = (s: string) =>
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
+
+export const anonymousFunction = () => ({})

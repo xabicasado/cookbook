@@ -1,7 +1,9 @@
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+
 import { Recipe } from '@/components/recipe'
 import { Button } from '@/components/button'
 import recipesMock from '@/mocks/recipes.mock'
-import Link from 'next/link'
 
 type RecipePagePropsType = {
   params: { slug: string }
@@ -19,9 +21,11 @@ export default function RecipePage({ params }: RecipePagePropsType) {
   const { slug } = params
   const recipe = recipesMock.find((r) => r.slug === slug)
 
+  if (recipe == null) notFound()
+
   return (
     <>
-      {recipe != null && <Recipe {...recipe} />}
+      <Recipe {...recipe} />
 
       <Link href={'/'}>
         <Button primary label={'Volver al menú'}></Button>

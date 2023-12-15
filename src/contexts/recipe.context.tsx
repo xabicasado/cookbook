@@ -3,18 +3,20 @@
 import { useState, createContext, useContext } from 'react'
 import { type RecipeType } from '@/types/recipe.types'
 import recipesMock from '@/mocks/recipes.mock'
+import { anonymousFunction } from '@/utils/commons'
 
-const anonymousFunction = () => ({})
-
-export type RecipeContextType = {
+type RecipeContextType = {
   recipeContext: RecipeType[]
-  setRecipeContext: (r: RecipeType[]) => void
+  setRecipeContext: (recipe: RecipeType[]) => void
 }
 
-export const RecipeContext = createContext<RecipeContextType>({
+// TODO Rename to plural RecipesContext
+const RecipeContext = createContext<RecipeContextType>({
   recipeContext: recipesMock,
   setRecipeContext: anonymousFunction,
 })
+
+export const useRecipeContext = () => useContext(RecipeContext)
 
 export const RecipeProvider = ({
   children,
@@ -31,5 +33,3 @@ export const RecipeProvider = ({
     </RecipeContext.Provider>
   )
 }
-
-export const useRecipeContext = () => useContext(RecipeContext)
