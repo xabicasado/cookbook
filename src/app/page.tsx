@@ -11,14 +11,19 @@ import { cleanSearchString } from '@/utils/commons'
 export default function HomePage() {
   const { recipeContext, setRecipeContext } = useRecipeContext()
 
+  // https://everythingcs.dev/blog/get-form-values-react-nextjs/
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputRecipe = event.target.value
 
     if (inputRecipe === '') setRecipeContext(recipesMock)
 
+    const inputWords = cleanSearchString(inputRecipe).split(' ')
+
+    // TODO Blacklist words 'de' 'y'
+
     setRecipeContext(
       recipesMock.filter((r) =>
-        cleanSearchString(r.title).includes(cleanSearchString(inputRecipe))
+        inputWords.every((word) => cleanSearchString(r.title).includes(word))
       )
     )
   }
