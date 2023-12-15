@@ -3,7 +3,9 @@
 import styled from 'styled-components'
 
 export const MainContainerStyled = styled.div`
-  padding: 20px 60px;
+  padding: 10px 30px;
+  // TODO if Desktop change with media query
+  /* padding: 20px 60px; */
   margin: auto;
 `
 MainContainerStyled.displayName = 'MainContainerStyled'
