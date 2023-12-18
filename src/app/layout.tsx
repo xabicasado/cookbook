@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import Link from 'next/link'
+// import Link from 'next/link'
 import GlobalStyles from '@/themes/global-styles'
 import ThemeProvider from '@/themes/theme-provider'
 import { MainContainerStyled } from './layout.styled'
