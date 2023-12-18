@@ -1,18 +1,15 @@
+'use client'
+
 import styled from 'styled-components'
 
-export const SearchInputStyled = styled.input.attrs((props) => ({
-  type: 'search',
-}))`
+export const EditInputStyled = styled.textarea`
   border: 0.15rem solid ${({ theme }) => theme?.colors?.text};
-  /* border-color: ${({ theme }) => theme?.colors?.text}; */
-  border-radius: ${({ theme }) => theme?.borderRadius?.full};
+  border-radius: ${({ theme }) => theme?.borderRadius?.l};
   font-family: ${({ theme }) => theme?.fonts?.quicksand};
-
   font-size: ${({ theme }) => theme?.fontSize?.l};
-  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
-
-  margin: 0.5em 0;
+  /* margin: 0.5em 0; */
   padding: 12px 24px;
+  resize: none;
   width: 100%;
 
   transition: border-color 0.3s ease-in-out;
@@ -28,4 +25,11 @@ export const SearchInputStyled = styled.input.attrs((props) => ({
     transition: box-shadow 0.3s ease-in-out;
   }
 `
-SearchInputStyled.displayName = 'SearchInputStyled'
+EditInputStyled.displayName = 'EditInputStyled'
+
+export const LabelStyled = styled.label`
+  cursor: pointer;
+  font-size: ${({ theme }) => theme?.fontSize?.h3};
+  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+`
+LabelStyled.displayName = 'displayName'

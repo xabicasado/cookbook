@@ -4,7 +4,7 @@ type ButtonProps = {
   /**
    * Is this the principal call to action on the page?
    */
-  primary?: boolean
+  primary?: boolean | false
   /**
    * What background color to use
    */
@@ -12,7 +12,7 @@ type ButtonProps = {
   /**
    * How large should the button be?
    */
-  // size?: 'small' | 'medium' | 'large'
+  // size?: 'small' | 'medium' | 'large' | 'full'
   /**
    * Button contents
    */

@@ -2,9 +2,9 @@ import Link from 'next/link'
 import {
   CardContainerStyled,
   TitleStyled,
-  IngredientStyled,
   IngredientsContainerStyled,
 } from './card.styled'
+import { IngredientIcon } from '@/components/ingredient-icon'
 
 type CardProps = {
   // backgroundColor?: string
@@ -26,7 +26,10 @@ export function Card({
         <TitleStyled>{title}</TitleStyled>
         <IngredientsContainerStyled>
           {ingredients.map((ingredient) => (
-            <IngredientStyled key={ingredient}>{ingredient}</IngredientStyled>
+            <IngredientIcon
+              key={ingredient}
+              ingredient={ingredient}
+            ></IngredientIcon>
           ))}
         </IngredientsContainerStyled>
       </Link>

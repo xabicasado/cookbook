@@ -1,5 +1,3 @@
-'use client'
-
 import styled from 'styled-components'
 
 export const CardContainerStyled = styled.div`
@@ -22,6 +20,27 @@ export const CardContainerStyled = styled.div`
       margin-top: 20px;
     }
   } */
+
+  /* https://codepen.io/nelledejones/pen/gOOPWrK */
+  /* animation: bounce-in-right 2s ease infinite; */
+  /* animation: bounce-in-right 2s ease; */
+
+  /* @keyframes bounce-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(2000px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(-30px);
+    }
+    80% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  } */
 `
 CardContainerStyled.displayName = 'CardContainerStyled'
 
@@ -35,19 +54,3 @@ export const IngredientsContainerStyled = styled.div`
   padding-top: 0.5rem;
 `
 IngredientsContainerStyled.displayName = 'IngredientsContainerStyled'
-
-export const IngredientStyled = styled.span`
-  font-size: 0.9rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: ${({ theme }) => theme?.borderRadius?.full};
-  background-color: ${({ theme }) => theme?.colors?.invertedText};
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-right: 0.25rem;
-  margin-bottom: 0.25rem;
-`
-IngredientStyled.displayName = 'IngredientStyled'

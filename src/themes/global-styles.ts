@@ -149,21 +149,20 @@ const GlobalStyles = styled.createGlobalStyle`
     font-family: ${({ theme }) => theme?.fonts?.dancingScript};
     font-weight: ${({ theme }) => theme?.fontWeight?.bold};
     font-size: ${({ theme }) => theme?.fontSize?.h1};
-    line-height: 2;
   }
   h2 {
     font-size: ${({ theme }) => theme?.fontSize?.h2};
     font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
+  }
+  h3 {
+    font-size: ${({ theme }) => theme?.fontSize?.h3};
+    font-weight: ${({ theme }) => theme?.fontWeight?.medium};
 
     /* Underlined titles */
     /* text-decoration: underline;
     text-decoration-color: ${({ theme }) => theme?.colors?.primary};
     text-decoration-thickness: 0.25em;
     text-underline-offset: 0.17em; */
-  }
-  h3 {
-    font-size: ${({ theme }) => theme?.fontSize?.h3};
-    font-weight: ${({ theme }) => theme?.fontWeight?.medium};
   }
   a {
     color: inherit;

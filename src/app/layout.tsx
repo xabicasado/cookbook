@@ -5,7 +5,9 @@ import ThemeProvider from '@/themes/theme-provider'
 import { MainContainerStyled } from './layout.styled'
 import { RecipeProvider } from '@/contexts/recipe.context'
 import recipesMock from '@/mocks/recipes.mock'
+import { Header } from '@/components/header'
 
+// https://favicon.io/favicon-generator/
 export const metadata: Metadata = {
   title: 'Cookbook',
   description: 'Save your recipes',
@@ -27,10 +29,8 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <GlobalStyles />
+          <Header title={'Cookbook'} />
           <MainContainerStyled>
-            <Link href={'/'}>
-              <h1>Cookbook</h1>
-            </Link>
             <RecipeProvider value={recipesMock}>{children}</RecipeProvider>
           </MainContainerStyled>
         </ThemeProvider>

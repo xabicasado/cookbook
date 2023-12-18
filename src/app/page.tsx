@@ -1,12 +1,15 @@
 'use client'
 
 import { useEffect, type ChangeEvent } from 'react'
+import { PageContentStyled } from './layout.styled'
+
 import { Card } from '@/components/card'
 import { SearchInput } from '@/components/search-input'
-import { PageContentStyled } from './layout.styled'
+// import { Skeleton } from '@/components/skeleton'
 import { useRecipeContext } from '@/contexts/recipe.context'
-import recipesMock from '@/mocks/recipes.mock'
 import { cleanSearchString } from '@/utils/commons'
+
+import recipesMock from '@/mocks/recipes.mock'
 
 export default function HomePage() {
   const { recipeContext, setRecipeContext } = useRecipeContext()
@@ -18,8 +21,6 @@ export default function HomePage() {
     if (inputRecipe === '') setRecipeContext(recipesMock)
 
     const inputWords = cleanSearchString(inputRecipe).split(' ')
-
-    // TODO Blacklist words 'de' 'y'
 
     setRecipeContext(
       recipesMock.filter((r) =>
@@ -40,6 +41,7 @@ export default function HomePage() {
       </PageContentStyled> */}
 
       <h2>Inventario de recetas</h2>
+
       <PageContentStyled>
         <SearchInput onChange={handleChange} />
 
@@ -53,6 +55,7 @@ export default function HomePage() {
             href={`/recipes/${recipe.slug}`}
           />
         ))}
+        {/* <Skeleton /> */}
       </PageContentStyled>
     </>
   )

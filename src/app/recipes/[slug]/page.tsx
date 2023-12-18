@@ -30,6 +30,9 @@ export default function RecipePage({ params }: RecipePagePropsType) {
       <Link href={'/'}>
         <Button primary label={'Volver al menú'}></Button>
       </Link>
+      {/* <Link href={`/recipes/${slug}/edit`}>
+        <Button label={'Editar'}></Button>
+      </Link> */}
     </>
   )
 }
