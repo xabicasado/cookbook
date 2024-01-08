@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import { PageContentStyled } from '@/app/layout.styled'
 import { Button } from '@/components/button'
-import { EditInput } from '@/components/edit-input'
+// import { EditInput } from '@/components/edit-input'
 
 import recipesMock from '@/mocks/recipes.mock'
 
@@ -22,25 +22,25 @@ export default function EditRecipePage({ params }: EditRecipePagePropsType) {
 
   if (recipe == null) notFound()
 
-  const ingredients = recipe?.ingredients
-    .map((ingredient) => ingredient?.name)
-    .toString()
-  const steps = recipe?.steps.map((step) => step?.description).toString()
-  const tips = recipe?.ingredients
-    .map((ingredient) => ingredient?.name)
-    .toString()
+  // const ingredients = recipe?.ingredients
+  //   .map((ingredient) => ingredient?.name)
+  //   .toString()
+  // const steps = recipe?.steps.map((step) => step?.description).toString()
+  // const tips = recipe?.ingredients
+  //   .map((ingredient) => ingredient?.name)
+  //   .toString()
 
   return (
     <>
       <h2>{recipe?.title}</h2>
       <PageContentStyled>
-        <EditInput
+        {/* <EditInput
           id={'Ingredientes'}
           label={'Ingredientes'}
           content={ingredients}
         />
         <EditInput id={'Elaboración'} label={'Elaboración'} content={steps} />
-        <EditInput id={'Tips'} label={'Tips'} content={tips} />
+        <EditInput id={'Tips'} label={'Tips'} content={tips} /> */}
       </PageContentStyled>
 
       <Button primary label={'Guardar'} />
