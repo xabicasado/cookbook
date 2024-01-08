@@ -70,7 +70,7 @@ export const ButtonStyled = styled.button<{
   
   ${({ fullWidth }) => (fullWidth ?? false) && 'width: 100%;'}
 
-  ${({ size }) => sizes[size]}
+  ${({ size }) => sizes[size as keyof typeof sizes]}
 `
 ButtonStyled.displayName = 'ButtonStyled'
 
