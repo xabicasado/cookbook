@@ -1,6 +1,7 @@
 'use client'
 
 import { createGlobalStyle } from 'styled-components'
+import GlobalIcons from './global-icons'
 
 const styled = { createGlobalStyle }
 
@@ -168,6 +169,8 @@ const GlobalStyles = styled.createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+
+  ${GlobalIcons}
 `
 
 export default GlobalStyles

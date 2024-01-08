@@ -4,24 +4,26 @@
 import {
   Quicksand,
   Dancing_Script,
-  Raleway,
-  Roboto_Mono,
-  Varela_Round,
+  // Raleway,
+  // Roboto_Mono,
+  // Varela_Round,
+  Lexend,
 } from 'next/font/google'
 
 const quicksand = Quicksand({
   subsets: ['latin'],
   display: 'swap',
 })
-
 const dancingScript = Dancing_Script({ subsets: ['latin'], display: 'swap' })
-const raleway = Raleway({ subsets: ['latin'], display: 'swap' })
-const robotoMono = Roboto_Mono({ subsets: ['latin'], display: 'swap' })
-const varelaRound = Varela_Round({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: '400',
-})
+const lexend = Lexend({ subsets: ['latin'], display: 'swap' })
+
+// const raleway = Raleway({ subsets: ['latin'], display: 'swap' })
+// const robotoMono = Roboto_Mono({ subsets: ['latin'], display: 'swap' })
+// const varelaRound = Varela_Round({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   weight: '400',
+// })
 
 // const generateFontStyle = () => {
 //   return css`
@@ -49,7 +51,17 @@ const theme = {
 
   colors: {
     text: '#000000',
+    textA: '#000000',
+    textB: '#202020',
+    textC: '#404040',
+    textD: '#606060',
+    textE: '#808080',
+    textF: '#9f9f9f',
+    textG: '#bfbfbf',
+    textH: '#dfdfdf',
+
     invertedText: '#ffffff',
+    disabledText: '#ffffff',
 
     primary: '#f95959',
     primaryA: '#f95959',
@@ -62,7 +74,16 @@ const theme = {
     primaryH: '#feeaea',
 
     secondary: '#e3e3e3',
+    secondaryA: '#e3e3e3',
+    secondaryB: '#e6e6e6',
+    secondaryC: '#eaeaea',
+    secondaryD: '#ededed',
+    secondaryE: '#f1f1f1',
+    secondaryF: '#f4f4f4',
+    secondaryG: '#f8f8f8',
+    secondaryH: '#fbfbfb',
 
+    // Dark mode good choice
     third: '#233142',
     thirdA: '#233142',
     thirdB: '#3f4b5a',
@@ -87,10 +108,12 @@ const theme = {
   fonts: {
     quicksand: quicksand.style.fontFamily,
     dancingScript: dancingScript.style.fontFamily,
+    lexend: lexend.style.fontFamily,
+    materialSymbolsRounded: 'Material Symbols Rounded',
 
-    raleway: raleway.style.fontFamily,
-    robotoMono: robotoMono.style.fontFamily,
-    varelaRound: varelaRound.style.fontFamily,
+    // raleway: raleway.style.fontFamily,
+    // robotoMono: robotoMono.style.fontFamily,
+    // varelaRound: varelaRound.style.fontFamily,
     // Raleway: black 900w -- https://fonts.google.com/specimen/Raleway?preview.text=RECETAS
     // Roboto Mono -- https://fonts.google.com/specimen/Roboto+Mono?preview.text=RECETA%20NUEVA&query=roboto
     // Varela Round -- https://fonts.google.com/specimen/Varela+Round?preview.text=Receta%20nueva

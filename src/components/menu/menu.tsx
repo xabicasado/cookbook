@@ -1,8 +1,13 @@
 import { useEffect } from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { MenuStyled, MenuOverlayStyled, CloseButtonStyled } from './menu.styled'
+import {
+  MenuStyled,
+  MenuOverlayStyled,
+  MenuHeaderContainerStyled,
+  CloseButtonStyled,
+} from './menu.styled'
 
 type MenuProps = {
   isOpen: boolean | false
@@ -24,17 +29,22 @@ export function Menu(props: MenuProps) {
 
   return (
     <MenuStyled {...props}>
-      <CloseButtonStyled onClick={handleClose}>&times;</CloseButtonStyled>
+      <MenuHeaderContainerStyled>
+        <CloseButtonStyled onClick={handleClose}>&times;</CloseButtonStyled>
+      </MenuHeaderContainerStyled>
       <MenuOverlayStyled>
         <ul>
           {/* <Link href={'/'}>
             <li>Inventario de recetas</li>
           </Link> */}
-          {/* <Link href={'/recipes/new'}>
+          <Link href={'/recipes/new'}>
             <li>Añadir receta</li>
-          </Link> */}
+          </Link>
           {/* <Link href={'/shopping-list'}>
             <li>Lista de la compra</li>
+          </Link> */}
+          {/* <Link href={'/version'}>
+            <li>Versión</li>
           </Link> */}
         </ul>
       </MenuOverlayStyled>

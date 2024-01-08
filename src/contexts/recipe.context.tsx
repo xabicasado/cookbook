@@ -5,14 +5,19 @@ import { type RecipeType } from '@/types/recipe.types'
 import recipesMock from '@/mocks/recipes.mock'
 import { anonymousFunction } from '@/utils/commons'
 
+type RecipesType = {
+  newRecipeTitle?: string
+  recipes?: RecipeType[]
+}
+
 type RecipeContextType = {
-  recipeContext: RecipeType[]
-  setRecipeContext: (recipe: RecipeType[]) => void
+  recipeContext: RecipesType
+  setRecipeContext: (recipeContext: RecipesType) => void
 }
 
 // TODO Rename to plural RecipesContext
 const RecipeContext = createContext<RecipeContextType>({
-  recipeContext: recipesMock,
+  recipeContext: { recipes: recipesMock },
   setRecipeContext: anonymousFunction,
 })
 
@@ -23,9 +28,9 @@ export const RecipeProvider = ({
   value,
 }: {
   children: React.ReactNode
-  value: RecipeType[]
+  value: RecipesType
 }) => {
-  const [recipeContext, setRecipeContext] = useState<RecipeType[]>(value)
+  const [recipeContext, setRecipeContext] = useState<RecipesType>(value)
 
   return (
     <RecipeContext.Provider value={{ recipeContext, setRecipeContext }}>

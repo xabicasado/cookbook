@@ -26,6 +26,7 @@ export const NotificationStyled = styled.div<{ isOpen?: boolean }>`
 NotificationStyled.displayName = 'NotificationStyled'
 
 export const NotificationTextStyled = styled.span`
+  position: relative;
   color: ${({ theme }) => theme?.colors?.invertedText};
   font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
   font-size: ${({ theme }) => theme?.fontSize?.s};

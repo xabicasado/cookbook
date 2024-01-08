@@ -5,6 +5,7 @@ export type IngredientType = {
   name: string
   alternative?: string
   details?: string
+  recommendation?: string
 }
 
 export type StepType = {
@@ -21,6 +22,8 @@ export type RecipeType = {
   id: number
   title: string
   slug: string
+  source?: string
+  servings?: number
   duration?: number
   level?: number
   ingredients: IngredientType[]

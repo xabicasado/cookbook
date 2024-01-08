@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const CardContainerStyled = styled.div`
   padding: 20px 30px;
   background-color: ${({ theme }) => theme?.colors?.primary};
+  /* background-color: ${({ theme }) => theme?.colors?.third}; */
+  /* background-color: ${({ theme }) => theme?.colors?.fourth}; */
+
+  text-align: center;
 
   /* https://htmlcolorcodes.com/color-picker/ */
   /* background: linear-gradient(
@@ -13,7 +17,8 @@ export const CardContainerStyled = styled.div`
 
   border-radius: ${({ theme }) => theme?.borderRadius?.l};
 
-  margin: 0.5em 0;
+  /* margin: 0.5em 0; */
+  margin-bottom: 0.5em;
 
   /* div {
     &:not(:first-child) {

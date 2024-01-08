@@ -1,8 +1,8 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { Recipe } from '@/components/recipe'
-import { Button } from '@/components/button'
+// import { Button } from '@/components/button'
 import recipesMock from '@/mocks/recipes.mock'
 
 type RecipePagePropsType = {
@@ -25,11 +25,17 @@ export default function RecipePage({ params }: RecipePagePropsType) {
 
   return (
     <>
+      {/* <Link href={'/'}>
+        <Button
+          primary
+          size={'small'}
+          label={'Volver al menú'}
+          icon={'arrow_back'}
+        ></Button>
+      </Link> */}
+
       <Recipe {...recipe} />
 
-      <Link href={'/'}>
-        <Button primary label={'Volver al menú'}></Button>
-      </Link>
       {/* <Link href={`/recipes/${slug}/edit`}>
         <Button label={'Editar'}></Button>
       </Link> */}

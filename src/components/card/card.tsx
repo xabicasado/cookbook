@@ -21,18 +21,15 @@ export function Card({
   ...props
 }: CardProps) {
   return (
-    <CardContainerStyled>
-      <Link href={href}>
+    <Link href={href}>
+      <CardContainerStyled>
         <TitleStyled>{title}</TitleStyled>
         <IngredientsContainerStyled>
           {ingredients.map((ingredient) => (
-            <IngredientIcon
-              key={ingredient}
-              ingredient={ingredient}
-            ></IngredientIcon>
+            <IngredientIcon key={ingredient} ingredient={ingredient} />
           ))}
         </IngredientsContainerStyled>
-      </Link>
-    </CardContainerStyled>
+      </CardContainerStyled>
+    </Link>
   )
 }

@@ -4,7 +4,6 @@ export const SearchInputStyled = styled.input.attrs((props) => ({
   type: 'search',
 }))`
   border: 0.15rem solid ${({ theme }) => theme?.colors?.text};
-  /* border-color: ${({ theme }) => theme?.colors?.text}; */
   border-radius: ${({ theme }) => theme?.borderRadius?.full};
   font-family: ${({ theme }) => theme?.fonts?.quicksand};
 
@@ -27,5 +26,19 @@ export const SearchInputStyled = styled.input.attrs((props) => ({
     transition: border-color 0.3s ease-in-out;
     transition: box-shadow 0.3s ease-in-out;
   }
+
+  &::placeholder {
+    color: ${({ theme }) => theme?.colors?.textE};
+    opacity: 1;
+  }
+  /* &::-ms-input-placeholder {
+    color: ${({ theme }) => theme?.colors?.textE};
+  }
+  &::-moz-placeholder {
+    color: ${({ theme }) => theme?.colors?.textE};
+  }
+  &::-webkit-input-placeholder {
+    color: ${({ theme }) => theme?.colors?.textE};
+  } */
 `
 SearchInputStyled.displayName = 'SearchInputStyled'

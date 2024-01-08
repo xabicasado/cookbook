@@ -96,12 +96,13 @@ const recipesMock: RecipeType[] = [
     id: 2,
     title: 'Batido de aguacate y plátano',
     slug: 'batido-de-aguacate-y-platano',
+    servings: 1,
     // duration: 120,
     // level: 1,
     ingredients: [
       {
         emoji: '🥑',
-        quantity: '1/2',
+        quantity: '0.5',
         name: 'aguacate',
       },
       {
@@ -112,12 +113,12 @@ const recipesMock: RecipeType[] = [
       },
       {
         emoji: '🍏',
-        quantity: '1/4',
+        quantity: '0.25',
         name: 'manzana',
       },
       {
         emoji: '🥛',
-        quantity: '3/4',
+        quantity: '0.75',
         measurement: 'taza',
         name: 'bebida de almendra',
         alternative: 'bebida de avena',
@@ -133,12 +134,72 @@ const recipesMock: RecipeType[] = [
       {
         description:
           'En el vaso de la batidora agrega la leche y vierte todos los ingredientes que acabas de cortar. Tritura muy bien y sirve en vaso.',
-        duration: 120,
+        duration: 2 * 60,
       },
     ],
     tips: [
       'Si eres un poco goloso puedes añadir una cucharadita de miel al batido. Añádela junto con el resto de ingredientes antes de batir los ingredientes.',
       'Puedes añadir un par de hielos si quieres que te salga el batido fresquito.',
+    ],
+  },
+  {
+    id: 3,
+    title: 'Bacalao al pil-pil',
+    slug: 'bacalao-al-pil-pil',
+    source: 'Bacalao La Vasca',
+    servings: 8,
+    ingredients: [
+      {
+        emoji: '🐟',
+        quantity: '2',
+        measurement: 'kg',
+        name: 'bacalao',
+      },
+      {
+        emoji: '🫒',
+        quantity: '0.75',
+        measurement: 'ml',
+        name: 'aceite',
+        details: 'de 1ª de acidez',
+        recommendation: 'aceite La Gitana',
+      },
+      {
+        emoji: '🧄',
+        quantity: '3',
+        measurement: 'cabezas',
+        name: 'ajo',
+      },
+    ],
+    steps: [
+      {
+        description:
+          'Pon el bacalao a remojo unas 30 horas con tres cambios de agua. Desescama y quita las espinas en el segundo remojo.',
+        duration: 30 * 60 * 60,
+      },
+      {
+        description:
+          'Fríe los ajos en el aceite a fuego lento. Sácalos una vez dorados y deja enfriar el aceite.',
+      },
+      {
+        description:
+          'Saca las tajadas del agua y seca bien con un paño, coloca en la cazuela de barro con la piel hacia arriba y menea en frío, dejando reposar unos diez minutos.',
+        duration: 10 * 60,
+      },
+      {
+        description:
+          'Pon la cazuela a fuego lento hasta que pil-pilee un poco. Saca y deja reposar. Cuando el aceite esté templado, vuelve a poner al fuego y así dos o tres veces más.',
+      },
+      {
+        description:
+          'Una vez el tenedor entra sin forzar en las tajadas, ya se puede menear la cazuela en sentido giratorio para empezar a sacar la gelatina.',
+      },
+      {
+        description:
+          'Para acabar de sacar la gelatina, vuelve a poner la cazuela al fuego hasta que pil-pilee y saca. Deja reposar un poco y menea.',
+      },
+    ],
+    tips: [
+      'Cuanto más se tarde en sacar la gelatina, mejor sabor cogerá el bacalao y la salsa.',
     ],
   },
 ]

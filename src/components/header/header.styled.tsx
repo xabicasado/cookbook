@@ -21,9 +21,9 @@ HeaderStyled.displayName = 'HeaderStyled'
 
 export const HeaderContainerStyled = styled.div`
   overflow: hidden;
-  line-height: 2;
-  margin: auto;
-  padding: 0 30px;
+  /* line-height: 2; */
+  margin: 0 auto;
+  padding: 1rem 24px;
   /* padding: 5px 30px; */
 `
 HeaderContainerStyled.displayName = 'HeaderContainerStyled'
@@ -40,5 +40,6 @@ export const HeaderMenuStyled = styled.span`
   font-family: ${({ theme }) => theme?.fonts?.dancingScript};
   /* font-weight: ${({ theme }) => theme?.fontWeight?.semiBold}; */
   float: right;
+  z-index: 10;
 `
 HeaderMenuStyled.displayName = 'HeaderMenuStyled'

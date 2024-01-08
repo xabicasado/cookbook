@@ -1,7 +1,6 @@
-// 'use client'
+'use client'
 
-// import { useEffect, useState } from 'react'
-// import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 import {
   NotificationStyled,
@@ -9,26 +8,39 @@ import {
   CloseButtonStyled,
 } from './notification.styled'
 
-type NotificationProps = {
+export type NotificationProps = {
   description: string
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
 }
 
 export function Notification(props: NotificationProps) {
-  //   const pathname = usePathname()
   const { description, isOpen, setIsOpen } = props
 
-  //   const [handleIsOpen, setHandleIsOpen] = useState(true)
-  // const [isOpen, setIsOpen] = useState(true)
+  const NOTIFICATION_DURATION = 3
+  const [timer, setTimer] = useState<number | undefined>(undefined)
 
   const handleClose = () => {
     setIsOpen(!isOpen)
   }
 
-  //   useEffect(() => {
-  //     setIsOpened(!isOpened)
-  //   }, [pathname])
+  useEffect(() => {
+    if (isOpen) setTimer(NOTIFICATION_DURATION * 1000)
+  }, [isOpen])
+
+  useEffect(() => {
+    let unmountTimeout: string | number | NodeJS.Timeout | undefined
+
+    if (timer !== undefined && timer > 0) {
+      unmountTimeout = setTimeout(() => {
+        setTimer(undefined)
+        setIsOpen(false)
+      }, timer)
+    }
+    return () => {
+      clearTimeout(unmountTimeout)
+    }
+  }, [timer])
 
   return (
     <NotificationStyled {...props} onClick={handleClose}>

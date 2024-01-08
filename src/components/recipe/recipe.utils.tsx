@@ -5,20 +5,46 @@ import {
   type TipType,
 } from '@/types/recipe.types'
 
+// TODO Get current ingredients quantity
 const generateIngredientsText = (ingredients: IngredientType[]) => {
-  const ingredientsText = ingredients.map(
-    (ingredient) => `${ingredient?.emoji} ${ingredient?.quantity ?? ''} ${
+  const ingredientsText = ingredients.map((ingredient) =>
+    `${ingredient?.emoji ?? ''}${ingredient?.emoji !== '' ? ' ' : ''}${
+      ingredient?.quantity ?? ''
+    }${ingredient?.quantity != null ? ' ' : ''}${
       ingredient?.measurement ?? ''
-    } ${ingredient?.name} ${ingredient?.details ?? ''}
-`
+    }${ingredient?.measurement != null ? ' ' : ''}${ingredient?.name}${
+      ingredient?.details != null ? ' ' : ''
+    }${ingredient?.details ?? ''}
+`.trim().concat(`
+`)
   )
 
   return ingredientsText.join('')
 }
 
+const stepEmojis = [
+  '0️⃣',
+  '1️⃣',
+  '2️⃣',
+  '3️⃣',
+  '4️⃣',
+  '5️⃣',
+  '6️⃣',
+  '7️⃣',
+  '8️⃣',
+  '9️⃣',
+  '🔟',
+]
+
 const generatestepsText = (steps: StepType[]) => {
   const stepsText = steps.map(
-    (step, index) => `${index + 1}. ${step?.description}
+    (step, index) => `${
+      index < 10
+        ? stepEmojis[index + 1]
+        : stepEmojis[+index.toString()[0]].concat(
+            stepEmojis[+index.toString()[1] + 1]
+          )
+    } ${step?.description}
 `
   )
 
@@ -46,7 +72,7 @@ export const generateRecipeText = (recipe: RecipeType) => {
 ${ingredientsText}
 _Preparación_
 ${stepsText}
-${tips != null ? tipsText : ''}`
+${tips != null ? tipsText : ''}`.trim()
 
   return recipeText
 }
