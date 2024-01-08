@@ -36,10 +36,10 @@ type ButtonProps = {
  * Primary UI component for user interaction
  */
 export function Button(props: ButtonProps) {
-  const { label, icon } = props
+  const { label, icon, size = 'medium' } = props
 
   return (
-    <ButtonStyled type="button" {...props}>
+    <ButtonStyled type="button" size={size} {...props}>
       {icon !== undefined ? <ButtonIconStyled>{icon}</ButtonIconStyled> : label}
     </ButtonStyled>
   )
