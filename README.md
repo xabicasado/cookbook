@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## What's cooking here?
 
-Wait a minute...
+Hungry for something new? While you are here, feel free to play around with the project on [GitHub Pages!](https://xabicasado.github.io/cookbook/)
 
 ## Getting Started
 
