@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { anonymousFunction } from '@/utils/commons'
 
-import { Notification } from '../components/notification'
+import { Notification } from '@/features/ui'
+import { anonymousFunction } from '@/utils/commons'
 
 const meta = {
   title: 'Components/Notification',
@@ -16,6 +16,6 @@ export const Generic: Story = {
   args: {
     description: '¡Receta guardada!',
     isOpen: true,
-    setIsOpen: (isOpen: boolean) => anonymousFunction,
+    setIsOpen: () => anonymousFunction,
   },
 }

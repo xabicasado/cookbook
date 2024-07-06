@@ -1,5 +1,6 @@
+import type { Decorator } from '@storybook/react'
+
 import ThemeProvider from '@/themes/theme-provider'
-import GlobalStyles from '@/themes/global-styles'
 
 // Updated preview: https://medium.com/@michu2k/storybook-7-integration-with-next-js-eda4b1c1d465
 export const parameters = {
@@ -12,10 +13,9 @@ export const parameters = {
   },
 }
 
-const withTheme: DecoratorFn = (Story) => {
+const withTheme: Decorator = (Story) => {
   return (
     <ThemeProvider>
-      <GlobalStyles />
       <Story />
     </ThemeProvider>
   )

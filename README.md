@@ -8,7 +8,45 @@ Hungry for something new? While you are here, feel free to play around with the 
 
 ## Getting Started
 
-To run the project locally, use the development server:
+Install brew:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.zshrc
+source ~/.zshrc
+```
+
+Install NVM and Node 22.2.0:
+
+```bash
+brew update
+brew install nvm
+mkdir ~/.nvm
+echo "export NVM_DIR=~/.nvm\nsource \$(brew --prefix nvm)/nvm.sh" >> .zshrc
+source ~/.zshrc
+nvm install 22.2.0
+```
+
+Install PNPM:
+
+```bash
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+source ~/.zshrc
+```
+
+or
+
+```bash
+npm install -g pnpm
+```
+
+Before you run Cookbook for the very first time, you will need to install the project dependencies:
+
+```bash
+pnpm i
+```
+
+Finally, use the development server to run the project locally:
 
 ```bash
 pnpm dev

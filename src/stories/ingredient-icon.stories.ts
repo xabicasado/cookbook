@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IngredientIcon } from '../components/ingredient-icon'
-
+import { IngredientIcon } from '@/features/ui'
 import recipesMock from '@/mocks/recipes.mock'
 
 const meta = {
@@ -18,6 +17,6 @@ type Story = StoryObj<typeof meta>
 
 export const Generic: Story = {
   args: {
-    ingredient: recipesMock[1].ingredients[0].emoji,
+    ingredient: recipesMock[0].ingredients[0],
   },
 }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { EditInput } from '../components/edit-input'
+import { EditInput } from '@/features/ui'
 
 const meta = {
   title: 'Components/EditInput',
@@ -12,5 +12,5 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Generic: Story = {
-  args: { id: 'ingredientes', label: 'Ingredientes' },
+  args: { name: 'ingredientes', label: 'Ingredientes' },
 }

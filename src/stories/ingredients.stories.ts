@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Ingredients } from '../components/recipe/ingredients'
+import { Ingredients } from '@/features/recipes/recipe/ingredients'
 import recipesMock from '@/mocks/recipes.mock'
 
 const meta = {

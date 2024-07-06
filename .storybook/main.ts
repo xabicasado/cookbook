@@ -1,6 +1,6 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-
 import type { StorybookConfig } from '@storybook/nextjs'
+
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -8,18 +8,16 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    // '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/nextjs',
     options: {},
   },
   docs: {
-    // autodocs: 'tag',
     autodocs: true,
   },
-  webpackFinal: async (config, { configType }) => {
-    config.resolve.plugins = [new TsconfigPathsPlugin()]
+  webpackFinal: async (config, {}) => {
+    if (config?.resolve) config.resolve.plugins = [new TsconfigPathsPlugin()]
     return config
   },
 }

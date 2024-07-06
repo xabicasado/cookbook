@@ -1,8 +1,11 @@
-import { type RecipeType } from '@/types/recipe.types'
+// TODO Check this import
+import { compareByTitle } from '@/features/recipes/recipe/recipe.utils'
+import { type RecipeType } from '@/features/recipes/types'
 
+// https://jsonformatter.curiousconcept.com/
 const recipesMock: RecipeType[] = [
   {
-    id: 1,
+    id: '1',
     title: 'Almejas a la marinera',
     slug: 'almejas-a-la-marinera',
     ingredients: [
@@ -46,12 +49,12 @@ const recipesMock: RecipeType[] = [
         name: 'agua',
       },
       {
-        emoji: '🧂',
-        name: 'sal',
-      },
-      {
         emoji: '🌿',
         name: 'perejil',
+      },
+      {
+        emoji: '🧂',
+        name: 'sal',
       },
     ],
     steps: [
@@ -68,7 +71,7 @@ const recipesMock: RecipeType[] = [
       },
       {
         description:
-          'Cuando transparente la cebolla, añade a la sartén los dientes de ajo',
+          'Cuando transparente la cebolla, añade a la sartén los dientes de ajo.',
       },
       {
         description:
@@ -93,7 +96,7 @@ const recipesMock: RecipeType[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     title: 'Batido de aguacate y plátano',
     slug: 'batido-de-aguacate-y-platano',
     servings: 1,
@@ -143,7 +146,7 @@ const recipesMock: RecipeType[] = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     title: 'Bacalao al pil-pil',
     slug: 'bacalao-al-pil-pil',
     source: 'Bacalao La Vasca',
@@ -158,7 +161,7 @@ const recipesMock: RecipeType[] = [
       {
         emoji: '🫒',
         quantity: '0.75',
-        measurement: 'ml',
+        measurement: 'l',
         name: 'aceite',
         details: 'de 1ª de acidez',
         recommendation: 'aceite La Gitana',
@@ -204,4 +207,4 @@ const recipesMock: RecipeType[] = [
   },
 ]
 
-export default recipesMock
+export default recipesMock?.sort(compareByTitle)

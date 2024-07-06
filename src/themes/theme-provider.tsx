@@ -1,14 +1,19 @@
 'use client'
 
-import StyledComponentsRegistry from '@/utils/styled-components-registry'
-import { ThemeProvider as StyledProvider } from 'styled-components'
+import GlobalStyles from './global-styles'
 import theme from './theme'
+import { ThemeProvider as StyledProvider } from 'styled-components'
+
+import StyledComponentsRegistry from '@/lib/styled-components-registry'
 
 // https://dev.to/rashidshamloo/using-styled-components-with-nextjs-v13-typescript-2l6m
-const ThemeProvider = (props: { children: React.ReactNode }) => {
+function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
     <StyledComponentsRegistry>
-      <StyledProvider theme={theme}>{props.children}</StyledProvider>
+      <StyledProvider theme={theme}>
+        <GlobalStyles />
+        {children}
+      </StyledProvider>
     </StyledComponentsRegistry>
   )
 }

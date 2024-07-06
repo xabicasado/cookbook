@@ -1,7 +1,7 @@
 'use client'
 
+import 'material-symbols/rounded.css'
 import { createGlobalStyle } from 'styled-components'
-import GlobalIcons from './global-icons'
 
 const styled = { createGlobalStyle }
 
@@ -110,9 +110,6 @@ const GlobalStyles = styled.createGlobalStyle`
   section {
     display: block;
   }
-  body {
-    line-height: 1.25;
-  }
   ol,
   ul {
     list-style: none;
@@ -143,7 +140,16 @@ const GlobalStyles = styled.createGlobalStyle`
   body {
     color: ${({ theme }) => theme?.colors?.text};
     font-family: ${({ theme }) => theme?.fonts?.quicksand};
-    font-size: 100%;
+
+    /* https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/ */
+    /* https://css-tricks.com/simplified-fluid-typography/ */
+    /* font-size: min(max(100%, 4vw), 22px); */
+    font-size: clamp(100%, 2vw + 0.5rem, 22px);
+
+    /* background-color: ${({ theme }) => theme?.colors?.secondary}; */
+  }
+  body {
+    line-height: ${({ theme }) => theme?.lineHeight?.m};
   }
   h1 {
     color: ${({ theme }) => theme?.colors?.primary};
@@ -169,8 +175,15 @@ const GlobalStyles = styled.createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-
-  ${GlobalIcons}
+  img {
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+    shape-margin: 1rem;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
 `
 
 export default GlobalStyles

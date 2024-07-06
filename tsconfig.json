@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    // "target": "es5",
     "target": "es2015",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -29,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "jest.config.mjs",
-    "jest.setup.js"
+    "jest.setup.js",
+    ".storybook/**/*"
   ],
   "exclude": ["node_modules"]
 }

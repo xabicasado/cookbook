@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/cookbook',
+  compiler: {
+    styledComponents: true,
+  },
 }
 
 module.exports = nextConfig

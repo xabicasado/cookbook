@@ -3,5 +3,16 @@
   "trailingComma": "es5",
   "singleQuote": true,
   "tabWidth": 2,
-  "useTabs": false
+  "useTabs": false,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^(react|next)($|/)",
+    "^[^@]",
+    "^@/(app|components|constants|features|lib|mocks|themes|utils)($|/)",
+    "^[./]",
+    ".+\\.styled\\.tsx$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true
 }
