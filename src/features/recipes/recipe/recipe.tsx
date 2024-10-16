@@ -3,12 +3,13 @@
 import { Ingredients } from './ingredients'
 import {
   ButtonSectionStyled,
+  HeaderSectionStyled,
+  ListSectionStyled,
+  RecipeSectionStyled,
   RecipeStyled,
-  ScrollWatcherStyled,
+  SectionTitleStyled,
 } from './recipe.styled'
 import { generateRecipeText } from './recipe.utils'
-import { Steps } from './steps'
-import { Tips } from './tips'
 
 import { type RecipeType } from '@/features/recipes/types'
 import { Button, useNotificationContext } from '@/features/ui'
@@ -22,8 +23,6 @@ export function Recipe(props: RecipeType) {
     const recipeText = generateRecipeText(props)
 
     navigator.clipboard.writeText(recipeText)
-    console.log(recipeText)
-
     showNotification('¡Receta copiada!')
   }
 
@@ -31,66 +30,54 @@ export function Recipe(props: RecipeType) {
     const recipeLink = window.location.toString()
 
     navigator.clipboard.writeText(recipeLink)
-    console.log(recipeLink)
-
     showNotification('¡Enlace copiado!')
   }
 
   return (
     <>
-      <ScrollWatcherStyled />
+      <HeaderSectionStyled>
+        <h2>{title}</h2>
 
-      <h2>{title}</h2>
+        <ButtonSectionStyled>
+          <Button
+            primary
+            size="small"
+            beforeIcon="content_copy"
+            onClick={handleClipboard}
+          />
+          <Button primary size="small" beforeIcon="link" onClick={handleLink} />
+        </ButtonSectionStyled>
+      </HeaderSectionStyled>
 
       <RecipeStyled>
-        <Ingredients servings={servings} ingredients={ingredients} />
+        <RecipeSectionStyled>
+          <Ingredients servings={servings} ingredients={ingredients} />
+        </RecipeSectionStyled>
 
-        {/* TODO change section to layout style (two-in-one) */}
-        <div>
-          <Steps steps={steps} />
+        {steps.length > 0 && (
+          <RecipeSectionStyled>
+            <SectionTitleStyled>Elaboración</SectionTitleStyled>
 
-          {!(tips == null) && <Tips tips={tips} />}
-        </div>
+            <ListSectionStyled>
+              {steps.map((step, index) => (
+                <li key={index + 1}>
+                  {index + 1}. {step?.description}
+                </li>
+              ))}
+            </ListSectionStyled>
+          </RecipeSectionStyled>
+        )}
+
+        {!(tips == null) && (
+          <RecipeSectionStyled>
+            <ListSectionStyled>
+              {tips.map((tip, index) => (
+                <li key={index}>💡 {tip}</li>
+              ))}
+            </ListSectionStyled>
+          </RecipeSectionStyled>
+        )}
       </RecipeStyled>
-
-      <ButtonSectionStyled>
-        {/* <Link href={'/'}>
-            <Button
-              // primary
-              size={'small'}
-              label={'Volver al menú'}
-              icon={'arrow_back'}
-            ></Button>
-          </Link> */}
-
-        <Button
-          primary
-          size={'small'}
-          label={'Copiar'}
-          icon={'content_copy'}
-          onClick={handleClipboard}
-        />
-
-        {/* <span className="material-symbols-rounded">content_copy</span> */}
-
-        <Button
-          primary
-          size={'small'}
-          label={'Enlace'}
-          icon={'link'}
-          onClick={handleLink}
-        />
-
-        {/* 
-            <Button
-              primary
-              size={'small'}
-              label={'Compartir'}
-              icon={'share'}
-              onClick={handleLink}
-            />
-          */}
-      </ButtonSectionStyled>
     </>
   )
 }

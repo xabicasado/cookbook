@@ -113,6 +113,11 @@ const theme = {
     // complementaryTwoC: '#fbbe83',
     // complementaryTwoD: '#fbc997',
 
+    // TODO Check why two complementaries and ubicate this one
+    complementaryThree: '#f9f959',
+    complementaryThreeA: '#f9f959',
+    complementaryThreeB: '#fcffcc',
+
     secondary: '#e3e3e3',
     secondaryA: '#e3e3e3',
     secondaryB: '#e6e6e6',
@@ -169,6 +174,7 @@ const theme = {
     // h2: 'clamp(1.5rem, 2vw + 1rem, 2.625rem)',
     h3: '1.25rem',
 
+    g: '2.5rem',
     l: '1.1rem',
     m: '1rem',
     s: '0.9rem',

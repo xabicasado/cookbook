@@ -5,16 +5,14 @@ import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 import {
-  CloseButtonStyled,
   MenuHeaderContainerStyled,
   MenuLinkStyled,
   MenuOverlayListStyled,
   MenuStyled,
-  MenuTitleStyled,
 } from './menu.styled'
 import type { MenuItemType, MenuPropsType } from './types'
 
-import { Icon } from '@/features/ui'
+import { Button } from '@/features/ui'
 
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay
 export function Menu(props: MenuPropsType) {
@@ -33,11 +31,7 @@ export function Menu(props: MenuPropsType) {
   return (
     <MenuStyled {...restProps}>
       <MenuHeaderContainerStyled>
-        <MenuTitleStyled>Menú</MenuTitleStyled>
-
-        <CloseButtonStyled onClick={handleClose}>
-          <Icon name="close" size="large" />
-        </CloseButtonStyled>
+        <Button size="giant" beforeIcon="close" onClick={handleClose} />
       </MenuHeaderContainerStyled>
 
       <MenuOverlayListStyled>

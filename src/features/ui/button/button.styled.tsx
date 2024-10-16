@@ -4,75 +4,91 @@ import styled, { css } from 'styled-components'
 
 const defaultStyles = css`
   background-color: transparent;
-  ${({ theme }) => `color: ${theme?.colors?.primary};`}
+  color: ${({ theme }) => theme?.colors?.primary};
 `
 
 const primaryStyles = css`
-  ${({ theme }) => `background-color: ${theme?.colors?.primary};`}
-  ${({ theme }) => `color: ${theme?.colors?.invertedText};`}
+  background-color: ${({ theme }) => theme?.colors?.primary};
+  color: ${({ theme }) => theme?.colors?.invertedText};
 `
 
-const disabledStyles = css`
-  cursor: not-allowed;
-  ${({ theme }) => `background-color: ${theme?.colors?.secondary};`}
-  ${({ theme }) => `color: ${theme?.colors?.textE};`}
+const paddingStyles = css`
+  padding-block: ${({ theme }) => theme?.spacing?.sm};
+  padding-inline: ${({ theme }) => theme?.spacing?.l};
 `
+
+const getDisabledStyles = ({ primary, theme }) => {
+  const baseDisabledStyles = css`
+    cursor: not-allowed;
+  `
+
+  if (primary) {
+    return css`
+      ${baseDisabledStyles}
+      background-color: ${theme?.colors?.secondary};
+      color: ${theme?.colors?.textE};
+    `
+  }
+
+  return css`
+    ${baseDisabledStyles}
+    color: ${theme?.colors?.secondary};
+  `
+}
 
 const sizes = {
   small: css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: ${({ theme }) => theme?.spacing?.xxl};
+    width: ${({ theme }) => theme?.spacing?.xxl};
 
-    /* ${({ theme }) => `height: ${theme?.spaces?.xxl};`}
-    ${({ theme }) => `width: ${theme?.spaces?.xxl};`} */
-
-    /* height: ${({ theme }) => theme?.spaces?.xxl};
-    width: ${({ theme }) => theme?.spaces?.xxl}; */
-
-    /* TODO change to spacing */
-    width: 3rem;
-    height: 3rem;
-    /* height: auto; */
+    /* padding: 0 ${({ theme }) => theme?.spacing?.xs}; */
 
     /* & > * {
       font-size: 1.2rem;
     } */
-
-    /* padding: 0 ${({ theme }) => theme?.spaces?.xs}; */
   `,
+
   // medium: css`
-  //   height: 36px;
-  //   padding: 0 ${({ theme }) => theme?.spaces?.xs};
+  //   padding: 0 ${({ theme }) => theme?.spacing?.xs};
   // `,
+
   // large: css`
-  //   height: 36px;
-  //   padding: 0 ${({ theme }) => theme?.spaces?.xs};
+  //   padding: 0 ${({ theme }) => theme?.spacing?.xs};
+  // `,
+
+  // giant: css`
+  //   padding: 0 ${({ theme }) => theme?.spacing?.xs};
   // `,
 }
 
 export const ButtonStyled = styled.button<{
   disabled?: boolean
-  primary?: boolean
   fullWidth?: boolean
+  label?: string
+  primary?: boolean
   size: string
+  justify: string
 }>`
+  cursor: pointer;
+
   border: 0;
   border-radius: ${({ theme }) => theme?.borderRadius?.full};
 
-  cursor: pointer;
-  display: inline-block;
   font-family: ${({ theme }) => theme?.fonts?.quicksand};
   font-weight: ${({ theme }) => theme?.fontWeight?.bold};
   font-size: ${({ theme }) => theme?.fontSize?.s};
 
-  /* TODO change to spacing */
-  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  ${({ justify }) => justify !== undefined && `justify-content: ${justify};`}
+
+  ${({ label }) => (label !== undefined ? paddingStyles : 'padding: 0;')}
 
   ${defaultStyles}
   ${({ primary }) => (primary ?? false) && primaryStyles}
-  ${({ disabled }) => (disabled ?? false) && disabledStyles}
-  
+  ${({ disabled, primary, theme }) =>
+    disabled && getDisabledStyles({ primary, theme })}
+
   ${({ fullWidth }) => (fullWidth ?? false) && 'width: 100%;'}
 
   ${({ size }) => sizes[size as keyof typeof sizes]}
@@ -83,7 +99,7 @@ export const ButtonStyled = styled.button<{
     outline: 1px solid #fff;
     outline-offset: -4px;
   } */
-  
+
   &:hover {
     transform: scale(1.01);
   }
@@ -93,27 +109,3 @@ export const ButtonStyled = styled.button<{
   }
 `
 ButtonStyled.displayName = 'ButtonStyled'
-
-export const ButtonIconStyled = styled.span`
-  /* font-family: 'Material Symbols Rounded'; */
-  font-family: ${({ theme }) => theme?.fonts?.materialSymbolsRounded};
-  font-weight: ${({ theme }) => theme?.fontWeight?.bold};
-  /* font-size: 1.2rem; */
-  font-size: ${({ theme }) => theme?.fontSize?.l};
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
-`
-ButtonIconStyled.displayName = 'ButtonIconStyled'

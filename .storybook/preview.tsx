@@ -1,4 +1,5 @@
 import type { Decorator } from '@storybook/react'
+import type { Preview } from '@storybook/react'
 
 import ThemeProvider from '@/themes/theme-provider'
 
@@ -13,6 +14,11 @@ export const parameters = {
   },
 }
 
+export const preview: Preview = {
+  // https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ['autodocs'],
+}
+
 const withTheme: Decorator = (Story) => {
   return (
     <ThemeProvider>
@@ -22,3 +28,4 @@ const withTheme: Decorator = (Story) => {
 }
 
 export const decorators = [withTheme]
+export const tags = ['autodocs']

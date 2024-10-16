@@ -1,50 +1,34 @@
 import styled, { css } from 'styled-components'
 
 const closedStyles = css`
-  /* display: none; */
-  height: 0;
-  padding: 0;
+  bottom: -${({ theme }) => theme?.spacing?.xxl};
 `
 
-export const NotificationStyled = styled.div<{ isOpen?: boolean }>`
+export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
   cursor: pointer;
-  display: inline-block;
 
   z-index: ${({ theme }) => theme?.layers?.jupiter};
-  /* z-index: -1; */
+  background-color: ${({ theme }) => theme?.colors?.third};
 
-  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: ${({ theme }) => theme?.spacing?.xl};
   width: 100%;
-  padding: 0.5rem 30px;
+  padding-block: ${({ theme }) => theme?.spacing?.s};
+  padding-inline: ${({ theme }) => theme?.spacing?.l};
+
   position: fixed;
   bottom: 0;
   left: 0;
-  background-color: ${({ theme }) => theme?.colors?.third};
 
-  transition:
-    height 1s,
-    padding 1s;
-
-  ${({ isOpen }) => !(isOpen ?? false) && closedStyles}
-`
-NotificationStyled.displayName = 'NotificationStyled'
-
-export const NotificationTextStyled = styled.span`
-  position: relative;
   color: ${({ theme }) => theme?.colors?.invertedText};
   font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
   font-size: ${({ theme }) => theme?.fontSize?.s};
-`
-NotificationTextStyled.displayName = 'NotificationTextStyled'
 
-export const CloseButtonStyled = styled.span`
-  /* position: absolute; */
-  /* top: 0.4rem;
-  right: 2.6rem; */
-  float: right;
-  /* line-height: 2; */
-  color: ${({ theme }) => theme?.colors?.invertedText};
-  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
-  font-size: ${({ theme }) => theme?.fontSize?.m};
+  ${({ isOpen }) => !(isOpen ?? false) && closedStyles}
+
+  transition: bottom 1s ease;
 `
-CloseButtonStyled.displayName = 'CloseButtonStyled'
+NotificationStyled.displayName = 'NotificationStyled'

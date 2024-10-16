@@ -9,10 +9,17 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   // Add more setup options before each test is run
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: [
+    '<rootDir>/jest.setup.js',
+    // 'jest-styled-components'
+  ],
   testEnvironment: 'jest-environment-jsdom',
   preset: 'ts-jest',
-  testMatch: ['**/__tests__/**/*.test.[jt]s?(x)'],
+  testMatch: [
+    '**/__tests__/**/*.test.[jt]s?(x)',
+    // https://xurxodev.com/reutilizar-tests-con-react-testing-library-usando-composicion/
+    // '**/?(*.)+(spec|test).[tj]s?(x)'
+  ],
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/build/',

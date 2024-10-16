@@ -19,8 +19,9 @@ export const SearchBarStyled = styled.input.attrs(() => ({
   padding-inline: ${({ theme }) => theme?.spacing?.l};
   /* padding-inline: ${({ theme }) => theme?.spacing?.m}; */
 
-  transition: border-color 0.3s ease-in-out;
-  transition: box-shadow 0.3s ease-in-out;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 
   text-overflow: ellipsis;
   white-space: nowrap;

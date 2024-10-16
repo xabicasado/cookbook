@@ -20,8 +20,9 @@ export const EditInputStyled = styled.input.attrs(() => ({
   font-size: ${({ theme }) => theme?.fontSize?.l};
   font-weight: ${({ theme }) => theme?.fontWeight?.medium};
 
-  transition: border-color 0.3s ease-in-out;
-  transition: box-shadow 0.3s ease-in-out;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:focus {
     outline: none;

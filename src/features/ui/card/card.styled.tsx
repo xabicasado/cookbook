@@ -6,6 +6,9 @@ export const CardStyled = styled.article`
   /* TODO vertical layout with img */
   /* https://www.youtube.com/watch?v=cf-J4ffMBfo */
 
+  /* box-shadow: ${({ theme }) => theme?.boxShadows?.level1}
+    ${({ theme }) => theme?.colors?.primary}; */
+
   padding-block: ${({ theme }) => theme?.spacing?.m};
   padding-inline: ${({ theme }) => theme?.spacing?.l};
 
@@ -44,8 +47,8 @@ export const CardStyled = styled.article`
   } */
 
   /* https://thoughtbot.com/blog/transitions-and-transforms */
-  transition: transform 0.1s;
-  /* transition: transform 0.3s ease-in-out; */
+  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
 
   &:hover {
     transform: scale(1.01);
@@ -59,7 +62,8 @@ CardStyled.displayName = 'CardStyled'
 
 export const TitleStyled = styled.h3`
   color: ${({ theme }) => theme?.colors?.invertedText};
-  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
+  /* Improved accesibility: fontWeight from semiBold to bold */
+  font-weight: ${({ theme }) => theme?.fontWeight?.bold};
 
   /* Only one line of title allowed */
   /* https://www.geeksforgeeks.org/how-to-apply-an-ellipsis-to-multiline-text-in-css/ */
@@ -78,8 +82,11 @@ export const IngredientsContainerStyled = styled.div`
   padding-block: ${({ theme }) => theme?.spacing?.s};
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
   column-gap: ${({ theme }) => theme?.spacing?.xs};
+  row-gap: ${({ theme }) => theme?.spacing?.xs};
 `
 IngredientsContainerStyled.displayName = 'IngredientsContainerStyled'

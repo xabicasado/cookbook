@@ -5,13 +5,12 @@ import ThemeProvider from '@/themes/theme-provider'
 // https://favicon.io/favicon-generator/
 export const metadata: Metadata = {
   title: 'Cookbook',
-  description: 'Save your recipes',
+  description: 'Guarda tus recetas',
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
 }
 
 export default function RootLayout({

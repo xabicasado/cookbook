@@ -2,11 +2,11 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## What's cooking here?
+## 🧑‍🍳 What's cooking here?
 
-Hungry for something new? While you are here, feel free to play around with the project on [GitHub Pages!](https://xabicasado.github.io/cookbook/)
+Hungry for something new? While you are here, feel free to play around [with the project](https://xabicasado.vercel.app)!
 
-## Getting Started
+## 🚀 Getting Started
 
 Install brew:
 
@@ -16,7 +16,7 @@ echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.zshrc
 source ~/.zshrc
 ```
 
-Install NVM and Node 22.2.0:
+Install **nvm** and set Node.js **v22.2.0**:
 
 ```bash
 brew update
@@ -27,7 +27,7 @@ source ~/.zshrc
 nvm install 22.2.0
 ```
 
-Install PNPM:
+Install **pnpm**:
 
 ```bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
@@ -61,3 +61,15 @@ pnpm storybook
 ```
 
 This command fires up the Storybook environment at **[localhost:6006](http://localhost:6006)**, where you can view and test components in isolation, ensuring a consistent look and feel throughout the app.
+
+## 🏋️ Upgrading major dependencies
+
+https://nextjs.org/docs/pages/building-your-application/upgrading/version-14
+
+```bash
+pnpm up next react react-dom eslint-config-next --latest
+```
+
+```bash
+pnpm dlx storybook@latest upgrade
+```

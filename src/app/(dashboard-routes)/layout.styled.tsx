@@ -13,6 +13,7 @@ export const MainStyled = styled.main`
   );
 
   display: grid;
+
   grid-template-columns:
     [full-width-start] minmax(${({ theme }) => theme?.spacing?.m}, auto)
     [breakout-start] minmax(

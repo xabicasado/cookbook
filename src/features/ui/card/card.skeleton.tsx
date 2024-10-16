@@ -4,10 +4,9 @@ import {
   IngredientsContainerSkeletonStyled,
   SkeletonStyled,
   TitleSkeletonStyled,
-} from './skeleton.styled'
+} from './card.skeleton.styled'
 
-// https://nextjs.org/learn/dashboard-app/streaming
-export function Skeleton() {
+export function CardSkeleton() {
   return (
     <SkeletonStyled>
       <TitleSkeletonStyled />

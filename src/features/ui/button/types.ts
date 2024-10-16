@@ -4,18 +4,15 @@ export type ButtonPropsType = {
    */
   primary?: boolean
   /**
-   * What background color to use
-   */
-  // backgroundColor?: string
-  /**
    * How large should the button be?
    */
-  size?: 'small' | 'medium' | 'large'
+  size?: 'small' | 'medium' | 'large' | 'giant'
   /**
    * Button contents
    */
-  label: string
-  icon?: string
+  beforeIcon?: string
+  label?: string
+  afterIcon?: string
   /**
    * Is the button disabled?
    */
@@ -29,4 +26,5 @@ export type ButtonPropsType = {
    */
   onClick?: () => void
   type?: 'button' | 'submit'
+  justify?: 'start' | 'center' | 'end'
 }

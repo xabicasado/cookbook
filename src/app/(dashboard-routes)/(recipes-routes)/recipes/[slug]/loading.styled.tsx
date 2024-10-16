@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components'
 
 import {
   ButtonSectionStyled,
+  HeaderSectionStyled,
   RecipeStyled,
 } from '@/features/recipes/recipe/recipe.styled'
-import { SearchBarStyled } from '@/features/ui/search-bar/search-bar.styled'
 
 const defaultSkeletonStyles = css`
   background-color: ${({ theme }) => theme?.colors?.secondary};
@@ -23,46 +23,31 @@ const animationStyles = css`
 
   animation: skeleton-loading 1s linear infinite alternate;
 `
-export const SearchBarSkeletonStyled = styled(SearchBarStyled)`
-  ${defaultSkeletonStyles}
 
-  border: ${({ theme }) => theme?.spacing?.xxs} solid
-    ${({ theme }) => theme?.colors?.secondary};
-  min-height: ${({ theme }) => theme?.fontSize?.l};
-
-  ${animationStyles}
+export const HeaderSectionSkeletonStyled = styled(HeaderSectionStyled)`
+  min-height: ${({ theme }) => theme?.spacing?.xxl};
 `
-SearchBarSkeletonStyled.displayName = 'SearchBarSkeletonStyled'
+HeaderSectionSkeletonStyled.displayName = 'HeaderSectionSkeletonStyled'
 
-export const SkeletonRecipeStyled = styled(RecipeStyled)`
-  /* ${defaultSkeletonStyles} */
-  /* z-index: ${({ theme }) => theme?.layers?.venus}; */
+export const RecipeSkeletonStyled = styled(RecipeStyled)``
+RecipeSkeletonStyled.displayName = 'RecipeSkeletonStyled'
 
-  /* ${animationStyles} */
-`
-SkeletonRecipeStyled.displayName = 'SkeletonRecipeStyled'
-
-export const SkeletonButtonSectionStyled = styled(ButtonSectionStyled)`
+export const ButtonSectionSkeletonStyled = styled(ButtonSectionStyled)`
   ${defaultSkeletonStyles}
-  /* border-radius: ${({ theme }) => theme?.borderRadius?.full}; */
   background-color: ${({ theme }) => theme?.colors?.primary};
 
-  /* TODO change to spacing */
-  min-height: 3rem;
-  /* max-width: 6rem; */
+  min-height: ${({ theme }) => theme?.spacing?.xxl};
   width: calc(6rem + ${({ theme }) => theme?.spacing?.xs});
 
   ${animationStyles}
 `
-SkeletonButtonSectionStyled.displayName = 'SkeletonButtonSectionStyled'
+ButtonSectionSkeletonStyled.displayName = 'ButtonSectionSkeletonStyled'
 
 export const TitleSkeletonStyled = styled.h2`
   ${defaultSkeletonStyles}
   min-height: calc(${({ theme }) => theme?.fontSize?.h2} * ${({ theme }) =>
     theme?.lineHeight?.m});
-  /* min-height: ${({ theme }) => theme?.fontSize?.h2}; */
-  /* width: 25%; */
-  width: 18ch;
+  width: 17ch;
 
   ${animationStyles}
 `
@@ -72,15 +57,21 @@ export const SectionTitleSkeletonStyled = styled.h3`
   ${defaultSkeletonStyles}
   min-height: calc(${({ theme }) => theme?.fontSize?.h3} * ${({ theme }) =>
     theme?.lineHeight?.m});
-  /* min-height: ${({ theme }) => theme?.fontSize?.h3}; */
-  width: 18ch;
 
-  ${animationStyles}
+  width: 12ch;
+
+  margin-bottom: calc(
+    ${({ theme }) => theme?.spacing?.m} +
+      (${({ theme }) => theme?.spacing?.xxs} * 2)
+  );
+
+  ${animationStyles};
 `
 SectionTitleSkeletonStyled.displayName = 'SectionTitleSkeletonStyled'
 
 export const TextSkeletonStyled = styled.span`
   ${defaultSkeletonStyles}
+
   display: block;
   min-height: ${({ theme }) => theme?.fontSize?.m};
   width: 20ch;

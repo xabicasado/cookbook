@@ -5,7 +5,6 @@ import { EditInput } from '@/features/ui'
 const meta = {
   title: 'Components/EditInput',
   component: EditInput,
-  tags: ['autodocs'],
 } satisfies Meta<typeof EditInput>
 
 export default meta

@@ -2,55 +2,50 @@
 
 import styled, { css } from 'styled-components'
 
+const defaultStyles = css`
+  display: inline-flex;
+  ${({ theme }) => `width: ${theme?.spacing?.l};`}
+`
+
 const statuses = {
   default: css`
-    border: ${({ theme }) => theme?.spacing?.xxs} solid
-      ${({ theme }) => theme?.colors?.invertedText};
-
     background-color: ${({ theme }) => theme?.colors?.invertedText};
   `,
   available: css`
-    border: ${({ theme }) => theme?.spacing?.xxs} solid
-      ${({ theme }) => theme?.colors?.complementaryOne};
-
     background-color: ${({ theme }) => theme?.colors?.complementaryOne};
   `,
   lacking: css`
-    border: ${({ theme }) => theme?.spacing?.xxs} solid
-      ${({ theme }) => theme?.colors?.complementaryTwo};
-
     background-color: ${({ theme }) => theme?.colors?.complementaryTwo};
+  `,
+  needToGo: css`
+    background-color: ${({ theme }) => theme?.colors?.complementaryThree};
   `,
 }
 
 export const IngredientIconStyled = styled.span<{
   status: string
+  hasVisibleName?: boolean
 }>`
-  /* display: grid;
-  place-items: center; */
-  /* place-content: center; */
-
-  display: inline-flex;
   align-items: center;
   justify-content: center;
 
   font-size: ${({ theme }) => theme?.fontSize?.s};
 
-  width: ${({ theme }) => theme?.spacing?.l};
   height: ${({ theme }) => theme?.spacing?.l};
-  /* height: auto; */
+  ${({ hasVisibleName }) => !hasVisibleName && defaultStyles}
 
-  /* display: inline-block; */
-  /* width: 50%;
-  height: auto; */
+  border: ${({ theme }) => theme?.spacing?.xxs} solid
+      ${({ theme }) => theme?.colors?.invertedText};
   border-radius: ${({ theme }) => theme?.borderRadius?.full};
-  /* width: 100%;
-  height: auto; */
 
   ${({ status }) => statuses[status as keyof typeof statuses]}
-
-  /* background-color: ${({ theme }) => theme?.colors?.invertedText}; */
-  border: ${({ theme }) => theme?.spacing?.xxs} solid
-    ${({ theme }) => theme?.colors?.invertedText};
 `
 IngredientIconStyled.displayName = 'IngredientIconStyled'
+
+export const IngredientNameStyled = styled.span`
+  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`
+IngredientNameStyled.displayName = 'IngredientNameStyled'

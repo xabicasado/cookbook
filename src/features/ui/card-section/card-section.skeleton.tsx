@@ -2,7 +2,7 @@
 
 import { CardSectionStyled } from './card-section.styled'
 
-import { Skeleton } from '@/features/ui'
+import { CardSkeleton } from '@/features/ui'
 
 export function CardSectionSkeleton() {
   return (
@@ -10,7 +10,7 @@ export function CardSectionSkeleton() {
       {Array(4)
         .fill(undefined)
         .map((_, index) => (
-          <Skeleton key={index} />
+          <CardSkeleton key={index} />
         ))}
     </CardSectionStyled>
   )

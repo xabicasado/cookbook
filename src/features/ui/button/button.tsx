@@ -1,4 +1,5 @@
-import { ButtonIconStyled, ButtonStyled } from './button.styled'
+import { Icon } from '../icon'
+import { ButtonStyled } from './button.styled'
 import { type ButtonPropsType } from './types'
 
 /**
@@ -6,17 +7,28 @@ import { type ButtonPropsType } from './types'
  */
 export function Button(props: ButtonPropsType) {
   const {
+    beforeIcon,
     label,
-    icon,
+    afterIcon,
     primary = false,
     size = 'medium',
     type = 'button',
+    justify = 'center',
     ...restProps
   } = props
 
   return (
-    <ButtonStyled type={type} primary={!!primary} size={size} {...restProps}>
-      {icon !== undefined ? <ButtonIconStyled>{icon}</ButtonIconStyled> : label}
+    <ButtonStyled
+      type={type}
+      primary={!!primary}
+      label={label}
+      size={size}
+      justify={justify}
+      {...restProps}
+    >
+      {beforeIcon !== undefined && <Icon name={beforeIcon} size={size} />}
+      {label}
+      {afterIcon !== undefined && <Icon name={afterIcon} size={size} />}
     </ButtonStyled>
   )
 }

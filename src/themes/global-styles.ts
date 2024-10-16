@@ -135,6 +135,10 @@ const GlobalStyles = styled.createGlobalStyle`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* Deletes the blue-box outline fill when clicked on mobile */
+    outline-color: transparent;
+    -webkit-tap-highlight-color: transparent;
   }
   html,
   body {
@@ -171,6 +175,17 @@ const GlobalStyles = styled.createGlobalStyle`
     text-decoration-thickness: 0.25em;
     text-underline-offset: 0.17em; */
   }
+
+  /* Underlined titles */
+  /* h3::after {
+    content: '';
+    display: block;
+    background-color: ${({ theme }) => theme?.colors?.primary};
+    width: ${({ theme }) => theme?.spacing?.m};
+    height: ${({ theme }) => theme?.spacing?.xs};
+    margin-block: ${({ theme }) => theme?.spacing?.xxs};
+  } */
+
   a {
     color: inherit;
     text-decoration: none;

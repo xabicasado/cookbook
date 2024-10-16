@@ -1,9 +1,10 @@
 'use client'
 
 import {
+  ButtonSectionSkeletonStyled,
+  HeaderSectionSkeletonStyled,
+  RecipeSkeletonStyled,
   SectionTitleSkeletonStyled,
-  SkeletonButtonSectionStyled,
-  SkeletonRecipeStyled,
   TextSkeletonStyled,
   TitleSkeletonStyled,
 } from './loading.styled'
@@ -11,8 +12,12 @@ import {
 export default function LoadingRecipePage() {
   return (
     <>
-      <TitleSkeletonStyled />
-      <SkeletonRecipeStyled>
+      <HeaderSectionSkeletonStyled>
+        <TitleSkeletonStyled />
+        <ButtonSectionSkeletonStyled />
+      </HeaderSectionSkeletonStyled>
+
+      <RecipeSkeletonStyled>
         <section>
           <SectionTitleSkeletonStyled />
           <ul>
@@ -26,33 +31,31 @@ export default function LoadingRecipePage() {
           </ul>
         </section>
 
-        <div>
-          <section>
-            <SectionTitleSkeletonStyled />
-            <ul>
-              {Array(3)
-                .fill(undefined)
-                .map((_, index) => (
-                  <li key={index}>
-                    <TextSkeletonStyled key={index} />
-                  </li>
-                ))}
-            </ul>
-          </section>
-          <section>
-            <ul>
-              {Array(3)
-                .fill(undefined)
-                .map((_, index) => (
-                  <li key={index}>
-                    <TextSkeletonStyled key={index} />
-                  </li>
-                ))}
-            </ul>
-          </section>
-        </div>
-      </SkeletonRecipeStyled>
-      <SkeletonButtonSectionStyled />
+        <section>
+          <SectionTitleSkeletonStyled />
+          <ul>
+            {Array(3)
+              .fill(undefined)
+              .map((_, index) => (
+                <li key={index}>
+                  <TextSkeletonStyled key={index} />
+                </li>
+              ))}
+          </ul>
+        </section>
+
+        <section>
+          <ul>
+            {Array(3)
+              .fill(undefined)
+              .map((_, index) => (
+                <li key={index}>
+                  <TextSkeletonStyled key={index} />
+                </li>
+              ))}
+          </ul>
+        </section>
+      </RecipeSkeletonStyled>
     </>
   )
 }

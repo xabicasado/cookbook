@@ -13,9 +13,6 @@ const config: StorybookConfig = {
     name: '@storybook/nextjs',
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
   webpackFinal: async (config, {}) => {
     if (config?.resolve) config.resolve.plugins = [new TsconfigPathsPlugin()]
     return config

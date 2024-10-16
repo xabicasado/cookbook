@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import { useRecipesContext } from '@/features/recipes'
 import { Button, CardSection, SearchBar } from '@/features/ui'
 
@@ -11,9 +13,13 @@ export function RecipesSection() {
       <SearchBar onChange={handleChange} />
 
       {filteredRecipes?.length === 0 ? (
-        <Button label="Añadir nueva receta" primary fullWidth disabled />
+        <Link href={'/recipes/new'} passHref>
+          <Button label="Añadir nueva receta" primary fullWidth disabled />
+        </Link>
       ) : (
-        <CardSection recipes={filteredRecipes} />
+        <>
+          <CardSection recipes={filteredRecipes} />
+        </>
       )}
     </>
   )

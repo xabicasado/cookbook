@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components'
 
 const closedStyles = css`
-  width: 0%;
+  left: -100%;
 `
 
 const openedStyles = css`
-  width: 100%;
+  left: 0;
 `
 
 const disabledLinkStyles = css`
@@ -19,62 +19,44 @@ const disabledLinkStyles = css`
 `
 
 export const MenuStyled = styled.nav<{ isOpen?: boolean }>`
-  height: 100%;
+  height: 100dvh;
   width: 100%;
-  position: fixed;
 
   z-index: ${({ theme }) => theme?.layers?.saturn};
 
+  position: fixed;
   top: 0;
-  left: 0;
   background-color: ${({ theme }) => theme?.colors?.fourth};
   opacity: 0.9;
   overflow-x: hidden;
-  transition: 0.5s;
 
   ${closedStyles}
   ${({ isOpen }) => (isOpen ?? false) && openedStyles}
+  
+  transition: left 0.5s ease;
 `
 MenuStyled.displayName = 'MenuStyled'
 
 export const MenuHeaderContainerStyled = styled.div`
-  display: flex;
-  /* justify-content: end; */
-  justify-content: space-between;
-  color: ${({ theme }) => theme?.colors?.invertedText};
+  min-height: 102px;
 
-  overflow: hidden;
-  margin-inline: auto;
+  display: flex;
+  justify-content: end;
+
   padding-block: ${({ theme }) => theme?.spacing?.sm};
   padding-inline: ${({ theme }) => theme?.spacing?.m};
-`
-MenuHeaderContainerStyled.displayName = 'MenuHeaderContainerStyled'
 
-export const MenuTitleStyled = styled.span`
-  font-size: ${({ theme }) => theme?.fontSize?.h1};
-  font-family: ${({ theme }) => theme?.fonts?.dancingScript};
-  font-weight: ${({ theme }) => theme?.fontWeight?.bold};
-`
-MenuTitleStyled.displayName = 'MenuTitleStyled'
-
-export const CloseButtonStyled = styled.span`
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:active {
-    transform: scale(0.99);
+  /* TODO This is so tricky... */
+  & button {
+    color: ${({ theme }) => theme?.colors?.invertedText};
   }
 `
-CloseButtonStyled.displayName = 'CloseButtonStyled'
+MenuHeaderContainerStyled.displayName = 'MenuHeaderContainerStyled'
 
 export const MenuOverlayListStyled = styled.ul`
   position: relative;
 
   top: 25%;
-  width: 100%;
   text-align: center;
   margin-top: 30px;
 

@@ -64,14 +64,14 @@ export const generateRecipeText = (recipe: RecipeType): string => {
   const { title, ingredients, steps, tips } = recipe
 
   const ingredientsText = generateIngredientsText(ingredients)
-  const stepsText = generatestepsText(steps)
+  const stepsText = steps.length > 0 ? generatestepsText(steps) : ''
 
   const tipsText = tips != null ? generateTipsText(tips) : ''
 
   const recipeText = `*${title.toUpperCase()}*
 ${ingredientsText}
-_Preparación_
-${stepsText}
+${steps.length > 0 ? '_Elaboración_' : ''}
+${steps.length > 0 ? stepsText : ''}
 ${tips != null ? tipsText : ''}`.trim()
 
   return recipeText

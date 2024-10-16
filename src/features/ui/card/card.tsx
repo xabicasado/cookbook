@@ -10,11 +10,12 @@ import type { CardPropsType } from './types'
 
 import { IngredientIcon } from '@/features/ui'
 
-export function Card({
-  title,
-  href,
-  ingredients, // backgroundColor, ...props
-}: CardPropsType) {
+/**
+ * Displays a summary of a recipe and its ingredients as icons
+ */
+export function Card(props: CardPropsType) {
+  const { title, href, ingredients } = props
+
   return (
     <Link href={href} passHref>
       {/* passHref Seems to improve SEO and accesibility */}
