@@ -2,6 +2,10 @@
 
 import styled, { css } from 'styled-components'
 
+import type theme from '@/themes/theme'
+
+type CustomTheme = typeof theme
+
 const defaultStyles = css`
   background-color: transparent;
   color: ${({ theme }) => theme?.colors?.primary};
@@ -17,7 +21,13 @@ const paddingStyles = css`
   padding-inline: ${({ theme }) => theme?.spacing?.l};
 `
 
-const getDisabledStyles = ({ primary, theme }) => {
+const getDisabledStyles = ({
+  primary,
+  theme,
+}: {
+  primary: boolean
+  theme: CustomTheme
+}) => {
   const baseDisabledStyles = css`
     cursor: not-allowed;
   `

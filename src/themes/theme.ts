@@ -7,6 +7,8 @@ import {
   Quicksand,
 } from 'next/font/google'
 
+import type { DefaultTheme } from 'styled-components'
+
 const quicksand = Quicksand({
   subsets: ['latin'],
   display: 'swap',
@@ -30,7 +32,7 @@ const lexend = Lexend({ subsets: ['latin'], display: 'swap' })
 //   /* ${!!value.uppercase && `text-transform: uppercase`}; */
 // }
 
-const theme = {
+const theme: DefaultTheme = {
   borderRadius: {
     none: '0px',
     s: '0.125rem',
