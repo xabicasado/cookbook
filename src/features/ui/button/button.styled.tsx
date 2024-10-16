@@ -25,7 +25,7 @@ const getDisabledStyles = ({
   primary,
   theme,
 }: {
-  primary: boolean
+  primary?: boolean
   theme: CustomTheme
 }) => {
   const baseDisabledStyles = css`
