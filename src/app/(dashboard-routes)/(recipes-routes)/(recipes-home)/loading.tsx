@@ -14,7 +14,7 @@ export default function LoadingHomePage() {
       {/* https://www.smashingmagazine.com/2020/04/skeleton-screens-react/ */}
 
       {/* <SearchBarSkeletonStyled disabled /> */}
-      <SearchBar disabled />
+      <SearchBar name="filterRecipes" disabled />
 
       <CardSectionSkeleton />
     </>
