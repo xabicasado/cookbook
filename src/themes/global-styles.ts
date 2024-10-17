@@ -153,13 +153,19 @@ const GlobalStyles = styled.createGlobalStyle`
     /* background-color: ${({ theme }) => theme?.colors?.secondary}; */
   }
   body {
+    /* Footer */
+    /*
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    */
+
     line-height: ${({ theme }) => theme?.lineHeight?.m};
   }
   h1 {
-    color: ${({ theme }) => theme?.colors?.primary};
-    font-family: ${({ theme }) => theme?.fonts?.dancingScript};
-    font-weight: ${({ theme }) => theme?.fontWeight?.bold};
     font-size: ${({ theme }) => theme?.fontSize?.h1};
+    font-weight: ${({ theme }) => theme?.fontWeight?.bold};
+    font-family: ${({ theme }) => theme?.fonts?.dancingScript};
   }
   h2 {
     font-size: ${({ theme }) => theme?.fontSize?.h2};

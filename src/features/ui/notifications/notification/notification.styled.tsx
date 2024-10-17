@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components'
 
 const closedStyles = css`
   bottom: -${({ theme }) => theme?.spacing?.xxl};
+  opacity: 0;
 `
 
 export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
   cursor: pointer;
 
-  z-index: ${({ theme }) => theme?.layers?.jupiter};
   background-color: ${({ theme }) => theme?.colors?.third};
 
   display: flex;
@@ -16,8 +16,10 @@ export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
 
   height: ${({ theme }) => theme?.spacing?.xl};
   width: 100%;
+
+  /* TODO Change to grid layout */
   padding-block: ${({ theme }) => theme?.spacing?.s};
-  padding-inline: ${({ theme }) => theme?.spacing?.l};
+  padding-inline: ${({ theme }) => theme?.spacing?.m};
 
   position: fixed;
   bottom: 0;
@@ -29,6 +31,8 @@ export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
 
   ${({ isOpen }) => !(isOpen ?? false) && closedStyles}
 
-  transition: bottom 1s ease;
+  transition:
+    bottom 1s ease,
+    opacity 1s ease;
 `
 NotificationStyled.displayName = 'NotificationStyled'

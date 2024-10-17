@@ -10,7 +10,7 @@ export function RecipesSection() {
 
   return (
     <>
-      <SearchBar onChange={handleChange} />
+      <SearchBar onChange={handleChange} name="filterRecipes" />
 
       {filteredRecipes?.length === 0 ? (
         <Link href={'/recipes/new'} passHref>

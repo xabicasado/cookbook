@@ -22,8 +22,6 @@ export const MenuStyled = styled.nav<{ isOpen?: boolean }>`
   height: 100dvh;
   width: 100%;
 
-  z-index: ${({ theme }) => theme?.layers?.saturn};
-
   position: fixed;
   top: 0;
   background-color: ${({ theme }) => theme?.colors?.fourth};
@@ -38,13 +36,14 @@ export const MenuStyled = styled.nav<{ isOpen?: boolean }>`
 MenuStyled.displayName = 'MenuStyled'
 
 export const MenuHeaderContainerStyled = styled.div`
-  min-height: 102px;
+  /* TODO Adapt to same height as header */
+  min-height: 80px;
 
   display: flex;
   justify-content: end;
 
-  padding-block: ${({ theme }) => theme?.spacing?.sm};
   padding-inline: ${({ theme }) => theme?.spacing?.m};
+  padding-bottom: ${({ theme }) => theme?.spacing?.xs};
 
   /* TODO This is so tricky... */
   & button {
