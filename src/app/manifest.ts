@@ -9,15 +9,25 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: '#ffffff',
     theme_color: '#ffffff',
     display: 'standalone',
-    orientation: 'any',
+    orientation: 'portrait',
     dir: 'auto',
     lang: 'es-ES',
     start_url: '/',
     icons: [
       {
+        src: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+      {
         src: '/favicon.ico',
+        sizes: '16x16',
         type: 'image/x-icon',
-        purpose: 'any',
       },
     ],
   }

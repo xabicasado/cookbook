@@ -6,12 +6,15 @@ export const HeaderStyled = styled.header`
   position: sticky;
   top: 0;
 
+  z-index: ${({ theme }) => theme?.layers?.mars};
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  /* TODO Change to grid layout */
   padding-inline: ${({ theme }) => theme?.spacing?.m};
-  padding-bottom: ${({ theme }) => theme?.spacing?.xs};
+  padding-bottom: ${({ theme }) => theme?.spacing?.xxs};
 
   background-color: ${({ theme }) => theme?.colors?.invertedText};
   color: ${({ theme }) => theme?.colors?.primary};
