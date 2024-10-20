@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest
+  // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
   return {
     name: 'Cookbook',
     short_name: 'Cookbook',
@@ -15,17 +16,19 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: '/',
     icons: [
       {
-        src: '/android-chrome-192x192.png',
-        sizes: '192x192',
+        src: '/icon.png',
+        sizes: '512x512',
         type: 'image/png',
+        purpose: 'maskable',
       },
       {
-        src: '/android-chrome-512x512.png',
-        sizes: '512x512',
+        src: '/apple-icon.png',
+        sizes: '180x180',
         type: 'image/png',
       },
       {
         src: '/favicon.ico',
+        sizes: 'any',
         type: 'image/x-icon',
         purpose: 'any',
       },
