@@ -40,7 +40,7 @@ export const useCurrentWeek = () => {
       [...Array(7).keys()].map((i) =>
         getDay(new Date(currentWeekStart + i * MILLISECONDS_PER_DAY))
       ),
-    [currentWeekStart]
+    [currentWeekStart, getDay]
   )
 
   return {
