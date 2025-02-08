@@ -10,13 +10,8 @@ import type { HeaderProps } from './types'
 import { Button, Menu } from '@/features/ui'
 import type { MenuPropsType } from '@/features/ui/types'
 
-export function Header(props: HeaderProps) {
-  const { title } = props
+export function Header({ title }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
-
-  const handleOnClick = () => {
-    setIsOpen(true)
-  }
 
   const menuProps: MenuPropsType = {
     isOpen,
@@ -24,11 +19,13 @@ export function Header(props: HeaderProps) {
     menuItems: MENU_ITEMS,
   }
 
+  const handleOnClick = () => setIsOpen(true)
+
   return (
     <HeaderStyled>
       <HeaderTitleStyled>
         <Link href={'/'} passHref>
-          <h1>{title}</h1>
+          <h1>{title ?? 'Cookbook'}</h1>
         </Link>
       </HeaderTitleStyled>
 

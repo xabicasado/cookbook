@@ -1,24 +1,54 @@
 'use client'
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-// export const EditInputStyled = styled.input<{ type?: string }>`
-export const EditInputStyled = styled.input.attrs(() => ({
-  type: 'text',
-}))`
-  /* width: 100%; */
+const defaultStyles = css`
+  border: ${({ theme }) => theme?.spacing?.xxs} solid
+    ${({ theme }) => theme?.colors?.text};
+
+  &:focus {
+    border-color: ${({ theme }) => theme?.colors?.primary};
+    box-shadow: ${({ theme }) => theme?.boxShadows?.level1}
+      ${({ theme }) => theme?.colors?.primary};
+  }
+`
+
+const invertedStyles = css`
+  border: ${({ theme }) => theme?.spacing?.xxs} solid
+    ${({ theme }) => theme?.colors?.invertedText};
+  background-color: transparent;
+  color: ${({ theme }) => theme?.colors?.invertedText};
+
+  &::placeholder {
+    color: ${({ theme }) => theme?.colors?.invertedText};
+    /* font-weight: ${({ theme }) => theme?.fontWeight?.bold}; */
+    opacity: 1;
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme?.colors?.invertedText};
+    box-shadow: ${({ theme }) => theme?.boxShadows?.level2}
+      ${({ theme }) => theme?.colors?.invertedText};
+  }
+`
+
+export const EditInputStyled = styled.input<{
+  type?: string
+  inverted?: boolean
+}>`
+  width: 100%;
 
   padding-block: ${({ theme }) => theme?.spacing?.sm};
   padding-inline: ${({ theme }) => theme?.spacing?.l};
-  /* padding-inline: ${({ theme }) => theme?.spacing?.m}; */
 
-  border: ${({ theme }) => theme?.spacing?.xxs} solid
-    ${({ theme }) => theme?.colors?.text};
   border-radius: ${({ theme }) => theme?.borderRadius?.full};
 
   font-family: ${({ theme }) => theme?.fonts?.quicksand};
   font-size: ${({ theme }) => theme?.fontSize?.l};
   font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+
+  ${defaultStyles}
+  ${({ inverted }) => (inverted ?? false) && invertedStyles}
 
   transition:
     border-color 0.3s ease,
@@ -26,9 +56,6 @@ export const EditInputStyled = styled.input.attrs(() => ({
 
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme?.colors?.primary};
-    box-shadow: ${({ theme }) => theme?.boxShadows?.level1}
-      ${({ theme }) => theme?.colors?.primary};
   }
 `
 EditInputStyled.displayName = 'EditInputStyled'
@@ -42,7 +69,7 @@ LabelStyled.displayName = 'displayName'
 
 export const SubTextStyled = styled.span`
   display: block;
-  padding-inline: 24px;
+  padding-inline: ${({ theme }) => theme?.fontSize?.m};
   font-size: ${({ theme }) => theme?.fontSize?.s};
   font-weight: ${({ theme }) => theme?.fontWeight?.medium};
   color: ${({ theme }) => theme?.colors?.textC};
@@ -54,3 +81,17 @@ export const SubTextStyled = styled.span`
   } */
 `
 SubTextStyled.displayName = 'SubTextStyled'
+
+export const PasswordSectionStyled = styled.span`
+  position: relative;
+`
+PasswordSectionStyled.displayName = 'PasswordSectionStyled'
+
+export const PasswordButtonStyled = styled.span`
+  z-index: ${({ theme }) => theme?.layers?.mars};
+
+  position: absolute;
+  top: ${({ theme }) => theme?.spacing?.m};
+  right: ${({ theme }) => theme?.spacing?.l};
+`
+PasswordButtonStyled.displayName = 'PasswordButtonStyled'

@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@commitlint/types':
-        specifier: ^19.5.0
-        version: 19.5.0
       '@supabase/ssr':
         specifier: ^0.0.10
         version: 0.0.10(@supabase/supabase-js@2.43.2)
@@ -34,6 +31,9 @@ importers:
         specifier: ^19.5.0
         version: 19.5.0(@types/node@20.12.12)(typescript@5.4.5)
       '@commitlint/config-conventional':
+        specifier: ^19.5.0
+        version: 19.5.0
+      '@commitlint/types':
         specifier: ^19.5.0
         version: 19.5.0
       '@storybook/addon-essentials':

@@ -1,6 +1,4 @@
-import { type ChangeEvent } from 'react'
-
-import type { RecipeCardType } from '../types'
+import type { IngredientType, RecipeCardType } from '../types'
 
 export type RecipesProviderPropsType = {
   children: React.ReactNode
@@ -8,7 +6,8 @@ export type RecipesProviderPropsType = {
 }
 
 export type RecipesContextType = {
-  // TODO setFilteredRecipes
   filteredRecipes: RecipeCardType[]
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void
+  searchRecipesByName: (searchInput: string) => void
+  searchRecipesByIngredients: (ingredientsList: IngredientType[]) => void
+  resetSearch: () => void
 }

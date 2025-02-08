@@ -1,34 +1,40 @@
 import Link from 'next/link'
 
-import { INGREDIENTS_ICONS_LIMIT } from './card.constants'
 import {
   CardStyled,
-  IngredientsContainerStyled,
+  DetailsStyled,
+  SubtitleStyled,
   TitleStyled,
 } from './card.styled'
 import type { CardPropsType } from './types'
 
-import { IngredientIcon } from '@/features/ui'
-
 /**
  * Displays a summary of a recipe and its ingredients as icons
  */
-export function Card(props: CardPropsType) {
-  const { title, href, ingredients } = props
+export function Card({
+  title,
+  href,
+  details,
+  children,
+  subtitle,
+  justify = 'center',
+}: CardPropsType) {
+  const card = (
+    <CardStyled justify={justify}>
+      {title !== undefined && <TitleStyled>{title}</TitleStyled>}
+      {children}
+      {subtitle !== undefined && <SubtitleStyled>{subtitle}</SubtitleStyled>}
 
-  return (
+      {details !== undefined && <DetailsStyled>{details}</DetailsStyled>}
+    </CardStyled>
+  )
+
+  return href !== undefined ? (
     <Link href={href} passHref>
       {/* passHref Seems to improve SEO and accesibility */}
-      <CardStyled>
-        <TitleStyled>{title}</TitleStyled>
-        <IngredientsContainerStyled>
-          {ingredients
-            .slice(0, INGREDIENTS_ICONS_LIMIT)
-            .map((ingredient, position) => (
-              <IngredientIcon key={position} ingredient={ingredient} />
-            ))}
-        </IngredientsContainerStyled>
-      </CardStyled>
+      {card}
     </Link>
+  ) : (
+    card
   )
 }

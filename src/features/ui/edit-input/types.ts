@@ -7,6 +7,7 @@ export type EditInputProps = {
   content?: string
   placeholder?: string
   required?: boolean
+  inverted?: boolean
   type?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }

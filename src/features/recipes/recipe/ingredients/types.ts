@@ -1,7 +1,7 @@
 import type { IngredientType } from '../types'
 
 export type IngredientsProps = {
-  title?: string
-  servings?: number
+  servings: number
+  currentServings: number
   ingredients: IngredientType[]
 }

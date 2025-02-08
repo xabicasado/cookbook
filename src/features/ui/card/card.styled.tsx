@@ -2,7 +2,11 @@
 
 import styled from 'styled-components'
 
-export const CardStyled = styled.article`
+export const CardStyled = styled.article<{
+  justify: string
+}>`
+  cursor: pointer;
+
   /* TODO vertical layout with img */
   /* https://www.youtube.com/watch?v=cf-J4ffMBfo */
 
@@ -12,7 +16,11 @@ export const CardStyled = styled.article`
   padding-block: ${({ theme }) => theme?.spacing?.m};
   padding-inline: ${({ theme }) => theme?.spacing?.l};
 
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  ${({ justify }) => justify === 'center' && `align-items: center;`}
+  ${({ justify }) => justify !== undefined && `justify-content: ${justify};`}
+
   border-radius: ${({ theme }) => theme?.borderRadius?.l};
 
   background-color: ${({ theme }) => theme?.colors?.primary};
@@ -62,6 +70,7 @@ CardStyled.displayName = 'CardStyled'
 
 export const TitleStyled = styled.h3`
   color: ${({ theme }) => theme?.colors?.invertedText};
+
   /* Improved accesibility: fontWeight from semiBold to bold */
   font-weight: ${({ theme }) => theme?.fontWeight?.bold};
 
@@ -74,19 +83,29 @@ export const TitleStyled = styled.h3`
 `
 TitleStyled.displayName = 'TitleStyled'
 
-export const IngredientsContainerStyled = styled.div`
-  /* TODO Delete after testing */
-  /* background-color: salmon;
-  border-radius: ${({ theme }) => theme?.borderRadius?.full}; */
+export const SubtitleStyled = styled.span`
+  color: ${({ theme }) => theme?.colors?.invertedText};
+  font-size: ${({ theme }) => theme?.fontSize?.m};
+  font-weight: ${({ theme }) => theme?.fontWeight?.bold};
 
-  padding-block: ${({ theme }) => theme?.spacing?.s};
-
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-  column-gap: ${({ theme }) => theme?.spacing?.xs};
-  row-gap: ${({ theme }) => theme?.spacing?.xs};
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `
-IngredientsContainerStyled.displayName = 'IngredientsContainerStyled'
+SubtitleStyled.displayName = 'SubtitleStyled'
+
+export const DetailsStyled = styled.span`
+  color: ${({ theme }) => theme?.colors?.invertedText};
+  font-size: ${({ theme }) => theme?.fontSize?.s};
+  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+
+  /* TODO Review to make all items of same height */
+  min-height: ${({ theme }) => theme?.spacing?.l};
+
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`
+DetailsStyled.displayName = 'DetailsStyled'

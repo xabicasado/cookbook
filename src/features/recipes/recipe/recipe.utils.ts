@@ -1,15 +1,32 @@
+import { DEFAULT_SERVINGS } from './recipe.constants'
+
 import {
   type IngredientType,
   type RecipeType,
   type StepType,
   type TipType,
 } from '@/features/recipes/types'
+import { decimalToFraction } from '@/utils/commons'
 
-// TODO Get current ingredients quantity
-const generateIngredientsText = (ingredients: IngredientType[]) => {
+export const displayQuantity = (
+  quantity: number,
+  currentServings: number,
+  servings: number
+): string =>
+  decimalToFraction(
+    Math.round(((quantity * currentServings) / servings) * 100) / 100
+  )
+
+const generateIngredientsText = (
+  ingredients: IngredientType[],
+  currentServings: number,
+  servings: number
+) => {
   const ingredientsText = ingredients.map((ingredient) =>
     `${ingredient?.emoji ?? ''}${ingredient?.emoji !== '' ? ' ' : ''}${
-      ingredient?.quantity ?? ''
+      ingredient?.quantity != null
+        ? displayQuantity(+ingredient?.quantity, currentServings, servings)
+        : ''
     }${ingredient?.quantity != null ? ' ' : ''}${
       ingredient?.measurement ?? ''
     }${ingredient?.measurement != null ? ' ' : ''}${ingredient?.name}${
@@ -60,10 +77,17 @@ const generateTipsText = (tips: TipType[]) => {
   return tipsText.join('')
 }
 
-export const generateRecipeText = (recipe: RecipeType): string => {
+export const generateRecipeText = (
+  recipe: RecipeType,
+  currentServings: number
+): string => {
   const { title, ingredients, steps, tips } = recipe
 
-  const ingredientsText = generateIngredientsText(ingredients)
+  const ingredientsText = generateIngredientsText(
+    ingredients,
+    currentServings,
+    recipe.servings ?? DEFAULT_SERVINGS
+  )
   const stepsText = steps.length > 0 ? generatestepsText(steps) : ''
 
   const tipsText = tips != null ? generateTipsText(tips) : ''
@@ -83,5 +107,14 @@ export const compareByTitle = (
 ): number => {
   if (recipeA.title < recipeB.title) return -1
   if (recipeA.title > recipeB.title) return 1
+  return 0
+}
+
+export const compareByName = (
+  ingredientA: IngredientType,
+  ingredientB: IngredientType
+): number => {
+  if (ingredientA.name < ingredientB.name) return -1
+  if (ingredientA.name > ingredientB.name) return 1
   return 0
 }

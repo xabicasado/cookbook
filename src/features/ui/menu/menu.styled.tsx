@@ -22,6 +22,8 @@ export const MenuStyled = styled.nav<{ isOpen?: boolean }>`
   height: 100dvh;
   width: 100%;
 
+  /* z-index: ${({ theme }) => theme?.layers?.jupiter}; */
+
   position: fixed;
   top: 0;
   background-color: ${({ theme }) => theme?.colors?.fourth};
@@ -79,6 +81,7 @@ export const MenuOverlayListStyled = styled.ul`
 MenuOverlayListStyled.displayName = 'MenuOverlayListStyled'
 
 export const MenuLinkStyled = styled.li<{ isActive?: boolean }>`
+  cursor: pointer;
   /* pointer-events: ${(props) => (props.isActive ? 'none' : 'auto')}; */
   ${({ isActive }) => (isActive ?? false) && disabledLinkStyles}
 

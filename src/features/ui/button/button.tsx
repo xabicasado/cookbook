@@ -14,6 +14,7 @@ export function Button(props: ButtonPropsType) {
     size = 'medium',
     type = 'button',
     justify = 'center',
+    inverted = false,
     ...restProps
   } = props
 
@@ -21,6 +22,7 @@ export function Button(props: ButtonPropsType) {
     <ButtonStyled
       type={type}
       primary={!!primary}
+      inverted={!!inverted}
       label={label}
       size={size}
       justify={justify}

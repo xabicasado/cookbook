@@ -6,6 +6,7 @@ export const HeaderStyled = styled.header`
   position: sticky;
   top: 0;
 
+  /* z-index: ${({ theme }) => theme?.layers?.saturn}; */
   z-index: ${({ theme }) => theme?.layers?.mars};
 
   display: flex;
@@ -24,6 +25,8 @@ export const HeaderStyled = styled.header`
 HeaderStyled.displayName = 'HeaderStyled'
 
 export const HeaderTitleStyled = styled.span`
+  display: flex;
+
   &:active {
     transform: scale(0.99);
   }

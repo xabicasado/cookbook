@@ -7,9 +7,13 @@
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
     "^(react|next)($|/)",
+    "<THIRD_PARTY_MODULES>",
     "^[^@]",
-    "^@/(app|components|constants|features|lib|mocks|themes|utils)($|/)",
+    "^@(?!/)",
+    "^@/(app|components|constants|features|hooks|lib|mocks|themes|utils)($|/)",
+    "^@/features/ui/(.*)$",
     "^[./]",
+    "^./(.*)$",
     ".+\\.styled\\.tsx$"
   ],
   "importOrderSeparation": true,

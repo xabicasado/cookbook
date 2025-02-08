@@ -21,6 +21,11 @@ const paddingStyles = css`
   padding-inline: ${({ theme }) => theme?.spacing?.l};
 `
 
+const invertedStyles = css`
+  background-color: ${({ theme }) => theme?.colors?.invertedText};
+  color: ${({ theme }) => theme?.colors?.primary};
+`
+
 const getDisabledStyles = ({
   primary,
   theme,
@@ -50,30 +55,13 @@ const sizes = {
   small: css`
     height: ${({ theme }) => theme?.spacing?.xxl};
     width: ${({ theme }) => theme?.spacing?.xxl};
-
-    /* padding: 0 ${({ theme }) => theme?.spacing?.xs}; */
-
-    /* & > * {
-      font-size: 1.2rem;
-    } */
   `,
-
-  // medium: css`
-  //   padding: 0 ${({ theme }) => theme?.spacing?.xs};
-  // `,
-
-  // large: css`
-  //   padding: 0 ${({ theme }) => theme?.spacing?.xs};
-  // `,
-
-  // giant: css`
-  //   padding: 0 ${({ theme }) => theme?.spacing?.xs};
-  // `,
 }
 
 export const ButtonStyled = styled.button<{
   disabled?: boolean
   fullWidth?: boolean
+  inverted?: boolean
   label?: string
   primary?: boolean
   size: string
@@ -96,6 +84,7 @@ export const ButtonStyled = styled.button<{
 
   ${defaultStyles}
   ${({ primary }) => (primary ?? false) && primaryStyles}
+  ${({ inverted }) => (inverted ?? false) && invertedStyles}
   ${({ disabled, primary, theme }) =>
     disabled && getDisabledStyles({ primary, theme })}
 
@@ -103,13 +92,6 @@ export const ButtonStyled = styled.button<{
 
   ${({ size }) => sizes[size as keyof typeof sizes]}
   
-  /* TODO focus styles */
-  /* https://css-tricks.com/overriding-default-button-styles/ */
-  /* &:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
-  } */
-
   &:hover {
     transform: scale(1.01);
   }

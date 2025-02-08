@@ -1,10 +1,7 @@
+import { HeaderSectionStyled, RecipeStyled } from './recipe.styled'
 import styled, { css } from 'styled-components'
 
-import {
-  ButtonSectionStyled,
-  HeaderSectionStyled,
-  RecipeStyled,
-} from '@/features/recipes/recipe/recipe.styled'
+import { ButtonSectionStyled } from '@/features/layout/button-section/button-section.styled'
 
 const defaultSkeletonStyles = css`
   background-color: ${({ theme }) => theme?.colors?.secondary};

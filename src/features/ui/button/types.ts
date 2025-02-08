@@ -25,6 +25,10 @@ export type ButtonPropsType = {
    * Optional click handler
    */
   onClick?: () => void
+  /**
+   * Has the button style invert the colors?
+   */
+  inverted?: boolean
   type?: 'button' | 'submit'
   justify?: 'start' | 'center' | 'end'
 }

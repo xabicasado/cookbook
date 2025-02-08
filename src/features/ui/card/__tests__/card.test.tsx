@@ -1,13 +1,11 @@
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime'
+
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime'
-
-// import { INGREDIENTS_ICONS_LIMIT } from '../card.constants'
 import { Card } from '@/features/ui'
 import recipesMock from '@/mocks/recipes.mock'
 
-// describe('A <Card /> component contents a resume with the title and the list of ingredients of a recipe', () => {
 describe('<Card />', () => {
   const recipeMock = recipesMock[0]
 

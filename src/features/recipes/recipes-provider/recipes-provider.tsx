@@ -1,56 +1,67 @@
 'use client'
 
-import { type ChangeEvent, createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 
-import { useNewRecipeDraftContext } from '../new-recipe-draft-provider'
 import type {
+  IngredientType,
   RecipeCardType,
   RecipesContextType,
   RecipesProviderPropsType,
 } from '../types'
 
-import {
-  anonymousFunction,
-  cleanSearchString,
-  setTitleFormat,
-} from '@/utils/commons'
+import { anonymousFunction, cleanSearchString } from '@/utils/commons'
 
 const RecipesContext = createContext<RecipesContextType>({
   filteredRecipes: [],
-  handleChange: anonymousFunction,
+  searchRecipesByName: anonymousFunction,
+  searchRecipesByIngredients: anonymousFunction,
+  resetSearch: anonymousFunction,
 })
 
 export const RecipesProvider = (props: RecipesProviderPropsType) => {
+  // TODO Add ingredients from database
   const { recipes, children } = props
-  const { newRecipeDrafts, setNewRecipeDrafts } = useNewRecipeDraftContext()
 
   const [filteredRecipes, setFilteredRecipes] =
     useState<RecipeCardType[]>(recipes)
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchInput = event.target.value
-
+  const searchRecipesByName = (searchInput: string) => {
     if (searchInput === '') setFilteredRecipes(recipes ?? [])
 
-    if (recipes !== undefined) {
-      const inputWords = cleanSearchString(searchInput).split(' ')
+    const inputWords = cleanSearchString(searchInput).split(' ')
 
-      const newRecipeTitle = setTitleFormat(searchInput)
-      setNewRecipeDrafts({ ...newRecipeDrafts, title: newRecipeTitle })
-
-      setFilteredRecipes(
-        recipes?.filter((r) =>
-          inputWords.every((word) => cleanSearchString(r.title).includes(word))
-        )
+    setFilteredRecipes(
+      recipes?.filter((r) =>
+        inputWords.every((word) => cleanSearchString(r.title).includes(word))
       )
-    }
+    )
+  }
+
+  const searchRecipesByIngredients = (ingredientsList: IngredientType[]) => {
+    if (ingredientsList?.length === 0) setFilteredRecipes(recipes ?? [])
+
+    setFilteredRecipes(
+      recipes.filter((recipe) => {
+        return ingredientsList.every((ingredient) =>
+          recipe.ingredients.some(
+            (recipeIngredient) => recipeIngredient.name === ingredient.name
+          )
+        )
+      })
+    )
+  }
+
+  const resetSearch = () => {
+    setFilteredRecipes(recipes)
   }
 
   return (
     <RecipesContext.Provider
       value={{
         filteredRecipes,
-        handleChange,
+        searchRecipesByName,
+        searchRecipesByIngredients,
+        resetSearch,
       }}
     >
       {children}

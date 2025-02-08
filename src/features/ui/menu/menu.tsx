@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import {
   MenuHeaderContainerStyled,
@@ -12,6 +12,7 @@ import {
 } from './menu.styled'
 import type { MenuItemType, MenuPropsType } from './types'
 
+import { signOut } from '@/app/(login-routes)/login/actions'
 import { Button } from '@/features/ui'
 
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay
@@ -20,13 +21,11 @@ export function Menu(props: MenuPropsType) {
 
   const pathname = usePathname()
 
-  const handleClose = () => {
-    setIsOpen(false)
-  }
+  const handleClose = useCallback(() => setIsOpen(false), [setIsOpen])
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [pathname, setIsOpen])
+  const handleSignOut = async () => await signOut()
+
+  useEffect(handleClose, [pathname, handleClose])
 
   return (
     <MenuStyled {...restProps}>
@@ -41,6 +40,7 @@ export function Menu(props: MenuPropsType) {
               <Link href={menuItem?.href}>{menuItem?.title}</Link>
             </MenuLinkStyled>
           ))}
+        <MenuLinkStyled onClick={handleSignOut}>Cerrar sesión</MenuLinkStyled>
       </MenuOverlayListStyled>
     </MenuStyled>
   )
