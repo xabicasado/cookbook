@@ -33,7 +33,7 @@ export const TitleSkeletonStyled = styled(TitleStyled)`
   ${defaultSkeletonStyles}
   min-height: calc(${({ theme }) => theme?.fontSize?.h3} * ${({ theme }) =>
     theme?.lineHeight?.m});
-
+  width: 100%;
   ${animationStyles}
 `
 TitleSkeletonStyled.displayName = 'TitleSkeletonStyled'
