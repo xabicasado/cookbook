@@ -1,26 +1,43 @@
 import { INGREDIENT_STATUS } from './ingredient-icon.constants'
 import {
+  IngredientEmojiStyled,
   IngredientIconStyled,
   IngredientNameStyled,
 } from './ingredient-icon.styled'
 import type { IngredientIconProps } from './types'
 
-export function IngredientIcon(props: IngredientIconProps) {
-  const {
-    ingredient,
-    status = INGREDIENT_STATUS.DEFAULT,
-    hasVisibleName,
-  } = props
+import { Icon } from '@/features/ui'
+
+export function IngredientIcon({
+  ingredient,
+  status = INGREDIENT_STATUS.DEFAULT,
+  hasVisibleName = false,
+  isClosable = false,
+}: IngredientIconProps) {
   return (
     <IngredientIconStyled
       role="img"
       aria-label={`Ingrediente ${ingredient.name}`}
-      status={status}
-      hasVisibleName={!!hasVisibleName}
+      hasVisibleName={hasVisibleName}
+      isClosable={isClosable}
     >
-      {ingredient.emoji}{' '}
+      <IngredientEmojiStyled
+        // TODO Delete after tests
+        // status={
+        //   ['default', 'available', 'needToGo', 'lacking'][
+        //     Math.floor(Math.random() * 4)
+        //   ]
+        // }
+        status={status}
+      >
+        {ingredient.emoji}{' '}
+      </IngredientEmojiStyled>
       {!!hasVisibleName && (
-        <IngredientNameStyled>{ingredient.name}</IngredientNameStyled>
+        <>
+          <IngredientNameStyled>{ingredient.name}</IngredientNameStyled>
+
+          {!!isClosable && <Icon name="close" />}
+        </>
       )}
     </IngredientIconStyled>
   )

@@ -14,7 +14,6 @@ export function SearchBar(props: SearchBarProps) {
         onChange={onChange}
         {...restProps}
       />
-      {/* <IngredientsContainerStyled></IngredientsContainerStyled> */}
     </>
   )
 }

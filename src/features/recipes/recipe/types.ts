@@ -6,6 +6,7 @@ export type IngredientType = {
   alternative?: string
   details?: string
   recommendation?: string
+  isCommon?: boolean
 }
 
 export type StepType = {
@@ -14,9 +15,6 @@ export type StepType = {
 }
 
 export type TipType = string
-// export type IngredientsType = IngredientType[]
-// export type StepsType = StepType[]
-// export type TipsType = TipType[]
 
 export type RecipeType = {
   id: string

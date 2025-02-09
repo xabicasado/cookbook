@@ -5,7 +5,6 @@ export const SearchBarStyled = styled.input.attrs(() => ({
   type: 'search',
 }))`
   /* width: 100%; */
-  /* display: inline-block; */
 
   border: ${({ theme }) => theme?.spacing?.xxs} solid
     ${({ theme }) => theme?.colors?.text};
@@ -25,7 +24,7 @@ export const SearchBarStyled = styled.input.attrs(() => ({
 
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   &:focus {
     outline: none;
@@ -43,6 +42,12 @@ export const SearchBarStyled = styled.input.attrs(() => ({
     /* text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; */
+  }
+
+  &::-webkit-search-cancel-button {
+    cursor: pointer;
+    /* color: ${({ theme }) => theme?.colors?.primary}; */
+    /* -webkit-appearance: none; */
   }
 
   /* &::-ms-input-placeholder {

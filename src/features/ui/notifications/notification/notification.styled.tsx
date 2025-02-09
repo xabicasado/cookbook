@@ -8,13 +8,15 @@ const closedStyles = css`
 export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
   cursor: pointer;
 
+  /* z-index: ${({ theme }) => theme?.layers?.mars}; */
+
+  /* TODO Add variants with different leftIcon and different background-color */
   background-color: ${({ theme }) => theme?.colors?.third};
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  height: ${({ theme }) => theme?.spacing?.xl};
   width: 100%;
 
   /* TODO Change to grid layout */
@@ -23,7 +25,6 @@ export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
 
   position: fixed;
   bottom: 0;
-  left: 0;
 
   color: ${({ theme }) => theme?.colors?.invertedText};
   font-weight: ${({ theme }) => theme?.fontWeight?.semiBold};
@@ -34,5 +35,18 @@ export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
   transition:
     bottom 1s ease,
     opacity 1s ease;
+
+  span {
+    display: flex;
+    align-items: center;
+    column-gap: ${({ theme }) => theme?.spacing?.xxs};
+  }
 `
 NotificationStyled.displayName = 'NotificationStyled'
+
+export const DescriptionStyled = styled.span`
+  display: flex;
+  align-items: center;
+  column-gap: ${({ theme }) => theme?.spacing?.xxs};
+`
+DescriptionStyled.displayName = 'DescriptionStyled'

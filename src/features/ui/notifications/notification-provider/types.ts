@@ -7,5 +7,8 @@ export type NotificationProviderPropsType = {
 
 export type NotificationContextType = {
   // notification: NotificationProps
-  showNotification: (description: string) => void
+  showNotification: (
+    description: string,
+    type?: 'success' | 'warning' | 'error' | undefined
+  ) => void
 }

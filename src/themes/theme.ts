@@ -169,6 +169,7 @@ const theme: DefaultTheme = {
   },
 
   fontSize: {
+    main: '5rem',
     h1: '3.5rem',
     h2: '1.5rem',
     // TODO Fluid typography on html
@@ -180,6 +181,8 @@ const theme: DefaultTheme = {
     l: '1.1rem',
     m: '1rem',
     s: '0.9rem',
+
+    d: '0.5rem',
   },
 
   fontWeight: {

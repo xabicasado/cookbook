@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import {
   MenuHeaderContainerStyled,
@@ -20,13 +20,9 @@ export function Menu(props: MenuPropsType) {
 
   const pathname = usePathname()
 
-  const handleClose = () => {
-    setIsOpen(false)
-  }
+  const handleClose = useCallback(() => setIsOpen(false), [setIsOpen])
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [pathname, setIsOpen])
+  useEffect(handleClose, [pathname, handleClose])
 
   return (
     <MenuStyled {...restProps}>

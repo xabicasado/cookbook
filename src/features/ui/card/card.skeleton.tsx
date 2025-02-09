@@ -8,7 +8,8 @@ import {
 
 export function CardSkeleton() {
   return (
-    <SkeletonStyled>
+    // TODO solve justify
+    <SkeletonStyled justify="center">
       <TitleSkeletonStyled />
       <IngredientsContainerSkeletonStyled />
     </SkeletonStyled>

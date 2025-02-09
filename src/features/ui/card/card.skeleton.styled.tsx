@@ -1,10 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import {
-  CardStyled,
-  IngredientsContainerStyled,
-  TitleStyled,
-} from '@/features/ui/card/card.styled'
+import { CardStyled, TitleStyled } from '@/features/ui/card/card.styled'
 
 const defaultSkeletonStyles = css`
   border-radius: ${({ theme }) => theme?.borderRadius?.full};
@@ -26,7 +22,7 @@ const animationStyles = css`
 
 // https://css-tricks.com/building-skeleton-screens-css-custom-properties/
 export const SkeletonStyled = styled(CardStyled)`
-  // TODO Solve z-index top problem on animation
+  /* TODO Solve z-index top problem on animation */
   z-index: ${({ theme }) => theme?.layers?.venus};
 
   ${animationStyles}
@@ -37,14 +33,12 @@ export const TitleSkeletonStyled = styled(TitleStyled)`
   ${defaultSkeletonStyles}
   min-height: calc(${({ theme }) => theme?.fontSize?.h3} * ${({ theme }) =>
     theme?.lineHeight?.m});
-
+  width: 100%;
   ${animationStyles}
 `
 TitleSkeletonStyled.displayName = 'TitleSkeletonStyled'
 
-export const IngredientsContainerSkeletonStyled = styled(
-  IngredientsContainerStyled
-)`
+export const IngredientsContainerSkeletonStyled = styled.div`
   ${defaultSkeletonStyles}
   min-height: ${({ theme }) => theme?.spacing?.l};
   margin-block: ${({ theme }) => theme?.spacing?.s};

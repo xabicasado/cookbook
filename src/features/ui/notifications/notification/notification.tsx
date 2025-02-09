@@ -2,14 +2,17 @@
 
 import { useEffect, useState } from 'react'
 
-import { NOTIFICATION_DURATION } from './notification.constants'
-import { NotificationStyled } from './notification.styled'
+import {
+  NOTIFICATION_DURATION,
+  NOTIFICATION_ICON,
+} from './notification.constants'
+import { DescriptionStyled, NotificationStyled } from './notification.styled'
 import type { NotificationProps } from './types'
 
 import { Icon } from '@/features/ui'
 
 export function Notification(props: NotificationProps) {
-  const { description, isOpen, setIsOpen } = props
+  const { description, isOpen, setIsOpen, type } = props
 
   const [timer, setTimer] = useState<number | undefined>(undefined)
 
@@ -34,11 +37,14 @@ export function Notification(props: NotificationProps) {
     return () => {
       clearTimeout(unmountTimeout)
     }
-  }, [timer])
+  }, [timer, setIsOpen])
 
   return (
     <NotificationStyled {...props} onClick={toggleClose}>
-      <span>{description}</span>
+      <DescriptionStyled>
+        {type && <Icon name={NOTIFICATION_ICON[type]} />}
+        {description}
+      </DescriptionStyled>
 
       <Icon name="close" />
     </NotificationStyled>

@@ -19,13 +19,21 @@ export const NotificationProvider = (props: NotificationProviderPropsType) => {
   const { children } = props
 
   const [description, setDescription] = useState<string>('')
+  const [type, setType] = useState<'success' | 'warning' | 'error' | undefined>(
+    undefined
+  )
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
-  const showNotification = (description: string) => {
+  // TODO Check rendering
+  const showNotification = (
+    description: string,
+    type?: 'success' | 'warning' | 'error' | undefined
+  ) => {
     // TODO check setIsOpen(false)
 
     setDescription(description)
     setIsOpen(true)
+    setType(type)
   }
 
   return (
@@ -39,6 +47,7 @@ export const NotificationProvider = (props: NotificationProviderPropsType) => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         description={description}
+        type={type ?? undefined}
       />
       {children}
     </NotificationContext.Provider>

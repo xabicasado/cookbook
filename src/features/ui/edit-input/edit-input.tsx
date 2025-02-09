@@ -1,9 +1,17 @@
+'use client'
+
+import { useState } from 'react'
+
 import {
   EditInputStyled,
   LabelStyled,
+  PasswordButtonStyled,
+  PasswordSectionStyled,
   SubTextStyled,
 } from './edit-input.styled'
 import { type EditInputProps } from './types'
+
+import { Button } from '@/features/ui'
 
 export function EditInput(props: EditInputProps) {
   const {
@@ -15,12 +23,19 @@ export function EditInput(props: EditInputProps) {
     onChange,
     required = false,
     type = 'text',
+    inverted = false,
   } = props
 
-  // TODO show password
-  // const [isShowingPassword, setIsShowingPassword] = useState<boolean>(false)
+  const [currentType, setCurrentType] = useState<string>(type)
 
-  return (
+  const isPasswordInput: boolean = type === 'password'
+
+  const togglePasswordVisibility = () => {
+    if (currentType === 'password') setCurrentType('text')
+    else setCurrentType('password')
+  }
+
+  const editInput = (
     <>
       {label != null && <LabelStyled htmlFor={name}>{label}</LabelStyled>}
 
@@ -32,11 +47,28 @@ export function EditInput(props: EditInputProps) {
         value={content}
         placeholder={placeholder}
         required={!!required}
-        type={type}
+        inverted={!!inverted}
+        type={currentType}
       />
 
       {/* TODO Delete gap */}
       {subText != null && <SubTextStyled>{subText}</SubTextStyled>}
+      {isPasswordInput && (
+        <PasswordButtonStyled>
+          <Button
+            primary
+            beforeIcon={
+              currentType === 'password' ? 'visibility_off' : 'visibility'
+            }
+            onClick={togglePasswordVisibility}
+          />
+        </PasswordButtonStyled>
+      )}
     </>
   )
+
+  if (isPasswordInput)
+    return <PasswordSectionStyled>{editInput}</PasswordSectionStyled>
+
+  return editInput
 }

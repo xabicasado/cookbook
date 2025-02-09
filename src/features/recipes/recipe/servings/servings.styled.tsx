@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const ServingsSectionStyled = styled.section`
+export const ServingsStyled = styled.section`
   display: flex;
   align-items: center;
 `
-ServingsSectionStyled.displayName = 'ServingsSectionStyled'
+ServingsStyled.displayName = 'ServingsStyled'
 
 export const ServingsDisplayStyled = styled.span`
   display: flex;
