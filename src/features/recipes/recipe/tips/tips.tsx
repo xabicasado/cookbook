@@ -5,7 +5,7 @@ import { ListSection, PageSection } from '@/features/layout'
 export function Tips({ tips }: TipsProps) {
   return (
     <PageSection>
-      <ListSection>
+      <ListSection size="large">
         {tips.map((tip, index) => (
           <li key={index}>💡 {tip}</li>
         ))}

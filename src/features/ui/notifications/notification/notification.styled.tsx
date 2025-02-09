@@ -8,7 +8,7 @@ const closedStyles = css`
 export const NotificationStyled = styled.section<{ isOpen?: boolean }>`
   cursor: pointer;
 
-  /* z-index: ${({ theme }) => theme?.layers?.mars}; */
+  z-index: ${({ theme }) => theme?.layers?.mars};
 
   /* TODO Add variants with different leftIcon and different background-color */
   background-color: ${({ theme }) => theme?.colors?.third};

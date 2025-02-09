@@ -16,7 +16,7 @@ import { Tips } from './tips'
 
 import { ButtonSection } from '@/features/layout'
 import type { RecipeType } from '@/features/recipes/types'
-import { Button, useNotificationContext } from '@/features/ui'
+import { Button, ScrollWatcher, useNotificationContext } from '@/features/ui'
 
 export function Recipe(props: RecipeType) {
   const { showNotification } = useNotificationContext()
@@ -92,6 +92,7 @@ export function Recipe(props: RecipeType) {
           </RecipeColumnStyled>
         )}
       </RecipeStyled>
+      <ScrollWatcher />
     </>
   )
 }

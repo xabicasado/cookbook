@@ -1,7 +1,7 @@
 import { displayQuantity } from '../recipe.utils'
 import type { IngredientsProps } from './types'
 
-import { PageSection } from '@/features/layout'
+import { ListSection, PageSection } from '@/features/layout'
 
 export function Ingredients({
   servings,
@@ -10,11 +10,9 @@ export function Ingredients({
 }: IngredientsProps) {
   return (
     <PageSection title="Ingredientes">
-      {/* TODO Check generic <ul> line-height */}
-      <ul>
+      <ListSection size="small">
         {ingredients.map((ingredient, index) => (
           <li key={index}>
-            {/* TODO Add toggle 'fraction / decimals' */}
             {ingredient?.quantity != null
               ? displayQuantity(
                   +ingredient?.quantity,
@@ -26,7 +24,7 @@ export function Ingredients({
             {ingredient?.details ?? ''}
           </li>
         ))}
-      </ul>
+      </ListSection>
     </PageSection>
   )
 }

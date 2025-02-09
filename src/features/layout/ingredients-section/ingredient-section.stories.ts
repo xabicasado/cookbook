@@ -4,7 +4,7 @@ import { IngredientsSection } from '@/features/layout'
 import ingredientsMock from '@/mocks/ingredients.mock'
 
 const meta = {
-  title: 'Components/IngredientsSection',
+  title: 'Layout/IngredientsSection',
   component: IngredientsSection,
 } satisfies Meta<typeof IngredientsSection>
 

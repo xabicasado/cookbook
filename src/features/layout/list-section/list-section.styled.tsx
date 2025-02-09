@@ -1,11 +1,25 @@
 'use client'
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const ListSectionStyled = styled.ul`
+const sizes = {
+  small: css`
+    row-gap: ${({ theme }) => theme?.spacing?.none};
+  `,
+  medium: css`
+    row-gap: ${({ theme }) => theme?.spacing?.xs};
+  `,
+  large: css`
+    row-gap: ${({ theme }) => theme?.spacing?.s};
+  `,
+}
+
+export const ListSectionStyled = styled.ul<{ size: string }>`
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  row-gap: ${({ theme }) => theme?.spacing?.xs};
+  row-gap: ${({ theme }) => theme?.spacing?.s};
+
+  ${({ size }) => sizes[size as keyof typeof sizes]}
 `
 ListSectionStyled.displayName = 'ListSectionStyled'

@@ -21,11 +21,11 @@ export function Card({
 }: CardPropsType) {
   const card = (
     <CardStyled justify={justify}>
-      {title !== undefined && <TitleStyled>{title}</TitleStyled>}
+      {title && <TitleStyled>{title}</TitleStyled>}
       {children}
-      {subtitle !== undefined && <SubtitleStyled>{subtitle}</SubtitleStyled>}
+      {subtitle && <SubtitleStyled>{subtitle}</SubtitleStyled>}
 
-      {details !== undefined && <DetailsStyled>{details}</DetailsStyled>}
+      {details && <DetailsStyled>{details}</DetailsStyled>}
     </CardStyled>
   )
 

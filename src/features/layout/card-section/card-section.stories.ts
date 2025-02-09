@@ -4,7 +4,7 @@ import { CardSection } from '@/features/layout'
 import recipesMock from '@/mocks/recipes.mock'
 
 const meta: Meta<typeof CardSection> = {
-  title: 'Components/CardSection',
+  title: 'Layout/CardSection',
   component: CardSection,
 }
 

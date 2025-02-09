@@ -4,7 +4,7 @@ import { ListSection, PageSection } from '@/features/layout'
 import recipesMock from '@/mocks/recipes.mock'
 
 const meta = {
-  title: 'Components/PageSection',
+  title: 'Layout/PageSection',
   component: PageSection,
   parameters: {
     layout: 'centered',
