@@ -14,6 +14,6 @@ type Story = StoryObj<typeof meta>
 
 export const Generic: Story = {
   args: {
-    recipes: recipesMock,
+    cards: recipesMock,
   },
 }
