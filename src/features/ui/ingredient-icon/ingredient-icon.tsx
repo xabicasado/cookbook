@@ -8,20 +8,18 @@ import type { IngredientIconProps } from './types'
 
 import { Icon } from '@/features/ui'
 
-export function IngredientIcon(props: IngredientIconProps) {
-  const {
-    ingredient,
-    status = INGREDIENT_STATUS.DEFAULT,
-    hasVisibleName = false,
-    isClosable = false,
-  } = props
-
+export function IngredientIcon({
+  ingredient,
+  status = INGREDIENT_STATUS.DEFAULT,
+  hasVisibleName = false,
+  isClosable = false,
+}: IngredientIconProps) {
   return (
     <IngredientIconStyled
       role="img"
       aria-label={`Ingrediente ${ingredient.name}`}
-      hasVisibleName={!!hasVisibleName}
-      isClosable={!!isClosable}
+      hasVisibleName={hasVisibleName}
+      isClosable={isClosable}
     >
       <IngredientEmojiStyled
         // TODO Delete after tests

@@ -6,4 +6,5 @@ export type IngredientIconProps = {
   ingredient: IngredientType
   status?: (typeof INGREDIENT_STATUS)[keyof typeof INGREDIENT_STATUS]
   hasVisibleName?: boolean
+  isClosable?: boolean
 }

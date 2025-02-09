@@ -4,9 +4,12 @@ import type { IngredientsSectionProps } from './types'
 
 import { IngredientIcon } from '@/features/ui'
 
-export function IngredientsSection(props: IngredientsSectionProps) {
-  const { ingredients, hasDetails = false, justify = 'center', onClick } = props
-
+export function IngredientsSection({
+  ingredients,
+  hasDetails = false,
+  justify = 'center',
+  onClick,
+}: IngredientsSectionProps) {
   return (
     <IngredientsSectionStyled justify={justify}>
       {ingredients
@@ -15,8 +18,8 @@ export function IngredientsSection(props: IngredientsSectionProps) {
           <span key={index} onClick={() => onClick && onClick(ingredient)}>
             <IngredientIcon
               ingredient={ingredient}
-              hasVisibleName={!!hasDetails}
-              isClosable={!!hasDetails}
+              hasVisibleName={hasDetails}
+              isClosable={hasDetails}
             />
           </span>
         ))}
