@@ -19,7 +19,9 @@ export function CardSection({
           href={card?.slug && `/recipes/${card.slug}`}
         >
           {card?.ingredients ? (
-            <IngredientsSection ingredients={card.ingredients} />
+            <IngredientsSection
+              ingredients={card.ingredients.filter(({ isCommon }) => !isCommon)}
+            />
           ) : (
             card?.children
           )}

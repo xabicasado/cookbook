@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CardSkeleton } from '@/features/ui'
 
 const meta: Meta<typeof CardSkeleton> = {
-  title: 'Components/CardSkeleton',
+  title: 'Skeleton/CardSkeleton',
   component: CardSkeleton,
 }
 

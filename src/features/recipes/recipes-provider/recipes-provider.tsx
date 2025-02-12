@@ -38,7 +38,7 @@ export const RecipesProvider = (props: RecipesProviderPropsType) => {
   }
 
   const searchRecipesByIngredients = (ingredientsList: IngredientType[]) => {
-    if (ingredientsList?.length === 0) setFilteredRecipes(recipes ?? [])
+    if (!ingredientsList?.length) setFilteredRecipes(recipes ?? [])
 
     setFilteredRecipes(
       recipes.filter((recipe) => {

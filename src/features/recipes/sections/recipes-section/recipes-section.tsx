@@ -30,7 +30,7 @@ export function RecipesSection() {
       recipe.ingredients.forEach((ingredient) => {
         const ingredientKey = ingredient.name
 
-        if (!ingredientMap.has(ingredientKey)) {
+        if (!ingredient.isCommon && !ingredientMap.has(ingredientKey)) {
           uniqueIngredients.push(ingredient)
           ingredientMap.set(ingredientKey, ingredient)
         }
@@ -59,7 +59,7 @@ export function RecipesSection() {
   }
 
   const handleOnIngredientsChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchInput = event.target.value
+    const searchInput = event.target.value.replace(/^[^\s]+\s/, '')
 
     const findedIngredient = ingredientsMock.find(
       (ingredient) =>
@@ -104,7 +104,10 @@ export function RecipesSection() {
         <SearchSelect
           onChange={handleOnIngredientsChange}
           options={ingredientsMock.filter(
-            (ingredient) => !newRecipeDrafts?.ingredients?.includes(ingredient)
+            (ingredient) =>
+              !newRecipeDrafts?.ingredients?.some(
+                (draftIngredient) => draftIngredient.name === ingredient.name
+              )
           )}
           name="filterIngredients"
         />
@@ -114,7 +117,7 @@ export function RecipesSection() {
 
       <Toggle
         name="toggle"
-        label="Filtrar por ingredientes"
+        label="Buscar por ingredientes"
         onChange={handleFilterChange}
       />
 
@@ -132,7 +135,9 @@ export function RecipesSection() {
           <Button label="Añadir nueva receta" primary fullWidth disabled />
         </Link>
       ) : (
-        <CardSection cards={filteredRecipes} />
+        <>
+          <CardSection cards={filteredRecipes} />
+        </>
       )}
     </>
   )

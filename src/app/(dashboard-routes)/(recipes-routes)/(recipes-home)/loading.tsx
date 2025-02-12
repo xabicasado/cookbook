@@ -7,7 +7,7 @@ export default function LoadingHomePage() {
       <h2>Inventario de recetas</h2>
 
       <SearchBar name="filterRecipes" disabled />
-      <Toggle name="toggle" label="Filtrar por ingredientes" disabled />
+      <Toggle name="toggle" label="Buscar por ingredientes" disabled />
 
       <CardSectionSkeleton cards={[]} />
     </>

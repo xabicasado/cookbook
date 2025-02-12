@@ -23,9 +23,10 @@ export function SearchSelect(props: SearchSelectProps) {
       <datalist id={`${name}-datalist`}>
         {options &&
           options.map((ingredient, key) => (
-            <option key={key} value={cleanSearchString(ingredient.name)}>
-              {ingredient.emoji} {ingredient.name}
-            </option>
+            <option
+              key={key}
+              value={`${ingredient.emoji} ${cleanSearchString(ingredient.name)}`}
+            />
           ))}
       </datalist>
     </>

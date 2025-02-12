@@ -1,13 +1,9 @@
+'use client'
+
+import { CardStyled, TitleStyled } from './card.styled'
 import styled, { css } from 'styled-components'
 
-import { CardStyled, TitleStyled } from '@/features/ui/card/card.styled'
-
-const defaultSkeletonStyles = css`
-  border-radius: ${({ theme }) => theme?.borderRadius?.full};
-  background-color: ${({ theme }) => theme?.colors?.invertedText};
-`
-
-const animationStyles = css`
+const animationSkeletonStyles = css`
   @keyframes skeleton-loading {
     0% {
       opacity: 0.9;
@@ -20,12 +16,16 @@ const animationStyles = css`
   animation: skeleton-loading 1s linear infinite alternate;
 `
 
+const defaultSkeletonStyles = css`
+  border-radius: ${({ theme }) => theme?.borderRadius?.full};
+  background-color: ${({ theme }) => theme?.colors?.invertedText};
+`
+
 // https://css-tricks.com/building-skeleton-screens-css-custom-properties/
 export const SkeletonStyled = styled(CardStyled)`
   /* TODO Solve z-index top problem on animation */
   z-index: ${({ theme }) => theme?.layers?.venus};
-
-  ${animationStyles}
+  ${animationSkeletonStyles}
 `
 SkeletonStyled.displayName = 'SkeletonStyled'
 
@@ -34,7 +34,7 @@ export const TitleSkeletonStyled = styled(TitleStyled)`
   min-height: calc(${({ theme }) => theme?.fontSize?.h3} * ${({ theme }) =>
     theme?.lineHeight?.m});
   width: 100%;
-  ${animationStyles}
+  ${animationSkeletonStyles}
 `
 TitleSkeletonStyled.displayName = 'TitleSkeletonStyled'
 
@@ -46,7 +46,7 @@ export const IngredientsContainerSkeletonStyled = styled.div`
   margin-inline: auto;
   /* max-width: 60%; */
   width: 60%;
-  ${animationStyles}
+  ${animationSkeletonStyles}
 `
 IngredientsContainerSkeletonStyled.displayName =
   'IngredientsContainerSkeletonStyled'
