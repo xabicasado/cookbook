@@ -61,6 +61,8 @@ export function RecipesSection() {
   const handleOnIngredientsChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchInput = event.target.value.replace(/^[^\s]+\s/, '')
 
+    if (event.nativeEvent instanceof InputEvent) return
+
     const findedIngredient = ingredientsMock.find(
       (ingredient) =>
         cleanSearchString(ingredient.name) === cleanSearchString(searchInput)
