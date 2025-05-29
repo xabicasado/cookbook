@@ -3,7 +3,7 @@ import { RecipesProvider, RecipesSection } from '@/app/features/recipes'
 import { getInjection } from '@/di/container'
 import type { Recipes } from '@/src/entities/models/recipe'
 
-export async function getRecipes() {
+async function getRecipes() {
   try {
     const getRecipesController = getInjection('IGetRecipesController')
 
