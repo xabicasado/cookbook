@@ -1,6 +1,9 @@
-![Cookbook project title logo](./public/title.svg)
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+    <img align="center" src="./public/title.svg" alt="Cookbook project title logo" />
+    <br />
+    <br />
+    by xabicasado
+</p>
 
 ## 🧑‍🍳 What's cooking here?
 

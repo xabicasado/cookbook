@@ -1,7 +1,7 @@
 import type { Decorator } from '@storybook/react'
 import type { Preview } from '@storybook/react'
 
-import ThemeProvider from '@/themes/theme-provider'
+import ThemeProvider from '@/app/features/themes/theme-provider'
 
 // Updated preview: https://medium.com/@michu2k/storybook-7-integration-with-next-js-eda4b1c1d465
 export const parameters = {

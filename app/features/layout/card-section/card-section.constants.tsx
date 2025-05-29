@@ -1,0 +1,1 @@
+export const CARD_INGREDIENTS_ICONS_LIMIT = 8

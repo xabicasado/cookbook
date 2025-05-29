@@ -11,7 +11,7 @@
     "^[^@]",
     "^@(?!/)",
     "^@/(app|components|constants|features|hooks|lib|mocks|themes|utils)($|/)",
-    "^@/features/ui/(.*)$",
+    "^@/app/features/ui/(.*)$",
     "^[./]",
     "^./(.*)$",
     ".+\\.styled\\.tsx$"
