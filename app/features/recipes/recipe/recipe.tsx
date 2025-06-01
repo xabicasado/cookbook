@@ -38,7 +38,6 @@ export function RecipeWrapper(props: RecipeType) {
     const recipeLink = window.location.toString()
 
     navigator.clipboard.writeText(recipeLink)
-    console.log(recipeLink)
 
     showNotification('¡Enlace copiado!')
   }
