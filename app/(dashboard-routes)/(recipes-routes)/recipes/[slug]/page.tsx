@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { Recipe as RecipeSection } from '@/app/features/recipes'
+import { type RecipeType } from '@/app/features/recipes/types'
 
 import { getInjection } from '@/di/container'
 import { NotFoundError } from '@/src/entities/errors/common'
@@ -58,5 +59,5 @@ export default async function RecipePage(props: RecipePageProps) {
     }
   }
 
-  return <RecipeSection {...recipe} />
+  return <RecipeSection {...(recipe as RecipeType)} />
 }

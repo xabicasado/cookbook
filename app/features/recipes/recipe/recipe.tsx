@@ -22,13 +22,13 @@ import {
   useNotificationContext,
 } from '@/app/features/ui'
 
-export function Recipe(props: RecipeType) {
+export function RecipeWrapper(props: RecipeType) {
   const { title, servings = DEFAULT_SERVINGS, ingredients, steps, tips } = props
 
   const { showNotification } = useNotificationContext()
   const { currentServings } = useServingsContext()
 
-  const hasQuantities = ingredients.some(
+  const hasQuantities = ingredients?.some(
     (ingredient) => ingredient.quantity !== undefined
   )
 
@@ -44,7 +44,7 @@ export function Recipe(props: RecipeType) {
   }
 
   return (
-    <ServingsProvider servings={servings}>
+    <>
       <HeaderSectionStyled>
         <h2>{title}</h2>
 
@@ -79,6 +79,14 @@ export function Recipe(props: RecipeType) {
         )}
       </RecipeStyled>
       <ScrollWatcher />
+    </>
+  )
+}
+
+export function Recipe(props: RecipeType) {
+  return (
+    <ServingsProvider servings={props.servings ?? DEFAULT_SERVINGS}>
+      <RecipeWrapper {...props} />
     </ServingsProvider>
   )
 }

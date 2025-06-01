@@ -22,8 +22,6 @@ export const MenuStyled = styled.nav<{ $isOpen?: boolean }>`
   height: 100dvh;
   width: 100%;
 
-  /* z-index: ${({ theme }) => theme?.layers?.jupiter}; */
-
   position: fixed;
   top: 0;
   background-color: ${({ theme }) => theme?.colors?.fourth};
@@ -38,7 +36,6 @@ export const MenuStyled = styled.nav<{ $isOpen?: boolean }>`
 MenuStyled.displayName = 'MenuStyled'
 
 export const MenuHeaderStyled = styled.div`
-  /* TODO Adapt to same height as header */
   min-height: 80px;
 
   display: flex;
@@ -47,7 +44,6 @@ export const MenuHeaderStyled = styled.div`
   padding-inline: ${({ theme }) => theme?.spacing?.m};
   padding-bottom: ${({ theme }) => theme?.spacing?.xs};
 
-  /* TODO This is so tricky... */
   & button {
     color: ${({ theme }) => theme?.colors?.invertedText};
   }
@@ -65,24 +61,11 @@ export const MenuOverlayListStyled = styled.ul`
   font-family: ${({ theme }) => theme?.fonts?.lexend};
   font-weight: ${({ theme }) => theme?.fontWeight?.extraBold};
   color: ${({ theme }) => theme?.colors?.invertedText};
-
-  /* font-family: ${({ theme }) => theme?.fonts?.quicksand};
-  font-weight: ${({ theme }) => theme?.fontWeight?.semiBold}; */
-
-  /* font-family: ${({ theme }) => theme?.fonts?.raleway};
-  font-weight: ${({ theme }) => theme?.fontWeight?.black}; */
-
-  /* font-family: ${({ theme }) => theme?.fonts?.robotoMono};
-  font-weight: ${({ theme }) => theme?.fontWeight?.bold}; */
-
-  /* font-family: ${({ theme }) => theme?.fonts?.varelaRound};
-  text-transform: uppercase; */
 `
 MenuOverlayListStyled.displayName = 'MenuOverlayListStyled'
 
 export const MenuLinkStyled = styled.li<{ $isActive?: boolean }>`
   cursor: pointer;
-  /* pointer-events: ${(props) => (props.isActive ? 'none' : 'auto')}; */
   ${({ $isActive }) => ($isActive ?? false) && disabledLinkStyles}
 
   &:active {

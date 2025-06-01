@@ -31,7 +31,7 @@ export const ServingsProvider = ({
   )
 }
 
-export const useServingsContext = (): ServingsContextProps => {
+export const useServingsContext = () => {
   const context = useContext(ServingsContext)
 
   if (!context)

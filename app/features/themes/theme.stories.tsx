@@ -15,7 +15,7 @@ const SpacingTable = () => {
         {Object.entries(theme.spacing).map(([size, value]) => (
           <tr key={size}>
             <td>{size}</td>
-            <td>{value}</td>
+            <td>{String(value)}</td>
           </tr>
         ))}
       </tbody>

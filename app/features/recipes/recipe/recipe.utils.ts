@@ -88,10 +88,10 @@ const generateTipsText = (tips: TipType[]) => {
 
 type Recipe = {
   title: string
-  servings: number
-  ingredients: []
-  steps: []
-  tips: string[]
+  servings?: number
+  ingredients: IngredientType[]
+  steps: StepType[]
+  tips?: string[]
 }
 
 export const generateRecipeText = (

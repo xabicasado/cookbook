@@ -37,8 +37,17 @@ export function RecipesSection() {
         const ingredientKey = ingredient.name
 
         if (!ingredient.isCommon && !ingredientMap.has(ingredientKey)) {
-          uniqueIngredients.push(ingredient)
-          ingredientMap.set(ingredientKey, ingredient)
+          const sanitizedIngredient = {
+            ...ingredient,
+            measurement: ingredient.measurement ?? undefined,
+            quantity: ingredient.quantity ?? undefined,
+            alternative: ingredient.alternative ?? undefined,
+            details: ingredient.details ?? undefined,
+            recommendation: ingredient.recommendation ?? undefined,
+          }
+
+          uniqueIngredients.push(sanitizedIngredient)
+          ingredientMap.set(ingredientKey, sanitizedIngredient)
         }
       })
     })
@@ -151,7 +160,19 @@ export function RecipesSection() {
       {filteredRecipes?.length === 0 ? (
         <Button label="Añadir nueva receta" primary fullWidth disabled />
       ) : (
-        <CardSection cards={filteredRecipes} />
+        <CardSection
+          cards={filteredRecipes.map((recipe) => ({
+            ...recipe,
+            ingredients: recipe.ingredients.map((ingredient) => ({
+              ...ingredient,
+              quantity: ingredient.quantity ?? undefined,
+              measurement: ingredient.measurement ?? undefined,
+              alternative: ingredient.alternative ?? undefined,
+              details: ingredient.details ?? undefined,
+              recommendation: ingredient.recommendation ?? undefined,
+            })),
+          }))}
+        />
       )}
     </>
   )
