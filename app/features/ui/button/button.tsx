@@ -1,4 +1,4 @@
-import { Icon } from '../icon'
+import { Icon } from '../icons'
 import { ButtonStyled } from './button.styled'
 import { type ButtonProps } from './types'
 
