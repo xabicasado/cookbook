@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { ServingsProvider, useServingsContext } from '../servings-provider'
 import { Ingredients } from './ingredients'
 import { DEFAULT_SERVINGS } from './recipe.constants'
@@ -12,21 +14,24 @@ import { generateRecipeText } from './recipe.utils'
 import { Servings } from './servings'
 import { Steps } from './steps'
 import { Tips } from './tips'
-import type { RecipeType } from './types'
 
 import { ButtonSection } from '@/app/features/layout'
 import {
   Button,
   CopyToClipboard,
-  ScrollWatcher,
   useNotificationContext,
+  useScreenWakeLock,
 } from '@/app/features/ui'
 
-export function RecipeWrapper(props: RecipeType) {
+import type { RecipeInsert } from '@/src/entities/models/recipe'
+
+export function RecipeWrapper(props: RecipeInsert) {
   const { title, servings = DEFAULT_SERVINGS, ingredients, steps, tips } = props
 
   const { showNotification } = useNotificationContext()
   const { currentServings } = useServingsContext()
+
+  const { requestScreenWakeLock, releaseScreenWakeLock } = useScreenWakeLock()
 
   const hasQuantities = ingredients?.some(
     (ingredient) => ingredient.quantity !== undefined
@@ -41,6 +46,14 @@ export function RecipeWrapper(props: RecipeType) {
 
     showNotification('¡Enlace copiado!')
   }
+
+  useEffect(() => {
+    requestScreenWakeLock()
+
+    return () => {
+      releaseScreenWakeLock()
+    }
+  }, [requestScreenWakeLock, releaseScreenWakeLock])
 
   return (
     <>
@@ -66,10 +79,10 @@ export function RecipeWrapper(props: RecipeType) {
         <RecipeColumnStyled>
           {hasQuantities && <Servings />}
 
-          <Ingredients servings={servings} ingredients={ingredients} />
+          <Ingredients servings={servings!} ingredients={ingredients} />
         </RecipeColumnStyled>
 
-        {steps.length > 0 && (
+        {steps?.length && (
           <RecipeColumnStyled>
             {steps?.length && <Steps steps={steps} />}
 
@@ -77,12 +90,11 @@ export function RecipeWrapper(props: RecipeType) {
           </RecipeColumnStyled>
         )}
       </RecipeStyled>
-      <ScrollWatcher />
     </>
   )
 }
 
-export function Recipe(props: RecipeType) {
+export function Recipe(props: RecipeInsert) {
   return (
     <ServingsProvider servings={props.servings ?? DEFAULT_SERVINGS}>
       <RecipeWrapper {...props} />

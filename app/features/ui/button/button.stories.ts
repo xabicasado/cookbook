@@ -1,4 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from 'storybook/test'
+
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
 import { Button } from '@/app/features/ui'
 
@@ -14,6 +16,8 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     // backgroundColor: { control: 'color' },
   },
+  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
+  args: { onClick: fn() },
 }
 
 export default meta

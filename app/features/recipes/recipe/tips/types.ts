@@ -1,5 +1,5 @@
-import type { TipType } from '../types'
+import type { Tips } from '@/src/entities/models/recipe'
 
 export type TipsProps = {
-  tips: TipType[]
+  tips: Tips
 }

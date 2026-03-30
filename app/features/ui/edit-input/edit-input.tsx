@@ -29,16 +29,17 @@ export function EditInput(props: EditInputProps) {
     type = 'text',
     inverted = false,
     maxLength,
+    ...restProps
   } = props
 
   const [currentType, setCurrentType] = useState<string>(type)
 
   const isPasswordInput: boolean = type === 'password'
 
-  const togglePasswordVisibility = () => {
-    if (currentType === 'password') setCurrentType('text')
-    else setCurrentType('password')
-  }
+  const togglePasswordVisibility = () =>
+    currentType === 'password'
+      ? setCurrentType('text')
+      : setCurrentType('password')
 
   const editInput = (
     <>
@@ -57,6 +58,7 @@ export function EditInput(props: EditInputProps) {
         $inverted={!!inverted}
         type={currentType}
         max={maxLength}
+        {...restProps}
       />
 
       {/* TODO Delete gap */}
@@ -85,8 +87,9 @@ export function EditInput(props: EditInputProps) {
     </>
   )
 
-  if (isPasswordInput)
-    return <PasswordSectionStyled>{editInput}</PasswordSectionStyled>
-
-  return editInput
+  return isPasswordInput ? (
+    <PasswordSectionStyled>{editInput}</PasswordSectionStyled>
+  ) : (
+    editInput
+  )
 }

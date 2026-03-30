@@ -1,35 +1,26 @@
 import { DEFAULT_SERVINGS } from './recipe.constants'
 
+import { compareByKey } from '@/app/features/utils/commons'
+
 import {
-  type IngredientType,
-  type RecipeType,
-  type StepType,
-  type TipType,
-} from '@/app/features/recipes/types'
-import { decimalToFraction } from '@/app/features/utils/commons'
-
-export const displayQuantity = (
-  quantity: number,
-  currentServings: number,
-  servings: number,
-  isShowingDecimals: boolean
-): string => {
-  const currentQuantity =
-    Math.round(((quantity * currentServings) / servings) * 100) / 100
-
-  if (isShowingDecimals) return currentQuantity.toString()
-  else return decimalToFraction(currentQuantity)
-}
+  type Ingredient,
+  IngredientQuantity,
+  type Ingredients,
+  type Recipe,
+  type RecipeInsert,
+  type Steps,
+  type Tips,
+} from '@/src/entities/models/recipe'
 
 const generateIngredientsText = (
-  ingredients: IngredientType[],
+  ingredients: Ingredients,
   currentServings: number,
   servings: number
 ) => {
   const ingredientsText = ingredients.map((ingredient) =>
     `${ingredient?.emoji ?? ''}${ingredient?.emoji !== '' ? ' ' : ''}${
       ingredient?.quantity != null
-        ? displayQuantity(
+        ? IngredientQuantity.display(
             +ingredient?.quantity,
             currentServings,
             servings,
@@ -62,7 +53,7 @@ const stepEmojis = [
   '🔟',
 ]
 
-const generatestepsText = (steps: StepType[]) => {
+const generatestepsText = (steps: Steps) => {
   const stepsText = steps.map(
     (step, index) => `${
       index < 10
@@ -77,7 +68,7 @@ const generatestepsText = (steps: StepType[]) => {
   return stepsText.join('')
 }
 
-const generateTipsText = (tips: TipType[]) => {
+const generateTipsText = (tips: Tips) => {
   const tipsText = tips?.map(
     (tip) => `💡 ${tip}
 `
@@ -86,16 +77,8 @@ const generateTipsText = (tips: TipType[]) => {
   return tipsText.join('')
 }
 
-type Recipe = {
-  title: string
-  servings?: number
-  ingredients: IngredientType[]
-  steps: StepType[]
-  tips?: string[]
-}
-
 export const generateRecipeText = (
-  recipe: Recipe,
+  recipe: RecipeInsert,
   currentServings: number
 ): string => {
   const { title, servings, ingredients, steps, tips } = recipe
@@ -105,42 +88,19 @@ export const generateRecipeText = (
     currentServings,
     servings ?? DEFAULT_SERVINGS
   )
-  const stepsText = steps.length > 0 ? generatestepsText(steps) : ''
+  const stepsText = steps?.length ? generatestepsText(steps) : ''
 
   const tipsText = tips != null ? generateTipsText(tips) : ''
 
   const recipeText = `*${title.toUpperCase()}*
 ${ingredientsText}
-${steps.length > 0 ? '_Elaboración_' : ''}
-${steps.length > 0 ? stepsText : ''}
+${steps?.length ? '_Elaboración_' : ''}
+${steps?.length ? stepsText : ''}
 ${tips != null ? tipsText : ''}`.trim()
 
   return recipeText
 }
 
-export const compareByTitle = (
-  recipeA: RecipeType,
-  recipeB: RecipeType
-): number => {
-  if (recipeA.title < recipeB.title) return -1
-  if (recipeA.title > recipeB.title) return 1
-  return 0
-}
-
-export const compareByName = (
-  ingredientA: IngredientType,
-  ingredientB: IngredientType
-): number => {
-  if (ingredientA.name < ingredientB.name) return -1
-  if (ingredientA.name > ingredientB.name) return 1
-  return 0
-}
-
-export const compareByQuantity = (
-  ingredientA: IngredientType,
-  ingredientB: IngredientType
-): number => {
-  if (ingredientA.quantity != null && ingredientB.quantity == null) return -1
-  if (ingredientA.quantity == null && ingredientB.quantity != null) return 1
-  return 0
-}
+export const compareByTitle = compareByKey<Recipe>('title')
+export const compareByName = compareByKey<Ingredient>('name')
+export const compareByQuantity = compareByKey<Ingredient>('quantity')

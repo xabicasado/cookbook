@@ -1,13 +1,15 @@
 // TODO Check this import
 import { compareByTitle } from '@/app/features/recipes/recipe/recipe.utils'
-import { type RecipeType } from '@/app/features/recipes/types'
+
+import type { Recipe } from '@/src/entities/models/recipe'
 
 // https://jsonformatter.curiousconcept.com/
-const recipesMock: RecipeType[] = [
+const recipesMock: Recipe[] = [
   {
     id: '1',
     title: 'Almejas a la marinera',
     slug: 'almejas-a-la-marinera',
+    servings: 4,
     ingredients: [
       {
         emoji: '🦪',
@@ -29,12 +31,14 @@ const recipesMock: RecipeType[] = [
       {
         emoji: '🫒',
         name: 'aceite de oliva',
+        isCommon: true,
       },
       {
         emoji: '🌾',
         quantity: 1,
         measurement: 'cucharada',
         name: 'harina de trigo',
+        isCommon: true,
       },
       {
         emoji: '🍾',
@@ -47,6 +51,7 @@ const recipesMock: RecipeType[] = [
         quantity: 1,
         measurement: 'vaso',
         name: 'agua',
+        isCommon: true,
       },
       {
         emoji: '🌿',
@@ -55,6 +60,7 @@ const recipesMock: RecipeType[] = [
       {
         emoji: '🧂',
         name: 'sal',
+        isCommon: true,
       },
     ],
     steps: [
@@ -165,6 +171,7 @@ const recipesMock: RecipeType[] = [
         name: 'aceite',
         details: 'de 1ª de acidez',
         recommendation: 'aceite La Gitana',
+        isCommon: true,
       },
       {
         emoji: '🧄',

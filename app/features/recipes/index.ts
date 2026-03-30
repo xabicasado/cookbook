@@ -1,4 +1,6 @@
+export * from './ingredients-provider'
 export * from './new-recipe-draft-provider'
 export * from './recipe'
 export * from './recipes-provider'
+export * from './recipes-searcher-provider'
 export * from './sections'

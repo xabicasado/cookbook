@@ -1,6 +1,7 @@
+import type { InputHTMLAttributes } from 'react'
 import { type ChangeEvent } from 'react'
 
-export type EditInputProps = {
+export type EditInputProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string
   label?: string
   subText?: string

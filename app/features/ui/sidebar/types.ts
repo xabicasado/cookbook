@@ -5,6 +5,7 @@ export type SidebarProps = {
   setIsOpen: (isOpen: boolean) => void
   // position?: 'left' | 'right' | 'top' | 'bottom'
   title?: string
+  onClose?: () => void
   children: ReactNode
 }
 

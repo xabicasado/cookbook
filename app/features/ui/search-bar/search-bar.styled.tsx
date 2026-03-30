@@ -62,3 +62,9 @@ export const SearchBarStyled = styled.input.attrs(() => ({
   } */
 `
 SearchBarStyled.displayName = 'SearchBarStyled'
+
+export const LabelStyled = styled.span`
+  font-size: ${({ theme }) => theme?.fontSize?.m};
+  font-weight: ${({ theme }) => theme?.fontWeight?.medium};
+`
+LabelStyled.displayName = 'LabelStyled'

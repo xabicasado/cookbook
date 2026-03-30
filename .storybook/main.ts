@@ -1,15 +1,15 @@
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
-
-import type { StorybookConfig } from '@storybook/nextjs'
+import type { StorybookConfig } from '@storybook/nextjs-vite'
 
 const config: StorybookConfig = {
   stories: ['../app/**/*.mdx', '../app/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-essentials'],
-  framework: '@storybook/nextjs',
-  webpackFinal: async (config, {}) => {
-    if (config?.resolve) config.resolve.plugins = [new TsconfigPathsPlugin()]
-    return config
-  },
+  addons: [
+    '@chromatic-com/storybook',
+    '@storybook/addon-vitest',
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
+    '@storybook/addon-onboarding',
+  ],
+  framework: '@storybook/nextjs-vite',
+  staticDirs: ['../public'],
 }
-
 export default config

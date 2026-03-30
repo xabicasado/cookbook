@@ -11,30 +11,12 @@ import type { NumberRangeProps } from './types'
 
 import { Button } from '@/app/features/ui'
 
-export function NumberRange({
-  number,
-  setNumber,
-  label,
-  onNumberChange,
-}: NumberRangeProps) {
+export function NumberRange({ number, setNumber, label }: NumberRangeProps) {
   const hasReachedMin = useMemo(() => number <= 1, [number])
 
-  const handleRemove = () => {
-    // setNumber((prev) => (prev > 1 ? prev - 1 : prev))
-    if (number > 1) {
-      const newNumber = number - 1
+  const handleRemove = () => number > 1 && setNumber(number - 1)
 
-      setNumber(newNumber)
-      onNumberChange?.(newNumber)
-    }
-  }
-
-  const handleAdd = () => {
-    const newNumber = number + 1
-
-    setNumber(newNumber)
-    onNumberChange?.(newNumber)
-  }
+  const handleAdd = () => setNumber(number + 1)
 
   return (
     <>

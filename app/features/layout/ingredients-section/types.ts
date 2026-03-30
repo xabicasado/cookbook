@@ -1,9 +1,9 @@
-import type { IngredientType } from '@/app/mocks/ingredients.mock'
+import type { Ingredient, Ingredients } from '@/src/entities/models/recipe'
 
 export type IngredientsSectionProps = {
-  ingredients: IngredientType[]
+  ingredients: Ingredients
   hasDetails?: boolean
   limit?: number
   justify?: 'start' | 'center' | 'end'
-  onClick?: (ingredient: IngredientType) => void
+  onClick?: (ingredient: Ingredient) => void
 }

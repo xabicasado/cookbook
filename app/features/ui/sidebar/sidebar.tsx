@@ -1,5 +1,6 @@
 import { enableScroll } from '../../utils/commons'
 import {
+  SidebarContentSectionStyled,
   SidebarHeaderSectionStyled,
   SidebarOverlayStyled,
   SidebarSectionStyled,
@@ -18,7 +19,6 @@ export function Sidebar({ isOpen, setIsOpen, title, children }: SidebarProps) {
 
   return (
     <>
-      {/* <SidebarBackgroundStyled $isOpen={isOpen} /> */}
       <SidebarOverlayStyled $isOpen={isOpen} />
       <SidebarStyled $isOpen={isOpen}>
         <SidebarSectionStyled>
@@ -30,7 +30,7 @@ export function Sidebar({ isOpen, setIsOpen, title, children }: SidebarProps) {
             </span>
           </SidebarHeaderSectionStyled>
         </SidebarSectionStyled>
-        {children}
+        <SidebarContentSectionStyled>{children}</SidebarContentSectionStyled>
       </SidebarStyled>
     </>
   )

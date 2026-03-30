@@ -1,13 +1,10 @@
-// import type { NotificationProps } from '@/features/ui/types'
 import type { ReactNode } from 'react'
 
-export type NotificationProviderPropsType = {
+export type NotificationProviderProps = {
   children: ReactNode
-  // notification?: NotificationProps
 }
 
 export type NotificationContextType = {
-  // notification: NotificationProps
   showNotification: (
     description: string,
     type?: 'success' | 'warning' | 'error' | undefined

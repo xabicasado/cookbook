@@ -1,6 +1,8 @@
 // import { type IngredientType } from '@/features/recipes/types'
 import { compareByName } from '@/app/features/recipes/recipe/recipe.utils'
 
+import type { Ingredient } from '@/src/entities/models/recipe'
+
 export type IngredientType = {
   emoji: string
   name: string
@@ -13,38 +15,46 @@ export type IngredientType = {
   // recommendation?: string
 }
 
-const ingredientsMock: IngredientType[] = [
+const ingredientsMock: Ingredient[] = [
   {
     emoji: '🥑',
     name: 'aguacate',
+    isCommon: false,
   },
   {
     emoji: '🍌',
     name: 'plátano',
+    isCommon: false,
   },
   {
     emoji: '🍏',
     name: 'manzana',
+    isCommon: false,
   },
   {
     emoji: '🥛',
     name: 'bebida de almendra',
+    isCommon: false,
   },
   {
     emoji: '🧅',
     name: 'cebolla',
+    isCommon: false,
   },
   {
     emoji: '🧄',
     name: 'ajo',
+    isCommon: false,
   },
   {
     emoji: '🫒',
     name: 'aceite de oliva',
+    isCommon: true,
   },
   {
     emoji: '🌾',
     name: 'harina de trigo',
+    isCommon: true,
   },
   {
     emoji: '💧',
@@ -54,10 +64,12 @@ const ingredientsMock: IngredientType[] = [
   {
     emoji: '🌿',
     name: 'perejil',
+    isCommon: true,
   },
   {
     emoji: '🧂',
     name: 'sal',
+    isCommon: true,
   },
 ]
 

@@ -29,7 +29,7 @@ export function Card({
     </CardStyled>
   )
 
-  return href !== undefined ? (
+  return !!href ? (
     <Link href={href} passHref>
       {/* passHref Seems to improve SEO and accesibility */}
       {card}

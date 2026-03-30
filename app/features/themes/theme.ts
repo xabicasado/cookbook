@@ -1,7 +1,5 @@
 import { Dancing_Script, Lexend, Quicksand } from 'next/font/google'
 
-import type { DefaultTheme } from 'styled-components'
-
 const quicksand = Quicksand({
   subsets: ['latin'],
   display: 'swap',
@@ -9,7 +7,7 @@ const quicksand = Quicksand({
 const dancingScript = Dancing_Script({ subsets: ['latin'], display: 'swap' })
 const lexend = Lexend({ subsets: ['latin'], display: 'swap' })
 
-const theme: DefaultTheme = {
+const theme = {
   borderRadius: {
     none: '0px',
     s: '0.125rem',
@@ -50,9 +48,7 @@ const theme: DefaultTheme = {
     primaryH: '#feeaea',
 
     complementaryOne: '#59f9a9',
-
     complementaryTwo: '#f9a959',
-
     complementaryThree: '#f9f959',
     complementaryThreeA: '#f9f959',
     complementaryThreeB: '#fcffcc',
@@ -147,6 +143,10 @@ const theme: DefaultTheme = {
     l: '1.5rem',
     xl: '2rem',
     xxl: '3rem',
+  },
+
+  breakpoints: {
+    maxWidthDesktop: undefined,
   },
 }
 

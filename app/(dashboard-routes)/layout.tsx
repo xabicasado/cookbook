@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import { MainStyled } from './layout.styled'
 
 import { NewRecipeDraftProvider } from '@/app/features/recipes'
@@ -7,10 +9,10 @@ import {
   SidebarProvider,
 } from '@/app/features/ui'
 
-export default async function RecipesLayout({
+export default async function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <NotificationProvider>

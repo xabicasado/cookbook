@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-export type SidebarProviderPropsType = {
+export type SidebarProviderProps = {
   children: ReactNode
 }
 

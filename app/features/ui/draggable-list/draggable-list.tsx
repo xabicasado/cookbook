@@ -1,6 +1,6 @@
 'use client'
 
-import type { ChangeEvent, DragEvent} from 'react';
+import type { ChangeEvent, DragEvent } from 'react'
 import { useMemo, useState } from 'react'
 
 import {
@@ -17,6 +17,8 @@ export function DraggableList({
   listItems,
   setListItems,
   label,
+  onChange,
+  onDelete,
 }: DraggableListProps) {
   const [dragItemIndex, setDragItemIndex] = useState<number | null>(null)
   const [dragOverItemIndex, setDragOverItemIndex] = useState<number | null>(
@@ -48,9 +50,6 @@ export function DraggableList({
 
     if (innerContent) innerContent.style.visibility = 'visible'
 
-    // dragPreview.style.position = 'fixed'
-    // dragPreview.style.top = '-9999px'
-    // dragPreview.style.left = '-9999px'
     document.body.appendChild(dragPreview)
 
     event.dataTransfer.setDragImage(dragPreview, 0, 0)
@@ -80,19 +79,9 @@ export function DraggableList({
   const handleChange = (
     event: ChangeEvent<HTMLTextAreaElement>,
     index: number
-  ) => {
-    const updatedItems = [...listItems]
-    updatedItems[index] = event.target.value
+  ) => onChange?.(event.target.value, index)
 
-    setListItems(updatedItems)
-  }
-
-  const handleDelete = (index: number) => {
-    const updatedItems = [...listItems]
-    updatedItems.splice(index, 1)
-
-    setListItems(updatedItems)
-  }
+  const handleDelete = (index: number) => onDelete?.(index)
 
   return (
     <>

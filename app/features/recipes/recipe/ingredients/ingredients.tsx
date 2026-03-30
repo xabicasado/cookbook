@@ -1,9 +1,11 @@
 import { useServingsContext } from '../../servings-provider'
-import { compareByQuantity, displayQuantity } from '../recipe.utils'
+import { compareByQuantity } from '../recipe.utils'
 import { IngredientStyled } from './ingredients.styled'
 import type { IngredientsProps } from './types'
 
 import { ListSection, PageSection } from '@/app/features/layout'
+
+import { IngredientQuantity } from '@/src/entities/models/recipe'
 
 export function Ingredients({ servings, ingredients }: IngredientsProps) {
   const { currentServings } = useServingsContext()
@@ -15,10 +17,12 @@ export function Ingredients({ servings, ingredients }: IngredientsProps) {
           <IngredientStyled key={index}>
             <span>
               {ingredient?.emoji ?? ''} {ingredient?.name}{' '}
+              {ingredient?.details ?? ''}
             </span>
+
             <span>
-              {ingredient?.quantity != null
-                ? displayQuantity(
+              {ingredient?.quantity
+                ? IngredientQuantity.display(
                     +ingredient?.quantity,
                     currentServings,
                     servings,
@@ -27,8 +31,7 @@ export function Ingredients({ servings, ingredients }: IngredientsProps) {
                 : ''}{' '}
               {ingredient?.quantity && !ingredient?.measurement
                 ? 'unidad'
-                : ingredient?.measurement ?? ''}{' '}
-              {ingredient?.details ?? ''}
+                : (ingredient?.measurement ?? '')}
             </span>
           </IngredientStyled>
         ))}

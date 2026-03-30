@@ -2,9 +2,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { Recipe as RecipeSection } from '@/app/features/recipes'
-import { type RecipeType } from '@/app/features/recipes/types'
 
-import { getInjection } from '@/di/container'
+import { getServerInjection } from '@/di/server/container'
 import { NotFoundError } from '@/src/entities/errors/common'
 import { type Recipe } from '@/src/entities/models/recipe'
 
@@ -14,7 +13,9 @@ type RecipePageProps = {
 
 async function getRecipeBySlug(slug: string) {
   try {
-    const getRecipeBySlugController = getInjection('IGetRecipeBySlugController')
+    const getRecipeBySlugController = getServerInjection(
+      'IGetRecipeBySlugController'
+    )
 
     return await getRecipeBySlugController(slug)
   } catch (error) {
@@ -22,11 +23,10 @@ async function getRecipeBySlug(slug: string) {
   }
 }
 
-export async function generateMetadata(
-  props: RecipePageProps
-): Promise<Metadata> {
-  const params = await props.params
-  const { slug } = params
+export async function generateMetadata({
+  params,
+}: RecipePageProps): Promise<Metadata> {
+  const { slug } = await params
 
   let recipe: Recipe
 
@@ -43,21 +43,18 @@ export async function generateMetadata(
   }
 }
 
-export default async function RecipePage(props: RecipePageProps) {
-  const { slug } = await props.params
+export default async function RecipePage({ params }: RecipePageProps) {
+  const { slug } = await params
 
   let recipe: Recipe
 
   try {
     recipe = await getRecipeBySlug(slug)
-  } catch (err) {
-    if (err instanceof NotFoundError) notFound()
+  } catch (error) {
+    if (error instanceof NotFoundError) notFound()
 
-    return {
-      error:
-        'An error happened while retrieving the recipe. The developers have been notified. Please try again later.',
-    }
+    throw error
   }
 
-  return <RecipeSection {...(recipe as RecipeType)} />
+  return <RecipeSection {...recipe} />
 }

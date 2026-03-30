@@ -98,6 +98,7 @@ export const ButtonStyled = styled.button<{
   display: flex;
   align-items: center;
   ${({ $justify }) => $justify !== undefined && `justify-content: ${$justify};`}
+  column-gap: ${({ theme }) => theme?.spacing?.s};
 
   ${({ label }) => (label !== undefined ? paddingStyles : 'padding: 0;')}
 

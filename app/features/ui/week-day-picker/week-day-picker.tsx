@@ -44,6 +44,7 @@ export function WeekDayPicker() {
         beforeIcon="chevron_left"
         onClick={handlePreviousWeek}
       />
+
       <WeekStyled>
         {currentWeek.map(({ weekDay, monthDay, isToday }) => {
           return (
@@ -59,6 +60,7 @@ export function WeekDayPicker() {
           )
         })}
       </WeekStyled>
+
       <Button
         size="small"
         justify="end"

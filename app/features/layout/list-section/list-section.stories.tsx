@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
 import { ListSection } from '@/app/features/layout'
 import recipesMock from '@/app/mocks/recipes.mock'

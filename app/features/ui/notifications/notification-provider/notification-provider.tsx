@@ -5,20 +5,18 @@ import { createContext, useContext, useState } from 'react'
 import { Notification } from '../notification'
 import type {
   NotificationContextType,
-  // NotificationProps,
-  NotificationProviderPropsType,
+  NotificationProviderProps,
 } from '../types'
 
 import { anonymousFunction } from '@/app/features/utils/commons'
 
-// const NotificationContext = createContext<NotificationProps>({
 const NotificationContext = createContext<NotificationContextType>({
   showNotification: anonymousFunction,
 })
 
 export const NotificationProvider = ({
   children,
-}: NotificationProviderPropsType) => {
+}: NotificationProviderProps) => {
   const [description, setDescription] = useState<string>('')
   const [type, setType] = useState<'success' | 'warning' | 'error' | undefined>(
     undefined

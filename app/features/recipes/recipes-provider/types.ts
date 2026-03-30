@@ -1,16 +1,12 @@
-import type { IngredientType } from '../types'
+import type { ReactNode } from 'react'
 
 import type { Recipes } from '@/src/entities/models/recipe'
 
-export type RecipesProviderPropsType = {
-  children: React.ReactNode
-  recipes: Recipes
+export type RecipesProviderProps = {
+  children: ReactNode
+  recipesPromise: Promise<Recipes>
 }
 
-export type RecipesContextType = {
-  // TODO setFilteredRecipes
-  filteredRecipes: Recipes
-  searchRecipesByName: (searchInput: string) => void
-  searchRecipesByIngredients: (ingredientsList: IngredientType[]) => void
-  resetSearch: () => void
+export type RecipesContextState = {
+  recipesPromise: Promise<Recipes>
 }

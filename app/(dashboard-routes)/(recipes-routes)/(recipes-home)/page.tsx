@@ -1,11 +1,16 @@
-import { RecipesProvider, RecipesSection } from '@/app/features/recipes'
+import {
+  IngredientsProvider,
+  RecipesSearcherProvider,
+  RecipesSection,
+  SearcherSection,
+} from '@/app/features/recipes'
 
-import { getInjection } from '@/di/container'
+import { getServerInjection } from '@/di/server/container'
 import type { Recipes } from '@/src/entities/models/recipe'
 
 async function getRecipes() {
   try {
-    const getRecipesController = getInjection('IGetRecipesController')
+    const getRecipesController = getServerInjection('IGetRecipesController')
 
     return await getRecipesController()
   } catch (error) {
@@ -23,10 +28,13 @@ export default async function RecipesHomePage() {
   }
 
   return (
-    <RecipesProvider recipes={recipes}>
-      <h2>Inventario de recetas</h2>
+    <IngredientsProvider recipes={recipes}>
+      <RecipesSearcherProvider recipes={recipes}>
+        <h2>Inventario de recetas</h2>
 
-      <RecipesSection />
-    </RecipesProvider>
+        <SearcherSection />
+        <RecipesSection />
+      </RecipesSearcherProvider>
+    </IngredientsProvider>
   )
 }

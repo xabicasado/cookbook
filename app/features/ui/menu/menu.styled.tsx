@@ -8,14 +8,18 @@ const openedStyles = css`
   right: 0;
 `
 
+const underlinedLinkStyles = css`
+  text-decoration: underline;
+  text-decoration-thickness: 0.25em;
+  text-underline-offset: 0.17em;
+`
+
 const disabledLinkStyles = css`
   pointer-events: none;
 
   color: ${({ theme }) => theme?.colors?.disabledText};
 
-  text-decoration: underline;
-  text-decoration-thickness: 0.25em;
-  text-underline-offset: 0.17em;
+  ${underlinedLinkStyles}
 `
 
 export const MenuStyled = styled.nav<{ $isOpen?: boolean }>`
@@ -66,16 +70,14 @@ MenuOverlayListStyled.displayName = 'MenuOverlayListStyled'
 
 export const MenuLinkStyled = styled.li<{ $isActive?: boolean }>`
   cursor: pointer;
-  ${({ $isActive }) => ($isActive ?? false) && disabledLinkStyles}
+  ${({ $isActive }) => $isActive && disabledLinkStyles}
 
   &:active {
     transform: scale(0.99);
   }
 
   &:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.25em;
-    text-underline-offset: 0.17em;
+    ${underlinedLinkStyles}
   }
 `
 MenuLinkStyled.displayName = 'MenuLinkStyled'

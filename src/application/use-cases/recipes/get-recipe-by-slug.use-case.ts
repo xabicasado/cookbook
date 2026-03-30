@@ -1,4 +1,4 @@
-import type { IRecipesRepository } from '@/src/application/repositories/recipes.respository.interface'
+import type { IRecipesRepository } from '@/src/application/repositories/recipes.repository.interface'
 import type { Recipe } from '@/src/entities/models/recipe'
 
 export type IGetRecipeBySlugUseCase = ReturnType<typeof getRecipeBySlugUseCase>

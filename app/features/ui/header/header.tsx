@@ -5,10 +5,14 @@ import { useState } from 'react'
 
 import { disableScroll } from '../../utils/commons'
 import { MENU_ITEMS } from './header.constants'
-import { HeaderStyled, HeaderTitleStyled } from './header.styled'
+import {
+  HeaderSectionStyled,
+  HeaderStyled,
+  HeaderTitleStyled,
+} from './header.styled'
 import type { HeaderProps } from './types'
 
-import { Button, Menu } from '@/app/features/ui'
+import { Button, Menu, ScrollWatcher } from '@/app/features/ui'
 import type { MenuPropsType } from '@/app/features/ui/types'
 
 export function Header({ title }: HeaderProps) {
@@ -27,13 +31,17 @@ export function Header({ title }: HeaderProps) {
 
   return (
     <HeaderStyled>
-      <HeaderTitleStyled>
-        <Link href="/" passHref>
-          <h1>{title ?? 'Cookbook'}</h1>
-        </Link>
-      </HeaderTitleStyled>
+      <HeaderSectionStyled>
+        <HeaderTitleStyled>
+          <Link href="/" passHref>
+            <h1>{title ?? 'Cookbook'}</h1>
+          </Link>
+        </HeaderTitleStyled>
 
-      <Button size="giant" beforeIcon="menu" onClick={handleOnClick}></Button>
+        <Button size="giant" beforeIcon="menu" onClick={handleOnClick} />
+      </HeaderSectionStyled>
+
+      <ScrollWatcher />
 
       <Menu {...menuProps} />
     </HeaderStyled>

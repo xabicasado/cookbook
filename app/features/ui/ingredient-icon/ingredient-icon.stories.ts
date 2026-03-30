@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
 import { IngredientIcon } from '@/app/features/ui'
 import recipesMock from '@/app/mocks/recipes.mock'

@@ -1,4 +1,6 @@
-export type ButtonProps = {
+import type { ButtonHTMLAttributes } from 'react'
+
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   /**
    * Is this the principal call to action on the page?
    */
@@ -14,21 +16,12 @@ export type ButtonProps = {
   label?: string
   afterIcon?: string
   /**
-   * Is the button disabled?
-   */
-  disabled?: boolean
-  /**
    * Which width should the button has?
    */
   fullWidth?: boolean
   /**
-   * Optional click handler
-   */
-  onClick?: () => void
-  /**
    * Has the button style invert the colors?
    */
   inverted?: boolean
-  type?: 'button' | 'submit'
   justify?: 'start' | 'center' | 'end'
 }

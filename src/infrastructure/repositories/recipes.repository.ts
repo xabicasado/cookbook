@@ -1,11 +1,6 @@
-import type { IRecipesRepository } from '@/src/application/repositories/recipes.respository.interface'
-import type {
-  Recipe,
-  Recipes} from '@/src/entities/models/recipe';
-import {
-  recipeSchema,
-  recipesSchema,
-} from '@/src/entities/models/recipe'
+import type { IRecipesRepository } from '@/src/application/repositories/recipes.repository.interface'
+import type { Recipe, Recipes } from '@/src/entities/models/recipe'
+import { recipeSchema, recipesSchema } from '@/src/entities/models/recipe'
 import { mapPostgrestErrorToDomainError } from '@/supabase/utils/errors'
 import { createClient } from '@/supabase/utils/server'
 

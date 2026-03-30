@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { createContext, useContext, useState } from 'react'
 
 import { Sidebar } from '../sidebar'
-import type { SidebarContextType, SidebarProviderPropsType } from './types'
+import type { SidebarContextType, SidebarProviderProps } from './types'
 
 import {
   anonymousFunction,
@@ -17,7 +17,7 @@ const SidebarContext = createContext<SidebarContextType>({
   closeSidebar: anonymousFunction,
 })
 
-export const SidebarProvider = ({ children }: SidebarProviderPropsType) => {
+export const SidebarProvider = ({ children }: SidebarProviderProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ReactNode>(null)
   const [title, setTitle] = useState<string | undefined>(undefined)

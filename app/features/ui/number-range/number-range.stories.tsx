@@ -1,6 +1,6 @@
 import { NumberRange } from './number-range'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
 const meta: Meta<typeof NumberRange> = {
   title: 'Components/NumberRange',
@@ -13,6 +13,6 @@ type Story = StoryObj<typeof meta>
 
 export const Generic: Story = {
   args: {
-    initialNumber: 1,
+    number: 1,
   },
 }

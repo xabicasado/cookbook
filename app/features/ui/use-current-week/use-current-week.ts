@@ -35,13 +35,6 @@ export const useCurrentWeek = () => {
     [isItToday]
   )
 
-  // const getWeek = (weekStart: number): Week =>
-  //   [...Array(7).keys()].map((i) =>
-  //     getDay(new Date(weekStart + i * MILLISECONDS_PER_DAY))
-  //   )
-
-  // const getCurrentWeek = (): Week => getWeek(currentWeekStart)
-
   const getPreviousWeek = () =>
     setCurrentWeekStart(currentWeekStart - MILLISECONDS_PER_WEEK)
 

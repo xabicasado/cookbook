@@ -1,11 +1,11 @@
 import { type INGREDIENT_STATUS } from './ingredient-icon.constants'
 
-import type { IngredientType } from '@/app/features/recipes/types'
+import type { Ingredient } from '@/src/entities/models/recipe'
 
 // export type IngredientStatusType = keyof typeof INGREDIENT_STATUS
 
 export type IngredientIconProps = {
-  ingredient: IngredientType
+  ingredient: Ingredient
   // status?: (typeof INGREDIENT_STATUS)[IngredientStatusType]
   status?: (typeof INGREDIENT_STATUS)[keyof typeof INGREDIENT_STATUS]
   hasVisibleName?: boolean

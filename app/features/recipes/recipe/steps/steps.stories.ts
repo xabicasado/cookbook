@@ -1,6 +1,6 @@
 import { Steps } from '.'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
 import recipesMock from '@/app/mocks/recipes.mock'
 
@@ -14,6 +14,6 @@ type Story = StoryObj<typeof meta>
 
 export const Generic: Story = {
   args: {
-    steps: recipesMock[0].steps,
+    steps: recipesMock[0].steps ?? [],
   },
 }

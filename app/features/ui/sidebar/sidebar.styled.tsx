@@ -40,6 +40,11 @@ export const SidebarStyled = styled.section<{ $isOpen?: boolean }>`
   z-index: ${({ theme }) => theme?.layers?.mars};
 
   width: 100%;
+  max-height: 100dvh;
+
+  /* TODO Revisar */
+  display: flex;
+  flex-direction: column;
 
   position: fixed;
   bottom: 0;
@@ -71,6 +76,14 @@ export const SidebarSectionStyled = styled.section`
   text-wrap: pretty;
 `
 SidebarSectionStyled.displayName = 'SidebarSectionStyled'
+
+export const SidebarContentSectionStyled = styled.section`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+`
+SidebarContentSectionStyled.displayName = 'SidebarContentSectionStyled'
 
 export const TitleStyled = styled.h3`
   /* TODO Revisar margin-bottom */
