@@ -9,14 +9,17 @@ import testingLibrary from 'eslint-plugin-testing-library'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import { configs as tsConfigs } from 'typescript-eslint'
+import { FlatCompat } from '@eslint/eslintrc'
+
+const compat = new FlatCompat()
 
 export default defineConfig([
   ...nextVitals,
   ...nextTs,
   ...tsConfigs.recommended,
-  storybook.configs.recommended,
-  testingLibrary.configs.react,
-  jestDom.configs.recommended,
+  ...compat.config(storybook.configs.recommended),
+  ...compat.config(testingLibrary.configs.react),
+  ...compat.config(jestDom.configs.recommended),
   prettier,
   globalIgnores(['!**/.storybook', '**/node_modules', '**/storybook-static']),
   {
