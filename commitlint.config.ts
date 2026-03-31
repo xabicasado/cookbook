@@ -16,6 +16,11 @@ const Configuration: UserConfig = {
    * Referenced package must be installed
    */
   formatter: '@commitlint/format',
+  /*
+   * Custom URL to show upon failure
+   */
+  helpUrl:
+    'https://github.com/conventional-changelog/commitlint/#what-is-commitlint',
 }
 
 export default Configuration
