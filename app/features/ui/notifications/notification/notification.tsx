@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import {
   NOTIFICATION_DURATION,
@@ -17,26 +17,17 @@ export function Notification({
   setIsOpen,
   type,
 }: NotificationProps) {
-  const [timer, setTimer] = useState<number | undefined>(undefined)
-
   const toggleClose = () => setIsOpen(false)
 
   useEffect(() => {
-    if (isOpen) setTimer(NOTIFICATION_DURATION)
-  }, [isOpen])
+    if (!isOpen) return
 
-  useEffect(() => {
-    let unmountTimeout: string | number | NodeJS.Timeout | undefined
-
-    if (timer !== undefined && timer > 0) {
-      unmountTimeout = setTimeout(() => {
-        setTimer(undefined)
-        setIsOpen(false)
-      }, timer)
-    }
+    const unmountTimeout = setTimeout(() => {
+      setIsOpen(false)
+    }, NOTIFICATION_DURATION)
 
     return () => clearTimeout(unmountTimeout)
-  }, [timer, setIsOpen])
+  }, [isOpen, setIsOpen])
 
   return (
     <NotificationStyled $isOpen={isOpen} onClick={toggleClose}>

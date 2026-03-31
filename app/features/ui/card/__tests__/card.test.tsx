@@ -1,4 +1,5 @@
-import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime'
+import type { LinkProps } from 'next/link'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
@@ -7,7 +8,43 @@ import { IngredientsSection } from '@/app/features/layout'
 import { Card } from '@/app/features/ui'
 import recipesMock from '@/app/mocks/recipes.mock'
 
+const pushMock = vi.fn()
+
+vi.mock('next/navigation', () => ({
+  useRouter: async () => ({
+    ...(await vi.importActual('next/navigation')),
+    push: pushMock,
+  }),
+}))
+
+vi.mock('next/link', () => ({
+  default: ({
+    children,
+    href,
+    onClick,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    passHref,
+    ...rest
+  }: LinkProps & ComponentPropsWithoutRef<'a'>) => {
+    return (
+      <a
+        href={href}
+        onClick={(e) => {
+          e.preventDefault()
+          if (onClick) onClick(e)
+          pushMock(href, { scroll: true })
+        }}
+        {...rest}
+      >
+        {children}
+      </a>
+    )
+  },
+}))
+
 describe('<Card />', () => {
+  beforeEach(() => vi.clearAllMocks())
+
   const recipeMock = recipesMock[0]
 
   const args = {
@@ -75,19 +112,7 @@ describe('<Card />', () => {
 
   it('navigates to the link when clicked', async () => {
     // GIVEN
-    const pushMock = vi.fn()
-    const prefetchMock = vi.fn()
-
-    const mockRouter = {
-      push: pushMock,
-      prefetch: prefetchMock,
-    }
-
-    render(
-      <RouterContext value={mockRouter}>
-        <Card {...args} />
-      </RouterContext>
-    )
+    render(<Card {...args} />)
 
     // WHEN
     const link = screen.getByRole('link')
@@ -102,5 +127,54 @@ describe('<Card />', () => {
         scroll: true,
       })
     )
+  })
+
+  it('does not load a link when href is not provided', () => {
+    // GIVEN
+    render(<Card {...args} href={undefined} />)
+
+    // WHEN
+
+    // THEN
+    const link = screen.queryByRole('link')
+    expect(link).not.toBeInTheDocument()
+    expect(screen.getByText('Almejas a la marinera')).toBeInTheDocument()
+  })
+
+  it('displays subtitle and details if provided', () => {
+    // GIVEN
+    render(<Card subtitle="Plátano" details="2 bolsas" />)
+
+    // WHEN
+
+    // THEN
+    expect(screen.getByText('Plátano')).toBeInTheDocument()
+    expect(screen.getByText('2 bolsas')).toBeInTheDocument()
+  })
+
+  it('renders a subcomponents if provided', () => {
+    // GIVEN
+    render(
+      <Card href="/test">
+        <IngredientsSection
+          justify="start"
+          ingredients={[
+            {
+              emoji: '🍌',
+              name: 'plátano',
+            },
+          ]}
+        />
+      </Card>
+    )
+
+    // WHEN
+
+    // THEN
+    expect(screen.queryByText('Almejas a la marinera')).not.toBeInTheDocument()
+    expect(screen.getByText('🍌')).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: 'Ingrediente plátano' })
+    ).toBeInTheDocument()
   })
 })
